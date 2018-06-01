@@ -2,23 +2,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>demo</artifactId>
+        <groupId>com.zhazhapan</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.zhazhapan</groupId>
-    <artifactId>demo</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-
-    <modules>
-        <module>demo-redis</module>
-        <module>demo-mongodb</module>
-    </modules>
+    <artifactId>demo-mongodb</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>com.zhazhapan</groupId>
-            <artifactId>util</artifactId>
-            <version>1.0.7</version>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver</artifactId>
+            <version>3.7.1</version>
         </dependency>
     </dependencies>
 </project>
