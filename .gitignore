@@ -37,6 +37,7 @@ buildNumber.properties
 ### IntelliJ IDEA ###
 .idea
 *.iws
+*.iml
 *.ipr
 
 .DS_Store
@@ -57,7 +58,3 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
-/META-INF/
-src/main/resources/templates/
-/out/
-/bin/
