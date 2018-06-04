@@ -16,7 +16,7 @@
 <div class="container">
     <div class="row" style="padding-top: 100px;padding-bottom: 30px;">
         <div class="col-4 col-sm-10 col-md-4 text-center offset-4 offset-md-4 offset-sm-1">
-            <h3>Web Socket</h3>
+            <h3>Web Socket Demo</h3>
         </div>
     </div>
     <div class="row">
@@ -33,14 +33,15 @@
 </div>
 <script>
     var app = new Vue({el: "#msg", data: {messages: []}});
+
     if ('WebSocket' in window) {
         console.info('浏览器支持websocket');
-        var socket = new SockJS('http://localhost:8081/endpoint');
+        var socket = new SockJS('http://localhost:8081/endpoint-demo');
         var stomp = Stomp.over(socket);
         stomp.connect({}, function (frame) {
             console.log('Connected: ' + frame);
             stomp.subscribe('/topic/hello', function (response) {
-                app.data.messages.push(response);
+                app.messages.push(JSON.parse(response.body).message);
             });
         });
         // stomp.disconnect();
@@ -50,7 +51,8 @@
 
     function sendMessage(value) {
         if (window.event.keyCode === 13) {
-            stomp.send("/welcome", value);
+            console.info('send value: ' + value);
+            stomp.send("/welcome", {}, JSON.stringify({message: value}));
         }
     }
 </script>
