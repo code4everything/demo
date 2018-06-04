@@ -28,6 +28,7 @@ public class JedisApplication {
         application.jedisHash();
         application.jedisList();
         application.jedisCollection();
+        System.exit(ValueConsts.ZERO_INT);
     }
 
     private void jedisCollection() {
