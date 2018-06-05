@@ -21,31 +21,31 @@ public class JacksonClient {
 
     public static void main(String[] args) throws InterruptedException {
         EventLoopGroup group = new NioEventLoopGroup();
-        Bootstrap bootstrap = new Bootstrap()
-                .group(group)
-                .channel(NioSocketChannel.class)
-                .handler(new JacksonClientHandlerInitializer());
-
-        Channel channel = bootstrap.connect(NettyConsts.LOCAL_HOST, NettyConsts.JACKSON_PORT).sync().channel();
-        JacksonBean user = new JacksonBean();
-        user.setAge(27);
-        user.setName("孙悟空");
-        List<String> sons = new ArrayList<String>();
-        for (int i = 0; i < ValueConsts.THREE_INT; i++) {
-            sons.add("Lucy" + i);
-            sons.add("Lily" + i);
+        try {
+            Bootstrap bootstrap = new Bootstrap()
+                    .group(group)
+                    .channel(NioSocketChannel.class)
+                    .handler(new JacksonClientHandlerInitializer());
+            Channel channel = bootstrap.connect(NettyConsts.LOCAL_HOST, NettyConsts.JACKSON_PORT).sync().channel();
+            JacksonBean user = new JacksonBean();
+            user.setAge(27);
+            user.setName("孙悟空");
+            List<String> sons = new ArrayList<String>();
+            for (int i = 0; i < ValueConsts.THREE_INT; i++) {
+                sons.add("Lucy" + i);
+                sons.add("Lily" + i);
+            }
+            user.setSons(sons);
+            Map<String, String> addresses = new HashMap<String, String>(4);
+            for (int i = 0; i < ValueConsts.THREE_INT; i++) {
+                addresses.put("001" + i, "18998366112");
+                addresses.put("002" + i, "15014965012");
+            }
+            user.setAddresses(addresses);
+            channel.writeAndFlush(user);
+            channel.closeFuture().sync();
+        } finally {
+            group.shutdownGracefully();
         }
-
-        user.setSons(sons);
-        Map<String, String> addresses = new HashMap<String, String>(4);
-        for (int i = 0; i < ValueConsts.THREE_INT; i++) {
-            addresses.put("001" + i, "18998366112");
-            addresses.put("002" + i, "15014965012");
-        }
-
-        user.setAddresses(addresses);
-        channel.writeAndFlush(user);
-        channel.closeFuture().sync();
-        group.shutdownGracefully();
     }
 }
