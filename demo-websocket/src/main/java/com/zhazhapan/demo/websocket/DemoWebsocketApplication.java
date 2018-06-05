@@ -1,7 +1,6 @@
 package com.zhazhapan.demo.websocket;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.cors.CorsConfiguration;
@@ -13,7 +12,6 @@ import org.springframework.web.filter.CorsFilter;
  * @since 2018/6/4
  */
 @SpringBootApplication
-@EnableAutoConfiguration
 public class DemoWebsocketApplication {
 
 
