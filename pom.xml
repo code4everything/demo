@@ -18,6 +18,8 @@
     <modules>
         <module>demo-redis</module>
         <module>demo-mongodb</module>
+        <module>demo-websocket</module>
+        <module>demo-ui</module>
     </modules>
 
     <dependencies>
