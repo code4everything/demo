@@ -11,11 +11,15 @@
 
     <artifactId>demo-redis</artifactId>
 
+    <properties>
+        <jedis.version>2.9.0</jedis.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>2.9.0</version>
+            <version>${jedis.version}</version>
         </dependency>
     </dependencies>
 </project>

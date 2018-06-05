@@ -13,6 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <util.version>1.0.7</util.version>
     </properties>
 
     <modules>
@@ -20,13 +21,14 @@
         <module>demo-mongodb</module>
         <module>demo-websocket</module>
         <module>demo-ui</module>
+        <module>demo-netty</module>
     </modules>
 
     <dependencies>
         <dependency>
             <groupId>com.zhazhapan</groupId>
             <artifactId>util</artifactId>
-            <version>1.0.7</version>
+            <version>${util.version}</version>
         </dependency>
     </dependencies>
 </project>

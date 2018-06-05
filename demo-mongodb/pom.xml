@@ -11,11 +11,15 @@
 
     <artifactId>demo-mongodb</artifactId>
 
+    <properties>
+        <mongodb.version>3.7.1</mongodb.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongodb-driver</artifactId>
-            <version>3.7.1</version>
+            <version>${mongodb.version}</version>
         </dependency>
     </dependencies>
 </project>
