@@ -10,4 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>demo-netty-codec-serialization</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.zhazhapan</groupId>
+            <artifactId>demo-netty-common</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+    </dependencies>
 </project>
