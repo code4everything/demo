@@ -16,6 +16,10 @@
         <module>demo-netty-codec</module>
         <module>demo-netty-discard</module>
         <module>demo-netty-echo</module>
+        <module>demo-netty-factorial</module>
+        <module>demo-netty-file</module>
+        <module>demo-netty-heartbeat</module>
+        <module>demo-netty-websocket-chat</module>
     </modules>
 
     <properties>
