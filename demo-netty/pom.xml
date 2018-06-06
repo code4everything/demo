@@ -16,6 +16,8 @@
         <module>demo-netty-codec</module>
         <module>demo-netty-discard</module>
         <module>demo-netty-echo</module>
+        <module>demo-netty-factorial</module>
+        <module>demo-netty-file</module>
     </modules>
 
     <properties>
