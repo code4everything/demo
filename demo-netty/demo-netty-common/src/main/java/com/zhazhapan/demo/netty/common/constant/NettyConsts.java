@@ -8,6 +8,10 @@ import com.zhazhapan.modules.constant.ValueConsts;
  */
 public class NettyConsts {
 
+    public static final int CHAT_PORT = 9007;
+
+    public static final int HEARTBEAT_PORT = 9007;
+
     public static final String LINE_SEPARATOR = System.getProperty("line.separator");
 
     public static final String FILE_DESTINATION = ValueConsts.USER_DESKTOP + ValueConsts.SEPARATOR + "netty-file.txt";

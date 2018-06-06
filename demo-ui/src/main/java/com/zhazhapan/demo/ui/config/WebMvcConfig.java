@@ -10,6 +10,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
+
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -26,6 +27,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/websocket").setViewName("/websocket");
+        registry.addViewController("/chat").setViewName("/chat");
     }
 
     @Override
