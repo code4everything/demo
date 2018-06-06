@@ -22,6 +22,7 @@
         <module>demo-websocket</module>
         <module>demo-ui</module>
         <module>demo-netty</module>
+        <module>demo-springboot</module>
     </modules>
 
     <dependencies>
