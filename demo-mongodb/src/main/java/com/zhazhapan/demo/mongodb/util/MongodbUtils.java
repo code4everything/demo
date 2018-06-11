@@ -17,7 +17,7 @@ public class MongodbUtils {
 
     private static MongoClient mongoClient = null;
 
-    private static Map<String, MongoDatabase> databases = new HashMap<String, MongoDatabase>(4);
+    private static Map<String, MongoDatabase> databases = new HashMap<>(4);
 
     private static synchronized MongoClientOptions getOption() {
         MongoClientOptions.Builder builder = MongoClientOptions.builder();

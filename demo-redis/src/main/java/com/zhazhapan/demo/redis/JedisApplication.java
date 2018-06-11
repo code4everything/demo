@@ -57,7 +57,7 @@ public class JedisApplication {
         LOGGER.info("==============start to test redis hash=============");
         jedis = JedisPoolUtils.getJedis();
         String key = "hash";
-        Map<String, String> value = new HashMap<String, String>();
+        Map<String, String> value = new HashMap<>(4);
         value.put("name", "pantao");
         value.put("gender", "boy");
         LOGGER.info("set key[" + key + "] value[" + value + "]");
