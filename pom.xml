@@ -23,6 +23,8 @@
         <module>demo-ui</module>
         <module>demo-netty</module>
         <module>demo-springboot</module>
+        <module>demo-algorithm</module>
+        <module>demo-pattern</module>
     </modules>
 
     <dependencies>
