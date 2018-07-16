@@ -25,6 +25,7 @@
         <module>demo-springboot</module>
         <module>demo-algorithm</module>
         <module>demo-pattern</module>
+        <module>demo-test</module>
     </modules>
 
     <dependencies>
