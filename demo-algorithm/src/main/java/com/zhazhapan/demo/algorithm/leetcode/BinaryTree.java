@@ -29,6 +29,49 @@ public class BinaryTree {
         // 后序遍历
         List<Integer> postOrder = new ArrayList<Integer>(8) {{addAll(Arrays.asList(8, 7, 9));}};
         Assert.assertEquals(postOrder, binaryTree.postOrderTraversal(root));
+        // 层级遍历
+        List<List<Integer>> levelOrder = new ArrayList<List<Integer>>() {{
+            add(new ArrayList<Integer>() {{add(9);}});
+            add(new ArrayList<Integer>() {{
+                add(8);
+                add(7);
+            }});
+        }};
+        Assert.assertEquals(levelOrder, binaryTree.levelOrder(root));
+    }
+
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> traversalResultList = new ArrayList<>();
+        if (root != null) {
+            LevelOrderDO orderDO = levelOrder(new ArrayList<TreeNode>() {{add(root);}});
+            while (orderDO.levelResult != null) {
+                traversalResultList.add(orderDO.levelResult);
+                if (orderDO.levelNode != null) {
+                    orderDO = levelOrder(orderDO.levelNode);
+                }
+            }
+        }
+        return traversalResultList;
+    }
+
+    private LevelOrderDO levelOrder(List<TreeNode> treeNodeList) {
+        LevelOrderDO orderDO = new LevelOrderDO();
+        if (treeNodeList != null && !treeNodeList.isEmpty()) {
+            List<Integer> levelResultList = new ArrayList<>();
+            List<TreeNode> levelNodeList = new ArrayList<>();
+            treeNodeList.forEach(treeNode -> {
+                levelResultList.add(treeNode.val);
+                if (treeNode.left != null) {
+                    levelNodeList.add(treeNode.left);
+                }
+                if (treeNode.right != null) {
+                    levelNodeList.add(treeNode.right);
+                }
+            });
+            orderDO.levelNode = levelNodeList;
+            orderDO.levelResult = levelResultList;
+        }
+        return orderDO;
     }
 
     public List<Integer> postOrderTraversal(TreeNode root) {
@@ -71,5 +114,12 @@ public class BinaryTree {
             }
         }
         return list;
+    }
+
+    class LevelOrderDO {
+
+        List<Integer> levelResult;
+
+        List<TreeNode> levelNode;
     }
 }
