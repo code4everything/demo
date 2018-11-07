@@ -28,6 +28,7 @@
         <module>demo-algorithm</module>
         <module>demo-pattern</module>
         <module>demo-test</module>
+        <module>demo-guava</module>
     </modules>
 
     <dependencies>
