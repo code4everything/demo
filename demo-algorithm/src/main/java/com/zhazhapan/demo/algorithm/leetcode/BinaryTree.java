@@ -13,6 +13,8 @@ import java.util.List;
  **/
 public class BinaryTree {
 
+    private List<List<Integer>> traversalResultList = new ArrayList<>();
+
     public static void main(String[] args) {
         BinaryTree binaryTree = new BinaryTree();
         TreeNode root = new TreeNode(9);
@@ -41,37 +43,33 @@ public class BinaryTree {
     }
 
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> traversalResultList = new ArrayList<>();
         if (root != null) {
-            LevelOrderDO orderDO = levelOrder(new ArrayList<TreeNode>() {{add(root);}});
-            while (orderDO.levelResult != null) {
-                traversalResultList.add(orderDO.levelResult);
-                if (orderDO.levelNode != null) {
-                    orderDO = levelOrder(orderDO.levelNode);
-                }
-            }
+            List<Integer> list = new ArrayList<>();
+            list.add(root.val);
+            traversalResultList.add(list);
+            levelOrder(root, 1);
         }
         return traversalResultList;
     }
 
-    private LevelOrderDO levelOrder(List<TreeNode> treeNodeList) {
-        LevelOrderDO orderDO = new LevelOrderDO();
-        if (treeNodeList != null && !treeNodeList.isEmpty()) {
-            List<Integer> levelResultList = new ArrayList<>();
-            List<TreeNode> levelNodeList = new ArrayList<>();
-            treeNodeList.forEach(treeNode -> {
-                levelResultList.add(treeNode.val);
-                if (treeNode.left != null) {
-                    levelNodeList.add(treeNode.left);
-                }
-                if (treeNode.right != null) {
-                    levelNodeList.add(treeNode.right);
-                }
-            });
-            orderDO.levelNode = levelNodeList;
-            orderDO.levelResult = levelResultList;
+    public void levelOrder(TreeNode node, int level) {
+        List<Integer> list;
+        if (traversalResultList.size() > level) {
+            list = traversalResultList.get(level);
+        } else {
+            list = new ArrayList<>();
+            if (node.left != null || node.right != null) {
+                traversalResultList.add(list);
+            }
         }
-        return orderDO;
+        if (node.left != null) {
+            list.add(node.left.val);
+            levelOrder(node.left, level + 1);
+        }
+        if (node.right != null) {
+            list.add(node.right.val);
+            levelOrder(node.right, level + 1);
+        }
     }
 
     public List<Integer> postOrderTraversal(TreeNode root) {
@@ -116,10 +114,27 @@ public class BinaryTree {
         return list;
     }
 
-    class LevelOrderDO {
+    /**
+     * 最佳解决方案
+     *
+     * @param root {@link TreeNode}
+     *
+     * @return 成绩遍历结果
+     */
+    public List<List<Integer>> bestLevelOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        levelHelper(res, root, 0);
+        return res;
+    }
 
-        List<Integer> levelResult;
-
-        List<TreeNode> levelNode;
+    public void levelHelper(List<List<Integer>> res, TreeNode root, int height) {
+        if (root != null) {
+            if (height >= res.size()) {
+                res.add(new ArrayList<>());
+            }
+            res.get(height).add(root.val);
+            levelHelper(res, root.left, height + 1);
+            levelHelper(res, root.right, height + 1);
+        }
     }
 }
