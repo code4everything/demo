@@ -40,8 +40,30 @@ public class BinaryTree {
             }});
         }};
         Assert.assertEquals(levelOrder, binaryTree.levelOrder(root));
+        Assert.assertEquals(2, binaryTree.maxDepth(root));
     }
 
+    /**
+     * 最大深度
+     *
+     * @param root {@link TreeNode}
+     *
+     * @return 最大深度
+     */
+    public int maxDepth(TreeNode root) {
+        if (root != null) {
+            return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+        }
+        return 0;
+    }
+
+    /**
+     * 层级遍历
+     *
+     * @param root {@link TreeNode}
+     *
+     * @return {@link List}
+     */
     public List<List<Integer>> levelOrder(TreeNode root) {
         if (root != null) {
             List<Integer> list = new ArrayList<>();
@@ -52,7 +74,7 @@ public class BinaryTree {
         return traversalResultList;
     }
 
-    public void levelOrder(TreeNode node, int level) {
+    private void levelOrder(TreeNode node, int level) {
         List<Integer> list;
         if (traversalResultList.size() > level) {
             list = traversalResultList.get(level);
@@ -72,6 +94,13 @@ public class BinaryTree {
         }
     }
 
+    /**
+     * 后续遍历
+     *
+     * @param root {@link TreeNode}
+     *
+     * @return {@link List}
+     */
     public List<Integer> postOrderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         if (root != null) {
@@ -86,6 +115,13 @@ public class BinaryTree {
         return list;
     }
 
+    /**
+     * 中序遍历
+     *
+     * @param root {@link TreeNode}
+     *
+     * @return {@link List}
+     */
     public List<Integer> inOrderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         if (root != null) {
@@ -100,6 +136,13 @@ public class BinaryTree {
         return list;
     }
 
+    /**
+     * 前序遍历
+     *
+     * @param root {@link TreeNode}
+     *
+     * @return {@link List}
+     */
     public List<Integer> preOrderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         if (root != null) {
@@ -127,7 +170,7 @@ public class BinaryTree {
         return res;
     }
 
-    public void levelHelper(List<List<Integer>> res, TreeNode root, int height) {
+    private void levelHelper(List<List<Integer>> res, TreeNode root, int height) {
         if (root != null) {
             if (height >= res.size()) {
                 res.add(new ArrayList<>());
