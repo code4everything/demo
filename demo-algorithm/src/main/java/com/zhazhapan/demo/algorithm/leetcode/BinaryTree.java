@@ -40,7 +40,38 @@ public class BinaryTree {
             }});
         }};
         Assert.assertEquals(levelOrder, binaryTree.levelOrder(root));
+        // 最大深度
         Assert.assertEquals(2, binaryTree.maxDepth(root));
+        // 是否镜像对称
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(2);
+        root.left.left = new TreeNode(3);
+        root.left.right = new TreeNode(4);
+        root.right.left = new TreeNode(4);
+        root.right.right = new TreeNode(3);
+        Assert.assertTrue(binaryTree.isSymmetric(root));
+        root.right.right.val = 7;
+        Assert.assertFalse(binaryTree.isSymmetric(root));
+    }
+
+    /**
+     * 是否镜像对称
+     *
+     * @param root {@link TreeNode}
+     *
+     * @return 是否镜像对称
+     */
+    public boolean isSymmetric(TreeNode root) {
+        return root == null || isSymmetric(root.left, root.right);
+    }
+
+    private boolean isSymmetric(TreeNode left, TreeNode right) {
+        if (left == null && right == null) {
+            return true;
+        } else if (left == null || right == null) {
+            return false;
+        }
+        return left.val == right.val && isSymmetric(left.left, right.right) && isSymmetric(left.right, right.left);
     }
 
     /**
@@ -51,10 +82,7 @@ public class BinaryTree {
      * @return 最大深度
      */
     public int maxDepth(TreeNode root) {
-        if (root != null) {
-            return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
-        }
-        return 0;
+        return root == null ? 0 : 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
     }
 
     /**
