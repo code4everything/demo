@@ -55,7 +55,27 @@ public class BinaryTree {
         // 路径总和
         Assert.assertFalse(binaryTree.hasPathSum(root, 89));
         Assert.assertTrue(binaryTree.hasPathSum(root, 15));
+        // 构建二叉树
+        int[] inorder = binaryTree.inOrderTraversal(root).stream().mapToInt(i -> i).toArray();
+        int[] postorder = binaryTree.postOrderTraversal(root).stream().mapToInt(i -> i).toArray();
+        binaryTree.buildTree(inorder, postorder);
     }
+
+    /**
+     * 构建二叉树
+     *
+     * @param inorder 中序遍历结果
+     * @param postorder 后续遍历结果
+     *
+     * @return {@link TreeNode}
+     */
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        if (inorder == null || postorder == null || inorder.length == 0 || postorder.length == 0) {
+            return null;
+        }
+        return null;
+    }
+
 
     /**
      * 路径总和
