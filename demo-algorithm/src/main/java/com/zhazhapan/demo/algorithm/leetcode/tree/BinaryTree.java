@@ -1,4 +1,4 @@
-package com.zhazhapan.demo.algorithm.leetcode;
+package com.zhazhapan.demo.algorithm.leetcode.tree;
 
 import com.zhazhapan.demo.algorithm.leetcode.model.TreeNode;
 import org.junit.Assert;
