@@ -2,11 +2,11 @@ package com.zhazhapan.demo.algorithm.leetcode.tree.binary;
 
 import org.junit.Test;
 
-public class TreeBuilderTest {
+public class PostOrderTreeBuilderTest {
 
     @Test
     public void buildTree() {
-        TreeBuilder builder = new TreeBuilder();
+        PostOrderTreeBuilder builder = new PostOrderTreeBuilder();
         int[] inorder = {9, 3, 15, 20, 7};
         int[] postorder = {9, 15, 7, 20, 3};
         long start = System.currentTimeMillis();

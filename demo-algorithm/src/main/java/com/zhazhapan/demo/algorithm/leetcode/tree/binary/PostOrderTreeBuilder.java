@@ -6,7 +6,7 @@ import com.zhazhapan.demo.algorithm.leetcode.model.TreeNode;
  * @author pantao
  * @since 2018-12-02
  */
-public class TreeBuilder {
+public class PostOrderTreeBuilder {
 
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         if (inorder == null || inorder.length < 1 || postorder == null || postorder.length < 1) {
