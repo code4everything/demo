@@ -13,6 +13,9 @@ public class NextNodeFinder {
 
     private List<List<TreeLinkNode>> treeNodes = new ArrayList<>();
 
+    /**
+     * 非完美二叉树
+     */
     public void connect2(TreeLinkNode root) {
         if (root != null) {
             TreeLinkNode node = root.left;
@@ -59,6 +62,9 @@ public class NextNodeFinder {
         }
     }
 
+    /**
+     * 完美二叉树
+     */
     public void connect(TreeLinkNode root) {
         if (root != null && root.left != null) {
             findNext(root, 0);
