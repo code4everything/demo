@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
+ * 角色表
+ *
  * @author pantao
  * @since 2018-12-10
  */

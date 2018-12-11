@@ -9,7 +9,7 @@ import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -24,7 +24,6 @@ import java.util.Map;
 public class ShiroConfig {
 
     @Bean
-    @ConditionalOnProperty(prefix = "renren", name = "cluster", havingValue = "false")
     public DefaultWebSessionManager sessionManager() {
         long expired = 3600;
         DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
@@ -35,7 +34,7 @@ public class ShiroConfig {
         return sessionManager;
     }
 
-    @Bean("securityManager")
+    @Bean
     public SecurityManager securityManager(UserRealm userRealm, SessionManager sessionManager) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(userRealm);
@@ -46,13 +45,20 @@ public class ShiroConfig {
     }
 
     @Bean
+    @ConditionalOnBean(SecurityManager.class)
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
         shiroFilter.setSecurityManager(securityManager);
         shiroFilter.setLoginUrl("/login");
         shiroFilter.setUnauthorizedUrl("/");
         Map<String, String> filterMap = new LinkedHashMap<>();
+        filterMap.put("/swagger/**", "anon");
+        filterMap.put("/v2/api-docs", "anon");
+        filterMap.put("/swagger-ui.html", "anon");
+        filterMap.put("/webjars/**", "anon");
+        filterMap.put("/swagger-resources/**", "anon");
         filterMap.put("/common", "anon");
+        filterMap.put("/error", "anon");
         filterMap.put("/**", "authc");
         shiroFilter.setFilterChainDefinitionMap(filterMap);
         return shiroFilter;
