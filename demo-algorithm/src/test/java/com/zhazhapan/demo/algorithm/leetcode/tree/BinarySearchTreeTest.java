@@ -25,4 +25,12 @@ public class BinarySearchTreeTest {
         assert "(2,1,3)".equals(codec.serialize(tree.searchBST(root, 2)));
         assert "".equals(codec.serialize(tree.searchBST(root, 5)));
     }
+
+    @Test
+    public void insertIntoBST() {
+        TreeCodec codec = new TreeCodec();
+        BinarySearchTree tree = new BinarySearchTree();
+        TreeNode root = codec.deserialize("4,(2,1,3),7");
+        System.out.println(codec.serialize(tree.insertIntoBST(root, 5)));
+    }
 }

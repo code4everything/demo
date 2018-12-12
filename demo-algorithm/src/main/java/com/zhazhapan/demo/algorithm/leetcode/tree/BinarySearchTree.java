@@ -8,6 +8,32 @@ import com.zhazhapan.demo.algorithm.leetcode.model.TreeNode;
  */
 public class BinarySearchTree {
 
+    public TreeNode insertIntoBST(TreeNode root, int val) {
+        TreeNode childNode = new TreeNode(val);
+        if (root == null) {
+            return childNode;
+        }
+        TreeNode node = root;
+        while (true) {
+            if (node.val == val) {
+                break;
+            } else if (node.val > val) {
+                if (node.left == null) {
+                    node.left = childNode;
+                    break;
+                } else {
+                    node = node.left;
+                }
+            } else if (node.right == null) {
+                node.right = childNode;
+                break;
+            } else {
+                node = node.right;
+            }
+        }
+        return root;
+    }
+
     public TreeNode searchBST(TreeNode root, int val) {
         while (root != null) {
             if (root.val == val) {
