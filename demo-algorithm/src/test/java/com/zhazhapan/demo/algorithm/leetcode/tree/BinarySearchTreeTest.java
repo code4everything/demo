@@ -33,4 +33,15 @@ public class BinarySearchTreeTest {
         TreeNode root = codec.deserialize("4,(2,1,3),7");
         System.out.println(codec.serialize(tree.insertIntoBST(root, 5)));
     }
+
+    @Test
+    public void deleteNode() {
+        TreeCodec codec = new TreeCodec();
+        BinarySearchTree tree = new BinarySearchTree();
+        assert "".equals(codec.serialize(tree.deleteNode(codec.deserialize("5"), 5)));
+        System.out.println(codec.serialize(tree.deleteNode(codec.deserialize("5,3,6"), 5)));
+        TreeNode root = codec.deserialize("5,(3,2,4),(6,null,7)");
+        System.out.println(codec.serialize(tree.deleteNode(root, 3)));
+        System.out.println(codec.serialize(tree.deleteNode(root, 5)));
+    }
 }
