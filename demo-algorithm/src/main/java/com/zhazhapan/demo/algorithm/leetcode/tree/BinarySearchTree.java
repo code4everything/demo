@@ -12,78 +12,38 @@ public class BinarySearchTree {
         if (root == null) {
             return null;
         }
-        TreeNode node = root;
-        // 找到要删除的节点
-        while (node != null) {
-            if (node.val == key) {
-                return deleteNode(null, node, true);
-            } else if (node.val > key) {
-                if (node.left != null && node.left.val == key) {
-                    deleteNode(node, node.left, true);
-                    break;
-                }
-                node = node.left;
+        if (root.val == key) {
+            boolean isLeftNull = root.left == null;
+            boolean isRightNull = root.right == null;
+            if (isLeftNull && isRightNull) {
+                return null;
+            } else if (isRightNull) {
+                return root.left;
+            } else if (isLeftNull) {
+                return root.right;
             } else {
-                if (node.right != null && node.right.val == key) {
-                    deleteNode(node, node.right, false);
-                    break;
+                if (root.left.right == null) {
+                    root.left.right = root.right;
+                    return root.left;
                 }
-                node = node.right;
+                // 最后一个右子节点的父节点
+                TreeNode pre = root.left;
+                while (pre.right.right != null) {
+                    pre = pre.right;
+                }
+                // 最后一个右子节点
+                TreeNode current = pre.right;
+                pre.right = current.left;
+                current.left = root.left;
+                current.right = root.right;
+                return current;
             }
+        } else if (root.val > key) {
+            root.left = deleteNode(root.left, key);
+        } else {
+            root.right = deleteNode(root.right, key);
         }
         return root;
-    }
-
-    /**
-     * 判断节点的子节点个数
-     */
-    private TreeNode deleteNode(TreeNode parentNode, TreeNode node, boolean isLeft) {
-        boolean isLeftNull = node.left == null;
-        boolean isRightNull = node.right == null;
-        if (isLeftNull && isRightNull) {
-            return deleteNode(parentNode, isLeft, null);
-        } else if (isRightNull) {
-            return deleteNode(parentNode, isLeft, node.left);
-        } else if (isLeftNull) {
-            return deleteNode(parentNode, isLeft, node.right);
-        } else {
-            // 最后一个右子节点的父节点
-            TreeNode x = node.left;
-            // 找到最大的子节点
-            while (x.right != null) {
-                if (x.right.right == null) {
-                    break;
-                }
-                x = x.right;
-            }
-            // 最后一个右子节点
-            TreeNode y = x.right;
-            TreeNode z;
-            if (y == null) {
-                z = deleteNode(parentNode, isLeft, x);
-            } else {
-                x.right = y.left;
-                z = deleteNode(parentNode, isLeft, y);
-                z.left = node.left;
-            }
-            z.right = node.right;
-            return z;
-        }
-    }
-
-    /**
-     * 删除子节点小于等于一个的节点
-     */
-    private TreeNode deleteNode(TreeNode parentNode, boolean isLeft, TreeNode childNode) {
-        if (parentNode == null) {
-            return childNode;
-        }
-        if (isLeft) {
-            parentNode.left = childNode;
-        } else {
-            parentNode.right = childNode;
-        }
-        return childNode;
     }
 
     public TreeNode insertIntoBST(TreeNode root, int val) {

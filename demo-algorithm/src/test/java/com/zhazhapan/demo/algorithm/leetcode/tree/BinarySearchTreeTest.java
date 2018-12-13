@@ -43,5 +43,6 @@ public class BinarySearchTreeTest {
         TreeNode root = codec.deserialize("5,(3,2,4),(6,null,7)");
         System.out.println(codec.serialize(tree.deleteNode(root, 3)));
         System.out.println(codec.serialize(tree.deleteNode(root, 5)));
+        System.out.println(codec.serialize(tree.deleteNode(codec.deserialize("11,(9,(2,1,(3,null,(5,4))),10)"), 9)));
     }
 }
