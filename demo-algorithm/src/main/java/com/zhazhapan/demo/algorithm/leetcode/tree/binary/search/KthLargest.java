@@ -1,8 +1,7 @@
 package com.zhazhapan.demo.algorithm.leetcode.tree.binary.search;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 /**
  * @author pantao
@@ -10,44 +9,25 @@ import java.util.List;
  **/
 public class KthLargest {
 
-    private List<Integer> list;
+    private Queue<Integer> heap;
 
-    private Integer k;
+    private int maxSize;
 
     public KthLargest(int k, int[] nums) {
-        this.k = k;
-        list = k > 100 ? new LinkedList<>() : new ArrayList<>(k);
+        heap = new PriorityQueue<>(k);
+        maxSize = k;
         for (int num : nums) {
-            insert(num);
-        }
-    }
-
-    private void insert(int num) {
-        if (list.size() == k) {
-            if (num > list.get(k - 1)) {
-                list.remove(k - 1);
-            } else {
-                return;
-            }
-        }
-        if (list.isEmpty()) {
-            list.add(num);
-        } else {
-            for (int i = list.size() - 1; i >= -1; i--) {
-                if (i == -1) {
-                    list.add(0, num);
-                } else if (num <= list.get(i)) {
-                    list.add(i + 1, num);
-                } else {
-                    continue;
-                }
-                break;
-            }
+            add(num);
         }
     }
 
     public int add(int val) {
-        insert(val);
-        return list.get(k - 1);
+        if (heap.isEmpty() || heap.size() < maxSize) {
+            heap.offer(val);
+        } else if (val > heap.peek()) {
+            heap.poll();
+            heap.offer(val);
+        }
+        return heap.peek();
     }
 }
