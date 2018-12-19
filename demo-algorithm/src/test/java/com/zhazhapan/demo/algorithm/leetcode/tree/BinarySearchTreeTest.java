@@ -45,4 +45,14 @@ public class BinarySearchTreeTest {
         System.out.println(codec.serialize(tree.deleteNode(root, 5)));
         System.out.println(codec.serialize(tree.deleteNode(codec.deserialize("11,(9,(2,1,(3,null,(5,4))),10)"), 9)));
     }
+
+    @Test
+    public void containsNearbyAlmostDuplicate() {
+        BinarySearchTree tree = new BinarySearchTree();
+        assert tree.containsNearbyAlmostDuplicate(new int[]{1, 2, 3, 1}, 3, 0);
+        assert tree.containsNearbyAlmostDuplicate(new int[]{1, 0, 1, 1}, 1, 2);
+        assert !tree.containsNearbyAlmostDuplicate(new int[]{1, 5, 9, 1, 5, 9}, 2, 3);
+        assert !tree.containsNearbyAlmostDuplicate(new int[]{-1, 2147483647}, 1, 2147483647);
+        assert !tree.containsNearbyAlmostDuplicate(new int[]{2147483647, -2147483647}, 1, 2147483647);
+    }
 }

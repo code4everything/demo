@@ -2,11 +2,32 @@ package com.zhazhapan.demo.algorithm.leetcode.tree;
 
 import com.zhazhapan.demo.algorithm.leetcode.model.TreeNode;
 
+import java.util.SortedSet;
+import java.util.TreeSet;
+
 /**
  * @author pantao
  * @since 2018-12-10
  */
 public class BinarySearchTree {
+
+    public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
+        if (nums.length > 1 && k > 0 && t >= 0) {
+            SortedSet<Long> binaryTree = new TreeSet<>();
+            for (int i = 0; i < nums.length; i++) {
+                SortedSet<Long> sonSet = binaryTree.subSet((long) nums[i] - t, (long) nums[i] + t + 1);
+                if (sonSet.isEmpty()) {
+                    if (i >= k) {
+                        binaryTree.remove((long) nums[i - k]);
+                    }
+                    binaryTree.add((long) nums[i]);
+                } else {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     public TreeNode deleteNode(TreeNode root, int key) {
         if (root == null) {
