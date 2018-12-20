@@ -11,6 +11,25 @@ import java.util.TreeSet;
  */
 public class BinarySearchTree {
 
+    public boolean isBalanced(TreeNode root) {
+        return depth(root) >= 0;
+    }
+
+    private int depth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftDepth = depth(root.left);
+        if (leftDepth < 0) {
+            return -1;
+        }
+        int rightDepth = depth(root.right);
+        if (rightDepth < 0 || Math.abs(leftDepth - rightDepth) > 1) {
+            return -1;
+        }
+        return 1 + Math.max(leftDepth, rightDepth);
+    }
+
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
         if (nums.length > 1 && k > 0 && t >= 0) {
             SortedSet<Long> binaryTree = new TreeSet<>();

@@ -55,4 +55,13 @@ public class BinarySearchTreeTest {
         assert !tree.containsNearbyAlmostDuplicate(new int[]{-1, 2147483647}, 1, 2147483647);
         assert !tree.containsNearbyAlmostDuplicate(new int[]{2147483647, -2147483647}, 1, 2147483647);
     }
+
+    @Test
+    public void isBalanced() {
+        TreeCodec codec = new TreeCodec();
+        BinarySearchTree tree = new BinarySearchTree();
+        assert tree.isBalanced(codec.deserialize("3,9,(20,15,7)"));
+        assert !tree.isBalanced(codec.deserialize("1,(2,(3,4,4),3),2"));
+        assert tree.isBalanced(codec.deserialize("3,9,(20,15)"));
+    }
 }
