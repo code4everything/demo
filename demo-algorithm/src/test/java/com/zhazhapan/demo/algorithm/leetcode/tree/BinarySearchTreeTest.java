@@ -64,4 +64,14 @@ public class BinarySearchTreeTest {
         assert !tree.isBalanced(codec.deserialize("1,(2,(3,4,4),3),2"));
         assert tree.isBalanced(codec.deserialize("3,9,(20,15)"));
     }
+
+    @Test
+    public void sortedArrayToBST() {
+        TreeCodec codec = new TreeCodec();
+        BinarySearchTree tree = new BinarySearchTree();
+        assert tree.isBalanced(tree.sortedArrayToBST(new int[]{-10, -3, 0, 5, 9}));
+        assert tree.isBalanced(tree.sortedArrayToBST(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9}));
+        assert tree.isBalanced(tree.sortedArrayToBST(new int[]{1}));
+        assert tree.isBalanced(tree.sortedArrayToBST(null));
+    }
 }
