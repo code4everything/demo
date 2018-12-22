@@ -11,6 +11,22 @@ import java.util.TreeSet;
  */
 public class BinarySearchTree {
 
+    public TreeNode sortedArrayToBST(int[] nums) {
+        return nums == null || nums.length == 0 ? null : sortedArrayToBST(nums, 0, nums.length - 1);
+    }
+
+    private TreeNode sortedArrayToBST(int[] nums, int start, int end) {
+        int idx = (end + start) / 2;
+        TreeNode root = new TreeNode(nums[idx]);
+        if (idx > start) {
+            root.left = sortedArrayToBST(nums, start, idx - 1);
+        }
+        if (idx < end) {
+            root.right = sortedArrayToBST(nums, idx + 1, end);
+        }
+        return root;
+    }
+
     public boolean isBalanced(TreeNode root) {
         return depth(root) >= 0;
     }
