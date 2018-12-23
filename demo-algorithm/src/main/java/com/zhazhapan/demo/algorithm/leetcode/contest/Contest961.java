@@ -9,17 +9,17 @@ import java.util.List;
  **/
 public class Contest961 {
 
-    public int repeatedNTimes(int[] A) {
+    public int repeatedNTimes(int[] a) {
         List<Integer> list = new ArrayList<>();
-        int maxLen = A.length / 2 + 1;
+        int maxLen = a.length / 2 + 1;
         for (int i = 0; i < maxLen; i++) {
-            int val = A[i];
+            int val = a[i];
             if (list.contains(val)) {
                 return val;
             } else {
                 list.add(val);
             }
         }
-        return A[maxLen];
+        return a[maxLen];
     }
 }
