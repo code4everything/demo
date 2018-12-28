@@ -6,46 +6,38 @@ package com.zhazhapan.demo.algorithm.leetcode.tree.trie;
  **/
 public class MaximumXORFinder {
 
-    private TrieNode root = new TrieNode();
+    public static final int THIRTY_ONE = 31;
+
+    private TrieNode root;
+
+    private String[] binnum;
 
     public int findMaximumXOR(int[] nums) {
-        for (int i = 0; i < nums.length; i++) {
-            String bin = Integer.toBinaryString(nums[i]);
+        root = new TrieNode();
+        for (int num : nums) {
             TrieNode node = root;
-            for (int j = bin.length() - 1; j > -1; j--) {
-                int idx = bin.charAt(j) - '0';
-                TrieNode[] children = node.children;
-                node = children[idx];
-                if (node == null) {
-                    node = new TrieNode();
-                    children[idx] = node;
+            for (int j = THIRTY_ONE; j >= 0; j--) {
+                int idx = ((1 << j) & num) > 0 ? 1 : 0;
+                if (node.nodes[idx] == null) {
+                    node.nodes[idx] = new TrieNode();
                 }
+                node = node.nodes[idx];
             }
         }
-        return findMaximumXOR(0, root.children[0], root.children[1]);
-    }
+        int max = 0;
+        TrieNode node = root;
+        for (int num : nums) {
+            int temp = 0;
+            for (int i = THIRTY_ONE; i >= 0; i--) {
 
-    private int findMaximumXOR(int depth, TrieNode left, TrieNode right) {
-        boolean isLeftNull = left == null;
-        boolean isRightNull = right == null;
-        if (isLeftNull && isRightNull) {
-            return 0;
-        } else if (isLeftNull) {
-            return (depth == 0 ? 0 : 1 << depth) + findMaximumXOR(depth + 1, null, right.children[1]);
-        } else if (isRightNull) {
-            return findMaximumXOR(depth + 1, null, left.children[1]);
-        } else {
-            int dep = depth + 1;
-            int max = Math.max(findMaximumXOR(dep, left.children[0], left.children[1]), findMaximumXOR(dep,
-                    right.children[0], right.children[1]));
-            int newMax = Math.max(findMaximumXOR(dep, left.children[0], right.children[1]), findMaximumXOR(dep,
-                    left.children[0], right.children[1]));
-            return newMax > max ? newMax + (1 << newMax) : max;
+            }
+            max = Math.max(max, temp);
         }
+        return max;
     }
 
     private class TrieNode {
 
-        private TrieNode[] children = new TrieNode[2];
+        private TrieNode[] nodes = new TrieNode[2];
     }
 }
