@@ -8,12 +8,8 @@ public class MaximumXORFinder {
 
     public static final int THIRTY_ONE = 31;
 
-    private TrieNode root;
-
-    private String[] binnum;
-
     public int findMaximumXOR(int[] nums) {
-        root = new TrieNode();
+        TrieNode root = new TrieNode();
         for (int num : nums) {
             TrieNode node = root;
             for (int j = THIRTY_ONE; j >= 0; j--) {
@@ -25,11 +21,18 @@ public class MaximumXORFinder {
             }
         }
         int max = 0;
-        TrieNode node = root;
         for (int num : nums) {
             int temp = 0;
+            TrieNode node = root;
             for (int i = THIRTY_ONE; i >= 0; i--) {
-
+                int idx = num & (1 << i);
+                TrieNode tempNode = node.nodes[idx > 0 ? 0 : 1];
+                if (tempNode == null) {
+                    node = node.nodes[idx > 0 ? 1 : 0];
+                } else {
+                    temp += (1 << i);
+                    node = tempNode;
+                }
             }
             max = Math.max(max, temp);
         }

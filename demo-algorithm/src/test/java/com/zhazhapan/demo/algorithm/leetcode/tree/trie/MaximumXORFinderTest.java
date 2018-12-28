@@ -6,9 +6,7 @@ public class MaximumXORFinderTest {
 
     @Test
     public void test() {
-        System.out.println(Integer.toBinaryString(8));
-        System.out.println(Integer.toBinaryString(10));
-        System.out.println(Integer.toBinaryString(2));
+        System.out.println(1 >> 2);
     }
 
     @Test
