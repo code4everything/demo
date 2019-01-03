@@ -49,7 +49,7 @@ public class PairPalindrome {
         if (idx < len) {
             TrieNode node = root.children[word.charAt(idx) - 'a'];
             if (node != null) {
-                if (node.idx > -1 && i != node.idx && isValid(word + node.word)) {
+                if (node.idx > -1 && i != node.idx && (idx == len - 1 || isValid(word.substring(idx + 1)))) {
                     add(i, node.idx);
                 }
                 palindromePairs(word, i, node, idx + 1, len);
