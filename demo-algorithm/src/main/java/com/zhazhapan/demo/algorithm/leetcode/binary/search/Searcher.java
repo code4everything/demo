@@ -6,6 +6,15 @@ package com.zhazhapan.demo.algorithm.leetcode.binary.search;
  */
 public class Searcher {
 
+    public int search2(int[] nums, int target) {
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == target) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public int mySqrt(int x) {
         if (x == 0) {
             return 0;
