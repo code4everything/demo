@@ -2,6 +2,8 @@ package com.zhazhapan.demo.algorithm.leetcode.binary.search;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 public class SearcherTest {
 
     @Test
@@ -22,5 +24,16 @@ public class SearcherTest {
         assert 4 == searcher.mySqrt(24);
         assert 6 == searcher.mySqrt(36);
         assert searcher.mySqrt(2147395599) == 46339;
+    }
+
+    @Test
+    public void searchRange() {
+        Searcher searcher = new Searcher();
+        System.out.println(Arrays.toString(searcher.searchRange(new int[]{5, 7, 7, 8, 8, 10}, 8)));
+        System.out.println(Arrays.toString(searcher.searchRange(new int[]{2, 2, 2, 2}, 2)));
+        System.out.println(Arrays.toString(searcher.searchRange(new int[]{2, 2, 2, 3}, 2)));
+        System.out.println(Arrays.toString(searcher.searchRange(new int[]{3, 2, 2, 2}, 2)));
+        System.out.println(Arrays.toString(searcher.searchRange(new int[]{2, 2, 2, 2}, 9)));
+        System.out.println(Arrays.toString(searcher.searchRange(null, 9)));
     }
 }
