@@ -1,10 +1,31 @@
 package com.zhazhapan.demo.algorithm.leetcode.binary.search;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author pantao
  * @since 2019-01-03
  */
 public class Searcher {
+
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int left = 0;
+        int right = arr.length - k;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (x - arr[mid] > arr[mid + k] - x) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        List<Integer> res = new ArrayList<>();
+        for (int i = 0; i < k; i++) {
+            res.add(arr[left + i]);
+        }
+        return res;
+    }
 
     public int[] searchRange(int[] nums, int target) {
         int[] res = new int[]{-1, -1};

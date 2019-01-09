@@ -36,4 +36,15 @@ public class SearcherTest {
         System.out.println(Arrays.toString(searcher.searchRange(new int[]{2, 2, 2, 2}, 9)));
         System.out.println(Arrays.toString(searcher.searchRange(null, 9)));
     }
+
+    @Test
+    public void findClosestElements() {
+        Searcher searcher = new Searcher();
+        assert "[1, 2, 3, 4]".equals(searcher.findClosestElements(new int[]{1, 2, 3, 4, 5}, 4, 3).toString());
+        assert "[1, 2, 3, 4]".equals(searcher.findClosestElements(new int[]{1, 2, 3, 4, 5}, 4, -1).toString());
+        assert "[3, 3, 4]".equals(searcher.findClosestElements(new int[]{0, 0, 1, 2, 3, 3, 4, 7, 7, 8}, 3, 5).toString());
+        assert "[1, 3]".equals(searcher.findClosestElements(new int[]{0, 0, 0, 1, 3, 5, 6, 7, 8, 8}, 2, 2).toString());
+        assert "[7, 8, 9]".equals(searcher.findClosestElements(new int[]{0, 1, 2, 7, 8, 9}, 3, 6).toString());
+        assert "[3, 4, 6, 7]".equals(searcher.findClosestElements(new int[]{0, 2, 2, 3, 4, 6, 7, 8, 9, 9}, 4, 5).toString());
+    }
 }
