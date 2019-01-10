@@ -9,6 +9,25 @@ import java.util.List;
  */
 public class Searcher {
 
+    public double myPow(double x, int n) {
+        if (x == 1 || n == 0) {
+            return 1;
+        }
+        return power(n > 0 ? x : 1 / x, n);
+    }
+
+    private double power(double x, int n) {
+        if (n == 1 || n == -1) {
+            return x;
+        }
+        double res = power(x, n / 2);
+        res *= res;
+        if (n % 2 != 0) {
+            res *= x;
+        }
+        return res;
+    }
+
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
         int left = 0;
         int right = arr.length - k;

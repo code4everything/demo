@@ -47,4 +47,14 @@ public class SearcherTest {
         assert "[7, 8, 9]".equals(searcher.findClosestElements(new int[]{0, 1, 2, 7, 8, 9}, 3, 6).toString());
         assert "[3, 4, 6, 7]".equals(searcher.findClosestElements(new int[]{0, 2, 2, 3, 4, 6, 7, 8, 9, 9}, 4, 5).toString());
     }
+
+    @Test
+    public void myPow() {
+        Searcher searcher = new Searcher();
+//        assert searcher.myPow(2, 3) == 8;
+//        assert searcher.myPow(3, 4) == 81;
+//        assert searcher.myPow(2, -1) == 0.5;
+//        assert searcher.myPow(2, -2) == 0.25;
+        assert searcher.myPow(2, 10) == 1024;
+    }
 }
