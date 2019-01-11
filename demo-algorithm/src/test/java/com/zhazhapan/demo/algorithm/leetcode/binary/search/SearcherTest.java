@@ -51,10 +51,19 @@ public class SearcherTest {
     @Test
     public void myPow() {
         Searcher searcher = new Searcher();
-//        assert searcher.myPow(2, 3) == 8;
-//        assert searcher.myPow(3, 4) == 81;
-//        assert searcher.myPow(2, -1) == 0.5;
-//        assert searcher.myPow(2, -2) == 0.25;
+        assert searcher.myPow(2, 3) == 8;
+        assert searcher.myPow(3, 4) == 81;
+        assert searcher.myPow(2, -1) == 0.5;
+        assert searcher.myPow(2, -2) == 0.25;
         assert searcher.myPow(2, 10) == 1024;
+    }
+
+    @Test
+    public void isPerfectSquare() {
+        Searcher searcher = new Searcher();
+        assert searcher.isPerfectSquare(16);
+        assert !searcher.isPerfectSquare(14);
+        assert !searcher.isPerfectSquare(2147483647);
+        assert searcher.isPerfectSquare(2147395600);
     }
 }

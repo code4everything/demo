@@ -9,6 +9,23 @@ import java.util.List;
  */
 public class Searcher {
 
+    public boolean isPerfectSquare(int num) {
+        int start = 1;
+        int end = num > 46340 ? 46340 : num;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            int power = mid * mid;
+            if (power == num) {
+                return true;
+            } else if (power > num) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return false;
+    }
+
     public double myPow(double x, int n) {
         if (x == 1 || n == 0) {
             return 1;
