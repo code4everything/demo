@@ -7,8 +7,8 @@
         <artifactId>demo-springcloud</artifactId>
         <version>1.0.0</version>
     </parent>
-    <artifactId>demo-springcloud-eureka</artifactId>
-    <name>demo-springcloud-eureka</name>
+    <artifactId>demo-springcloud-person</artifactId>
+    <name>demo-springcloud-person</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -22,13 +22,21 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka-server</artifactId>
+            <artifactId>spring-cloud-config-client</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test</artifactId>
-            <version>2.1.2.RELEASE</version>
-            <scope>test</scope>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>rxjava</artifactId>
+                    <groupId>io.reactivex</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>servo-core</artifactId>
+                    <groupId>com.netflix.servo</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 

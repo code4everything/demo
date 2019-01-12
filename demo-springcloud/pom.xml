@@ -12,11 +12,13 @@
 
     <groupId>com.zhazhapan</groupId>
     <artifactId>demo-springcloud</artifactId>
+    <packaging>pom</packaging>
     <version>1.0.0</version>
 
     <modules>
         <module>demo-springcloud-config</module>
         <module>demo-springcloud-eureka</module>
+        <module>demo-springcloud-person</module>
     </modules>
 
     <dependencies>
