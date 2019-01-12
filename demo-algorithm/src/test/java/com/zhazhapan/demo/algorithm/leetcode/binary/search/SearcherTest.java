@@ -6,16 +6,16 @@ import java.util.Arrays;
 
 public class SearcherTest {
 
+    private Searcher searcher = new Searcher();
+
     @Test
     public void search() {
-        Searcher searcher = new Searcher();
         assert 4 == searcher.search(new int[]{-1, 0, 3, 5, 9, 12}, 9);
         assert -1 == searcher.search(new int[]{-1, 0, 3, 5, 9, 12}, 2);
     }
 
     @Test
     public void mySqrt() {
-        Searcher searcher = new Searcher();
         assert 0 == searcher.mySqrt(0);
         assert 1 == searcher.mySqrt(1);
         assert 1 == searcher.mySqrt(2);
@@ -28,7 +28,6 @@ public class SearcherTest {
 
     @Test
     public void searchRange() {
-        Searcher searcher = new Searcher();
         System.out.println(Arrays.toString(searcher.searchRange(new int[]{5, 7, 7, 8, 8, 10}, 8)));
         System.out.println(Arrays.toString(searcher.searchRange(new int[]{2, 2, 2, 2}, 2)));
         System.out.println(Arrays.toString(searcher.searchRange(new int[]{2, 2, 2, 3}, 2)));
@@ -39,7 +38,6 @@ public class SearcherTest {
 
     @Test
     public void findClosestElements() {
-        Searcher searcher = new Searcher();
         assert "[1, 2, 3, 4]".equals(searcher.findClosestElements(new int[]{1, 2, 3, 4, 5}, 4, 3).toString());
         assert "[1, 2, 3, 4]".equals(searcher.findClosestElements(new int[]{1, 2, 3, 4, 5}, 4, -1).toString());
         assert "[3, 3, 4]".equals(searcher.findClosestElements(new int[]{0, 0, 1, 2, 3, 3, 4, 7, 7, 8}, 3, 5).toString());
@@ -50,7 +48,6 @@ public class SearcherTest {
 
     @Test
     public void myPow() {
-        Searcher searcher = new Searcher();
         assert searcher.myPow(2, 3) == 8;
         assert searcher.myPow(3, 4) == 81;
         assert searcher.myPow(2, -1) == 0.5;
@@ -60,10 +57,19 @@ public class SearcherTest {
 
     @Test
     public void isPerfectSquare() {
-        Searcher searcher = new Searcher();
         assert searcher.isPerfectSquare(16);
         assert !searcher.isPerfectSquare(14);
         assert !searcher.isPerfectSquare(2147483647);
         assert searcher.isPerfectSquare(2147395600);
+    }
+
+    @Test
+    public void nextGreatestLetter() {
+        assert searcher.nextGreatestLetter(new char[]{'a', 'c'}, 'b') == 'c';
+        assert searcher.nextGreatestLetter(new char[]{'a', 'c', 'd'}, 'b') == 'c';
+        assert searcher.nextGreatestLetter(new char[]{'a', 'b'}, 'c') == 'a';
+        assert searcher.nextGreatestLetter(new char[]{'c', 'f', 'j'}, 'a') == 'c';
+        assert searcher.nextGreatestLetter(new char[]{'c', 'f', 'j'}, 'c') == 'f';
+        assert searcher.nextGreatestLetter(new char[]{'e', 'e', 'e', 'e', 'n', 'n'}, 'e') == 'n';
     }
 }

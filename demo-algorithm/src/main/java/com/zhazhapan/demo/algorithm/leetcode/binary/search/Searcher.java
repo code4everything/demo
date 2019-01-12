@@ -9,6 +9,24 @@ import java.util.List;
  */
 public class Searcher {
 
+    public char nextGreatestLetter(char[] letters, char target) {
+        int len = letters.length;
+        int start = 0;
+        int end = len - 1;
+        if (target < letters[start] || target >= letters[end]) {
+            return letters[0];
+        }
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (letters[mid] <= target) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+        return letters[start];
+    }
+
     public boolean isPerfectSquare(int num) {
         int start = 1;
         int end = num > 46340 ? 46340 : num;
