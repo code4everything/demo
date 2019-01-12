@@ -21,6 +21,5 @@ public class DemoSpringcloudUiApplication {
     public static void main(String[] args) {
         SpringApplication.run(DemoSpringcloudUiApplication.class, args);
     }
-
 }
 
