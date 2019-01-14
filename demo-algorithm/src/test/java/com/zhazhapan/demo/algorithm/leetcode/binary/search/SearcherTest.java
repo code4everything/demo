@@ -72,4 +72,23 @@ public class SearcherTest {
         assert searcher.nextGreatestLetter(new char[]{'c', 'f', 'j'}, 'c') == 'f';
         assert searcher.nextGreatestLetter(new char[]{'e', 'e', 'e', 'e', 'n', 'n'}, 'e') == 'n';
     }
+
+    @Test
+    public void intersection() {
+        System.out.println(Arrays.toString(searcher.intersection(new int[]{1, 2, 2, 1}, new int[]{2, 2})));
+        System.out.println(Arrays.toString(searcher.intersection(new int[]{4, 9, 5}, new int[]{9, 4, 9, 8, 4})));
+        System.out.println(Arrays.toString(searcher.intersect(new int[]{-2147483648, 3}, new int[]{1, -2147483648})));
+    }
+
+    @Test
+    public void intersect() {
+        System.out.println(Arrays.toString(searcher.intersect(new int[]{1, 2, 2, 1}, new int[]{2, 2})));
+        System.out.println(Arrays.toString(searcher.intersect(new int[]{4, 9, 5}, new int[]{9, 4, 9, 8, 4})));
+        System.out.println(Arrays.toString(searcher.intersect(new int[]{-2147483648, 3}, new int[]{1, -2147483648})));
+    }
+
+    @Test
+    public void twoSum() {
+        System.out.println(Arrays.toString(searcher.twoSum(new int[]{2, 7, 11, 15}, 9)));
+    }
 }

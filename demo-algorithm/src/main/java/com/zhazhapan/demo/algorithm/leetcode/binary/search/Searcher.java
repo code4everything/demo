@@ -1,6 +1,7 @@
 package com.zhazhapan.demo.algorithm.leetcode.binary.search;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -8,6 +9,65 @@ import java.util.List;
  * @since 2019-01-03
  */
 public class Searcher {
+
+    public int[] twoSum(int[] numbers, int target) {
+        int start = 0;
+        int end = numbers.length - 1;
+        while (start < end) {
+            int res = numbers[start] + numbers[end];
+            if (res == target) {
+                return new int[]{start + 1, end + 1};
+            } else if (res > target) {
+                end--;
+            } else {
+                start++;
+            }
+        }
+        return new int[0];
+    }
+
+    public int[] intersect(int[] nums1, int[] nums2) {
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        int[] res = new int[nums1.length];
+        int start = 0;
+        for (int i = 0, j = 0; i < nums1.length && j < nums2.length; ) {
+            if (nums1[i] < nums2[j]) {
+                i++;
+            } else if (nums1[i] > nums2[j]) {
+                j++;
+            } else {
+                res[start++] = nums1[i];
+                i++;
+                j++;
+            }
+        }
+        return Arrays.copyOf(res, start);
+    }
+
+    public int[] intersection(int[] nums1, int[] nums2) {
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        for (int num : nums1) {
+            max = Math.max(max, num);
+            min = Math.min(min, num);
+        }
+        boolean[] bucket = new boolean[max - min + 1];
+        for (int num : nums1) {
+            bucket[num - min] = true;
+        }
+        int index = 0;
+        for (int num : nums2) {
+            if (num < min || num > max) {
+                continue;
+            }
+            if (bucket[num - min]) {
+                nums2[index++] = num;
+                bucket[num - min] = false;
+            }
+        }
+        return Arrays.copyOf(nums2, index);
+    }
 
     public char nextGreatestLetter(char[] letters, char target) {
         int len = letters.length;
@@ -133,7 +193,6 @@ public class Searcher {
             return nums[start] == target ? start : -1;
         }
         int mid = start + (end - start) / 2;
-        System.out.println((left ? "left >>> " : "right >>> ") + nums[mid]);
         if (nums[mid] == target) {
             return left ? searchRange(nums, target, start, mid, true) : searchRange(nums, target, mid, end, false);
         } else if (nums[mid] > target) {
