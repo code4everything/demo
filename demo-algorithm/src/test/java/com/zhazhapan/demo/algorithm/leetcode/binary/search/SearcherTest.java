@@ -77,5 +77,14 @@ public class SearcherTest {
     public void intersection() {
         System.out.println(Arrays.toString(searcher.intersection(new int[]{1, 2, 2, 1}, new int[]{2, 2})));
         System.out.println(Arrays.toString(searcher.intersection(new int[]{4, 9, 5}, new int[]{9, 4, 9, 8, 4})));
+        System.out.println(Arrays.toString(searcher.intersect(new int[]{-2147483648, 3}, new int[]{1, -2147483648})));
+    }
+
+    @Test
+    public void intersect() {
+        System.out.println(Arrays.toString(searcher.intersect(new int[]{1, 2, 2, 1}, new int[]{2, 2})));
+        System.out.println(Arrays.toString(searcher.intersect(new int[]{4, 9, 5}, new int[]{9, 4, 9, 8, 4})));
+        System.out.println(Arrays.toString(searcher.intersect(new int[]{-2147483648, 1, 2, 3}, new int[]{1,
+                -2147483648, -2147483648})));
     }
 }
