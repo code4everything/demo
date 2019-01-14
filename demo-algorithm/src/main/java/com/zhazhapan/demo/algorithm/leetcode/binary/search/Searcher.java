@@ -10,6 +10,22 @@ import java.util.List;
  */
 public class Searcher {
 
+    public int[] twoSum(int[] numbers, int target) {
+        int start = 0;
+        int end = numbers.length - 1;
+        while (start < end) {
+            int res = numbers[start] + numbers[end];
+            if (res == target) {
+                return new int[]{start + 1, end + 1};
+            } else if (res > target) {
+                end--;
+            } else {
+                start++;
+            }
+        }
+        return new int[0];
+    }
+
     public int[] intersect(int[] nums1, int[] nums2) {
         Arrays.sort(nums1);
         Arrays.sort(nums2);
