@@ -10,6 +10,16 @@ import java.util.List;
  */
 public class Searcher {
 
+    public int findDuplicate(int[] nums) {
+        int i = 0;
+        while (nums[i] != 0) {
+            int x = nums[i];
+            nums[i] = 0;
+            i = x;
+        }
+        return i;
+    }
+
     public int[] twoSum(int[] numbers, int target) {
         int start = 0;
         int end = numbers.length - 1;

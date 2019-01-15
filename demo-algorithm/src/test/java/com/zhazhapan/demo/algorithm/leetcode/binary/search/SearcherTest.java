@@ -91,4 +91,9 @@ public class SearcherTest {
     public void twoSum() {
         System.out.println(Arrays.toString(searcher.twoSum(new int[]{2, 7, 11, 15}, 9)));
     }
+
+    @Test
+    public void findDuplicate() {
+        assert searcher.findDuplicate(new int[]{1, 3, 4, 2, 2}) == 2;
+    }
 }
