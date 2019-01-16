@@ -96,4 +96,10 @@ public class SearcherTest {
     public void findDuplicate() {
         assert searcher.findDuplicate(new int[]{1, 3, 4, 2, 2}) == 2;
     }
+
+    @Test
+    public void findMedianSortedArrays() {
+        System.out.println(searcher.findMedianSortedArrays(new int[]{1, 2}, new int[]{3, 4}));
+        System.out.println(searcher.findMedianSortedArrays(new int[]{1, 3}, new int[]{2}));
+    }
 }

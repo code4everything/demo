@@ -10,6 +10,27 @@ import java.util.List;
  */
 public class Searcher {
 
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int[] nums;
+        if (nums1 == null || nums1.length == 0) {
+            nums = nums2;
+        } else if (nums2 == null || nums2.length == 0) {
+            nums = nums1;
+        } else {
+            nums = new int[nums1.length + nums2.length];
+            int i = 0;
+            int j = 0;
+            for (; i + j < nums.length; ) {
+                if (j >= nums2.length || (i < nums1.length && nums1[i] < nums2[j])) {
+                    nums[i + j] = nums1[i++];
+                } else {
+                    nums[i + j] = nums2[j++];
+                }
+            }
+        }
+        return ((double) nums[nums.length / 2] + (double) nums[(nums.length - 1) / 2]) / 2;
+    }
+
     public int findDuplicate(int[] nums) {
         int i = 0;
         while (nums[i] != 0) {
