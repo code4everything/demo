@@ -10,6 +10,31 @@ import java.util.List;
  */
 public class Searcher {
 
+    /**
+     * 还需理解
+     */
+    public int smallestDistancePair(int[] nums, int k) {
+        Arrays.sort(nums);
+        int left = 0, right = nums[nums.length - 1] - nums[0];
+        while (left < right) {
+            int mid = (left + right) >> 1;
+            int count = 0;
+            int j = 0;
+            for (int i = 0; i < nums.length; i++) {
+                while (nums[i] - nums[j] > mid) {
+                    j++;
+                }
+                count += i - j;
+            }
+            if (count >= k) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return left;
+    }
+
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int[] nums;
         if (nums1 == null || nums1.length == 0) {
@@ -18,9 +43,7 @@ public class Searcher {
             nums = nums1;
         } else {
             nums = new int[nums1.length + nums2.length];
-            int i = 0;
-            int j = 0;
-            for (; i + j < nums.length; ) {
+            for (int i = 0, j = 0; i + j < nums.length; ) {
                 if (j >= nums2.length || (i < nums1.length && nums1[i] < nums2[j])) {
                     nums[i + j] = nums1[i++];
                 } else {
