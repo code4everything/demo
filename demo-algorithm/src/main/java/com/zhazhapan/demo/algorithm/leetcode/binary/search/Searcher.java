@@ -10,9 +10,41 @@ import java.util.List;
  */
 public class Searcher {
 
-    /**
-     * 还需理解
-     */
+    public int splitArray(int[] nums, int m) {
+        int left = Integer.MIN_VALUE;
+        int right = 0;
+        for (int num : nums) {
+            left = Math.max(num, left);
+            right += num;
+        }
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (splitArray(nums, m, mid)) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return left;
+    }
+
+    private boolean splitArray(int[] nums, int m, int sum) {
+        int currSum = nums[0];
+        int count = 1;
+        for (int i = 1; i < nums.length; i++) {
+            currSum += nums[i];
+            if (currSum > sum) {
+                i--;
+                count++;
+                currSum = 0;
+                if (count > m) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     public int smallestDistancePair(int[] nums, int k) {
         Arrays.sort(nums);
         int left = 0, right = nums[nums.length - 1] - nums[0];
