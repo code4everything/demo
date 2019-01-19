@@ -109,4 +109,11 @@ public class SearcherTest {
         assert searcher.smallestDistancePair(new int[]{1, 1, 1}, 2) == 0;
         assert searcher.smallestDistancePair(new int[]{1, 2, 4, 8, 16}, 3) == 3;
     }
+
+    @Test
+    public void splitArray() {
+        assert searcher.splitArray(new int[]{7, 2, 5, 10, 8}, 2) == 18;
+        assert searcher.splitArray(new int[]{1, 2, 3, 4, 5, 6}, 6) == 6;
+        assert searcher.splitArray(new int[]{1, 2, 3}, 1) == 6;
+    }
 }
