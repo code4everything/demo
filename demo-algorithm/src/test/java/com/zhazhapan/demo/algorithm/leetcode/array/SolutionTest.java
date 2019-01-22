@@ -1,5 +1,6 @@
 package com.zhazhapan.demo.algorithm.leetcode.array;
 
+import cn.hutool.core.lang.Console;
 import org.junit.Test;
 
 public class SolutionTest {
@@ -22,5 +23,13 @@ public class SolutionTest {
         assert solution.dominantIndex(new int[]{2, 3, 6}) == 2;
         assert solution.dominantIndex(new int[]{2, 3, 6, 4}) == -1;
         assert solution.dominantIndex(new int[0]) == -1;
+    }
+
+    @Test
+    public void plusOne() {
+        Console.log(solution.plusOne(new int[]{1, 2, 3}));
+        Console.log(solution.plusOne(new int[]{4, 3, 2, 1}));
+        Console.log(solution.plusOne(new int[]{8, 9, 9}));
+        Console.log(solution.plusOne(new int[]{9, 9, 9, 9}));
     }
 }
