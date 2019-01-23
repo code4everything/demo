@@ -6,6 +6,39 @@ package com.zhazhapan.demo.algorithm.leetcode.array;
  */
 public class Solution {
 
+    public int[] findDiagonalOrder(int[][] matrix) {
+        int m = matrix.length;
+        if (m == 0) {
+            return new int[0];
+        }
+        int n = matrix[0].length;
+        int[] res = new int[m * n];
+        int x = 0;
+        int y = 0;
+        int dir = 1;
+        for (int i = 0; i < res.length; i++) {
+            res[i] = matrix[y][x];
+            x += dir;
+            y -= dir;
+            if (x == n) {
+                dir = -1;
+                y += 2;
+                x--;
+            } else if (y < 0) {
+                dir = -1;
+                y = 0;
+            } else if (y == m) {
+                dir = 1;
+                x += 2;
+                y--;
+            } else if (x < 0) {
+                dir = 1;
+                x = 0;
+            }
+        }
+        return res;
+    }
+
     public int[] plusOne(int[] digits) {
         for (int i = digits.length - 1; i > 0; i--) {
             if (digits[i] == 9) {

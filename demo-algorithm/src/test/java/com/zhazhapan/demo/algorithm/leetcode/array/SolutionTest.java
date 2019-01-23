@@ -32,4 +32,12 @@ public class SolutionTest {
         Console.log(solution.plusOne(new int[]{8, 9, 9}));
         Console.log(solution.plusOne(new int[]{9, 9, 9, 9}));
     }
+
+    @Test
+    public void findDiagonalOrder() {
+        Console.log(solution.findDiagonalOrder(new int[][]{{1, 2, 3}, {4, 5, 6}}));
+        Console.log(solution.findDiagonalOrder(new int[][]{{1, 4}, {2, 5}, {3, 6}}));
+        Console.log(solution.findDiagonalOrder(new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}));
+        Console.log(solution.findDiagonalOrder(new int[0][0]));
+    }
 }
