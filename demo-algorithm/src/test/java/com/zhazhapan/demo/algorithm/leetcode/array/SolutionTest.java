@@ -56,4 +56,11 @@ public class SolutionTest {
         assert solution.addBinary("11", "1").equals("100");
         assert solution.addBinary("1010", "1011").equals("10101");
     }
+
+    @Test
+    public void longestCommonPrefix() {
+        assert solution.longestCommonPrefix(new String[]{"flower", "flow", "flight"}).equals("fl");
+        assert solution.longestCommonPrefix(new String[]{"dog", "racecar", "car"}).equals("");
+        System.out.println(solution.longestCommonPrefix(new String[0]));
+    }
 }
