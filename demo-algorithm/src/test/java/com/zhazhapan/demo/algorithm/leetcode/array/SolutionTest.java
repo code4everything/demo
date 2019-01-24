@@ -40,4 +40,9 @@ public class SolutionTest {
         Console.log(solution.findDiagonalOrder(new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}));
         Console.log(solution.findDiagonalOrder(new int[0][0]));
     }
+
+    @Test
+    public void spiralOrder() {
+        Console.log(solution.spiralOrder(new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}));
+    }
 }

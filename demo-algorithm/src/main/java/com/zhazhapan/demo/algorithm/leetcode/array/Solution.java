@@ -1,10 +1,57 @@
 package com.zhazhapan.demo.algorithm.leetcode.array;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author pantao
  * @since 2019-01-21
  */
 public class Solution {
+
+    public List<Integer> spiralOrder(int[][] matrix) {
+        int m = matrix.length;
+        if (m == 0) {
+            return new ArrayList<>();
+        }
+        int n = matrix[0].length;
+        List<Integer> list = new ArrayList<>(m * n);
+        int x = 0;
+        int y = 0;
+        int xDir = 1;
+        int yDir = 0;
+        int xMin = 0;
+        int xMax = n - 1;
+        int yMin = 0;
+        int yMax = m - 1;
+        for (int i = 0; i < m * n; i++) {
+            if (x < xMin) {
+                x = xMin;
+                y = --yMax;
+                xDir = 0;
+                yDir = -1;
+            } else if (x > xMax) {
+                x = xMax;
+                y = ++yMin;
+                xDir = 0;
+                yDir = 1;
+            } else if (y < yMin) {
+                y = yMin;
+                x = ++xMin;
+                xDir = 1;
+                yDir = 0;
+            } else if (y > yMax) {
+                x = --xMax;
+                y = yMax;
+                xDir = -1;
+                yDir = 0;
+            }
+            list.add(matrix[y][x]);
+            x += xDir;
+            y += yDir;
+        }
+        return list;
+    }
 
     public int[] findDiagonalOrder(int[][] matrix) {
         int m = matrix.length;
