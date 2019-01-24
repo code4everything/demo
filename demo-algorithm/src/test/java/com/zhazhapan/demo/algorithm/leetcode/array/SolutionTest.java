@@ -45,4 +45,9 @@ public class SolutionTest {
     public void spiralOrder() {
         Console.log(solution.spiralOrder(new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}));
     }
+
+    @Test
+    public void generate() {
+        Console.log(solution.generate(8));
+    }
 }

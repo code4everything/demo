@@ -9,6 +9,25 @@ import java.util.List;
  */
 public class Solution {
 
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> lists = new ArrayList<>();
+        List<Integer> preList = null;
+        for (int i = 1; i <= numRows; i++) {
+            List<Integer> list = new ArrayList<>();
+            list.add(1);
+            for (int j = 1; j < i; j++) {
+                if (j == preList.size()) {
+                    list.add(1);
+                } else {
+                    list.add(preList.get(j - 1) + preList.get(j));
+                }
+            }
+            preList = list;
+            lists.add(list);
+        }
+        return lists;
+    }
+
     public List<Integer> spiralOrder(int[][] matrix) {
         int m = matrix.length;
         if (m == 0) {
