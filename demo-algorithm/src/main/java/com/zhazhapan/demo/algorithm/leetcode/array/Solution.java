@@ -1,6 +1,7 @@
 package com.zhazhapan.demo.algorithm.leetcode.array;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -8,6 +9,15 @@ import java.util.List;
  * @since 2019-01-21
  */
 public class Solution {
+
+    public int arrayPairSum(int[] nums) {
+        Arrays.sort(nums);
+        int sum = 0;
+        for (int i = 0; i < nums.length; i += 2) {
+            sum += nums[i];
+        }
+        return sum;
+    }
 
     public void reverseString(char[] s) {
         int len = s.length;
