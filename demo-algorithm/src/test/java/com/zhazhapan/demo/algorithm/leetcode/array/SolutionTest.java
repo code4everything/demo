@@ -50,4 +50,10 @@ public class SolutionTest {
     public void generate() {
         Console.log(solution.generate(8));
     }
+
+    @Test
+    public void addBinary() {
+        assert solution.addBinary("11", "1").equals("100");
+        assert solution.addBinary("1010", "1011").equals("10101");
+    }
 }

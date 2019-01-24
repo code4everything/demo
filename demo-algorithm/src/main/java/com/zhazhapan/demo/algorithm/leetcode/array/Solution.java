@@ -9,6 +9,26 @@ import java.util.List;
  */
 public class Solution {
 
+    public String addBinary(String a, String b) {
+        int al = a.length();
+        int bl = b.length();
+        char[] ccs = new char[Math.max(al, bl) + 1];
+        int k = ccs.length;
+        int carry = '0';
+        char[] acs = a.toCharArray();
+        char[] bcs = b.toCharArray();
+        for (int i = al - 1, j = bl - 1; i >= 0 || j >= 0; i--, j--) {
+            int sum = (i < 0 ? '0' : acs[i]) + (j < 0 ? '0' : bcs[j]) + carry;
+            carry = sum < 146 ? '0' : '1';
+            ccs[--k] = sum % 2 == 0 ? '0' : '1';
+        }
+        if (carry == '1') {
+            ccs[0] = '1';
+            return String.valueOf(ccs);
+        }
+        return String.valueOf(ccs, 1, ccs.length - 1);
+    }
+
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> lists = new ArrayList<>();
         List<Integer> preList = null;
