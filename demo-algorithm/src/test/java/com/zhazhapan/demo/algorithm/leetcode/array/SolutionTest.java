@@ -63,4 +63,9 @@ public class SolutionTest {
         assert solution.longestCommonPrefix(new String[]{"dog", "racecar", "car"}).equals("");
         System.out.println(solution.longestCommonPrefix(new String[0]));
     }
+
+    @Test
+    public void reverseString() {
+        solution.reverseString(new char[]{'s', 'a', 'l', 'o'});
+    }
 }

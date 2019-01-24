@@ -9,6 +9,16 @@ import java.util.List;
  */
 public class Solution {
 
+    public void reverseString(char[] s) {
+        int len = s.length;
+        for (int i = 0; i < len / 2; i++) {
+            int idx = len - i - 1;
+            char c = s[i];
+            s[i] = s[idx];
+            s[idx] = c;
+        }
+    }
+
     public String longestCommonPrefix(String[] strs) {
         if (strs.length == 0) {
             return "";
