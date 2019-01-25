@@ -73,6 +73,12 @@ public class SolutionTest {
     public void findMaxConsecutiveOnes() {
         assert solution.findMaxConsecutiveOnes(new int[]{1, 1, 0, 1, 1, 1}) == 3;
         assert solution.findMaxConsecutiveOnes(new int[]{0}) == 0;
-        System.out.println(solution.findMaxConsecutiveOnes(new int[]{1, 1, 0, 1}));
+        assert solution.findMaxConsecutiveOnes(new int[]{1, 1, 0, 1}) == 2;
+    }
+
+    @Test
+    public void minSubArrayLen() {
+        assert solution.minSubArrayLen(7, new int[]{2, 3, 1, 2, 4, 3}) == 2;
+        assert solution.minSubArrayLen(100, new int[0]) == 0;
     }
 }

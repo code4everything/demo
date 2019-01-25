@@ -10,6 +10,19 @@ import java.util.List;
  */
 public class Solution {
 
+    public int minSubArrayLen(int s, int[] nums) {
+        Arrays.sort(nums);
+        int k = 0;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            s -= nums[i];
+            k++;
+            if (s <= 0) {
+                break;
+            }
+        }
+        return k;
+    }
+
     public int findMaxConsecutiveOnes(int[] nums) {
         if (nums.length == 0) {
             return 0;
