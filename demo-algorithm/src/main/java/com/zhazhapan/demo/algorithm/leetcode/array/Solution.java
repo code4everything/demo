@@ -10,6 +10,26 @@ import java.util.List;
  */
 public class Solution {
 
+    public int findMaxConsecutiveOnes(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        int max = 0;
+        for (int i = 0; i < nums.length; ) {
+            if (nums[i] == 1) {
+                int j = i + 1;
+                while (j < nums.length && nums[j] == 1) {
+                    j++;
+                }
+                max = Math.max(max, j - i);
+                i = j + 1;
+            } else {
+                i++;
+            }
+        }
+        return max;
+    }
+
     public int arrayPairSum(int[] nums) {
         Arrays.sort(nums);
         int sum = 0;

@@ -68,4 +68,11 @@ public class SolutionTest {
     public void reverseString() {
         solution.reverseString(new char[]{'s', 'a', 'l', 'o'});
     }
+
+    @Test
+    public void findMaxConsecutiveOnes() {
+        assert solution.findMaxConsecutiveOnes(new int[]{1, 1, 0, 1, 1, 1}) == 3;
+        assert solution.findMaxConsecutiveOnes(new int[]{0}) == 0;
+        System.out.println(solution.findMaxConsecutiveOnes(new int[]{1, 1, 0, 1}));
+    }
 }
