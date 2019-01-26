@@ -10,6 +10,23 @@ import java.util.List;
  */
 public class Solution {
 
+    public List<Integer> getRow(int rowIndex) {
+        List<Integer> preList = null;
+        for (int i = 1; i < rowIndex + 2; i++) {
+            List<Integer> list = new ArrayList<>();
+            list.add(1);
+            for (int j = 1; j < i; j++) {
+                if (j == preList.size()) {
+                    list.add(1);
+                } else {
+                    list.add(preList.get(j - 1) + preList.get(j));
+                }
+            }
+            preList = list;
+        }
+        return preList;
+    }
+
     public void rotate(int[] nums, int k) {
         if (nums.length < 2 || k == 0) {
             return;

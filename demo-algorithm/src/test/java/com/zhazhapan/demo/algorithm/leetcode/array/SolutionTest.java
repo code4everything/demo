@@ -91,4 +91,9 @@ public class SolutionTest {
         solution.rotate(arr, 2);
         Console.log(arr);
     }
+
+    @Test
+    public void getRow() {
+        System.out.println(solution.getRow(3));
+    }
 }
