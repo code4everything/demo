@@ -10,6 +10,17 @@ import java.util.List;
  */
 public class Solution {
 
+    public void rotate(int[] nums, int k) {
+        if (nums.length < 2 || k == 0) {
+            return;
+        }
+        k = k % nums.length;
+        int[] temp = Arrays.copyOf(nums, nums.length);
+        int len = nums.length - k;
+        System.arraycopy(temp, 0, nums, k, len);
+        System.arraycopy(temp, len, nums, 0, k);
+    }
+
     public int minSubArrayLen(int s, int[] nums) {
         Arrays.sort(nums);
         int k = 0;

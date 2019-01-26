@@ -81,4 +81,14 @@ public class SolutionTest {
         assert solution.minSubArrayLen(7, new int[]{2, 3, 1, 2, 4, 3}) == 2;
         assert solution.minSubArrayLen(100, new int[0]) == 0;
     }
+
+    @Test
+    public void rotate() {
+        int[] arr = new int[]{1, 2, 3, 4, 5, 6, 7};
+        solution.rotate(arr, 3);
+        Console.log(arr);
+        arr = new int[]{-1, -100, 3, 99};
+        solution.rotate(arr, 2);
+        Console.log(arr);
+    }
 }
