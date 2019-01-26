@@ -104,4 +104,10 @@ public class SolutionTest {
         assert solution.reverseWords("1 ").equals("1");
         assert solution.reverseWords(" 1").equals("1");
     }
+
+    @Test
+    public void reverseWords2() {
+        assert solution.reverseWords2("Let's take LeetCode contest").equals("s'teL ekat edoCteeL tsetnoc");
+        assert solution.reverseWords2("").equals("");
+    }
 }

@@ -10,6 +10,26 @@ import java.util.List;
  */
 public class Solution {
 
+    public String reverseWords2(String s) {
+        char[] cs = s.toCharArray();
+        int start = 0;
+        int end = 0;
+        for (int i = 1; i < cs.length; ) {
+            while (i < cs.length && cs[i] == ' ') {
+                start = ++i;
+            }
+            while (i < cs.length && cs[i] != ' ') {
+                end = i++;
+            }
+            while (start < end) {
+                char c = cs[start];
+                cs[start++] = cs[end];
+                cs[end--] = c;
+            }
+        }
+        return String.valueOf(cs);
+    }
+
     public String reverseWords(String s) {
         String[] strings = s.trim().split("\\s+");
         if (strings.length < 1) {
