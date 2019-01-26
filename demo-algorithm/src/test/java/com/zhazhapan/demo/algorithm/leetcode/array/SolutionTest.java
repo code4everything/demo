@@ -120,4 +120,11 @@ public class SolutionTest {
         assert solution.removeDuplicates(arr) == 5;
         Console.log(arr);
     }
+
+    @Test
+    public void moveZeroes() {
+        int[] arr = new int[]{0, 1, 0, 3, 12};
+        solution.moveZeroes(arr);
+        Console.log(arr);
+    }
 }
