@@ -110,4 +110,14 @@ public class SolutionTest {
         assert solution.reverseWords2("Let's take LeetCode contest").equals("s'teL ekat edoCteeL tsetnoc");
         assert solution.reverseWords2("").equals("");
     }
+
+    @Test
+    public void removeDuplicates() {
+        int[] arr = new int[]{1, 1, 2};
+        assert solution.removeDuplicates(arr) == 2;
+        Console.log(arr);
+        arr = new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        assert solution.removeDuplicates(arr) == 5;
+        Console.log(arr);
+    }
 }

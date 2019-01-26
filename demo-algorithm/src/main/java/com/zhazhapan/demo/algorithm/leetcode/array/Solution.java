@@ -10,6 +10,21 @@ import java.util.List;
  */
 public class Solution {
 
+    public int removeDuplicates(int[] nums) {
+        if (nums.length < 1) {
+            return 0;
+        }
+        int len = 1;
+        int val = nums[0];
+        for (int num : nums) {
+            if (num != val) {
+                nums[len++] = num;
+                val = num;
+            }
+        }
+        return len;
+    }
+
     public String reverseWords2(String s) {
         char[] cs = s.toCharArray();
         int start = 0;
