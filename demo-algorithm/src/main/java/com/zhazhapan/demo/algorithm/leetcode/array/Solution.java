@@ -10,6 +10,18 @@ import java.util.List;
  */
 public class Solution {
 
+    public String reverseWords(String s) {
+        String[] strings = s.trim().split("\\s+");
+        if (strings.length < 1) {
+            return "";
+        }
+        StringBuilder builder = new StringBuilder(strings[strings.length - 1]);
+        for (int i = strings.length - 2; i >= 0; i--) {
+            builder.append(" ").append(strings[i]);
+        }
+        return builder.toString().trim();
+    }
+
     public List<Integer> getRow(int rowIndex) {
         List<Integer> preList = null;
         for (int i = 1; i < rowIndex + 2; i++) {

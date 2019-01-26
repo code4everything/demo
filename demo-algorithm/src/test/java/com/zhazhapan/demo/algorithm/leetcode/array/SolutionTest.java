@@ -96,4 +96,12 @@ public class SolutionTest {
     public void getRow() {
         System.out.println(solution.getRow(3));
     }
+
+    @Test
+    public void reverseWords() {
+        assert solution.reverseWords("the sky is blue").equals("blue is sky the");
+        assert solution.reverseWords(" ").equals("");
+        assert solution.reverseWords("1 ").equals("1");
+        assert solution.reverseWords(" 1").equals("1");
+    }
 }
