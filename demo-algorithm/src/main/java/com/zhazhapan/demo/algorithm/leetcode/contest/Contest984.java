@@ -8,30 +8,28 @@ public class Contest984 {
 
     public String strWithout3a3b(int a, int b) {
         char[] cs = new char[a + b];
-        int aCon;
-        int bCon;
-        if (a > b) {
-            aCon = 0;
-            bCon = 2;
-        } else {
-            aCon = 2;
-            bCon = 0;
-        }
+        boolean aWritable = a >= b;
+        char pre = '0';
         for (int i = 0; i < cs.length; i++) {
-            if (a > 0 && aCon < 2) {
+            if (aWritable && a > 0) {
                 cs[i] = 'a';
-                bCon = 0;
-                if (++aCon == 2) {
-                    bCon = 0;
-                }
                 a--;
-            } else if (b > 0 && bCon < 2) {
+            } else if (b > 0) {
                 cs[i] = 'b';
-                if (++bCon == 2) {
-                    aCon = 0;
-                }
                 b--;
             }
+            if (a <= 0) {
+                aWritable = false;
+            } else if (b <= 0) {
+                aWritable = true;
+            } else if (cs[i] == pre) {
+                aWritable = !aWritable;
+            } else if (a > b && (a / b >= 2)) {
+                aWritable = true;
+            } else if (b > a && (b / a >= 2)) {
+                aWritable = false;
+            }
+            pre = cs[i];
         }
         return String.valueOf(cs);
     }
