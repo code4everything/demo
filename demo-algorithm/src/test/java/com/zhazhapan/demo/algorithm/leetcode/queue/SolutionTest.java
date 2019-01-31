@@ -22,4 +22,14 @@ public class SolutionTest {
                 "8888") == -1;
         assert solution.openLock(new String[]{"0000"}, "8888") == -1;
     }
+
+    @Test
+    public void numSquares() {
+        assert solution.numSquares(12) == 3;
+        assert solution.numSquares(13) == 2;
+        assert solution.numSquares(30) == 3;
+        assert solution.numSquares(3) == 3;
+        assert solution.numSquares(2) == 2;
+        assert solution.numSquares(191) == 4;
+    }
 }

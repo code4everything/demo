@@ -11,6 +11,26 @@ import java.util.Set;
  **/
 public class Solution {
 
+    public int numSquares(int n) {
+        while (n % 4 == 0) {
+            n /= 4;
+        }
+        if (n % 8 == 7) {
+            return 4;
+        }
+        int i = 0;
+        int pow = i * i;
+        while (pow <= n) {
+            int temp = (int) Math.sqrt(n - pow);
+            if (temp * temp + pow == n) {
+                return (temp == 0 || pow == 0) ? 1 : 2;
+            }
+            i++;
+            pow = i * i;
+        }
+        return 3;
+    }
+
     public int openLock(String[] deadends, String target) {
         final String defaultLock = "0000";
         Set<String> visited = new HashSet<>();
