@@ -8,6 +8,20 @@ import java.util.Stack;
  **/
 public class Solution {
 
+    public int[] dailyTemperatures(int[] t) {
+        int[] res = new int[t.length];
+        int[] stack = new int[t.length];
+        int top = -1;
+        for (int i = 0; i < t.length; i++) {
+            while (top > -1 && t[i] > t[stack[top]]) {
+                int idx = stack[top--];
+                res[idx] = i - idx;
+            }
+            stack[++top] = i;
+        }
+        return res;
+    }
+
     public boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();
         char[] chars = s.toCharArray();
