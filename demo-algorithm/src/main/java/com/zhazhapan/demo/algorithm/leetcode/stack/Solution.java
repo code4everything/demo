@@ -1,5 +1,7 @@
 package com.zhazhapan.demo.algorithm.leetcode.stack;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -7,6 +9,17 @@ import java.util.Stack;
  * @since 2019/1/31
  **/
 public class Solution {
+
+    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+        if (node == null) {
+            return null;
+        }
+        UndirectedGraphNode graphNode = new UndirectedGraphNode(node.label);
+        for (UndirectedGraphNode neighbor : node.neighbors) {
+            graphNode.neighbors.add(cloneGraph(neighbor));
+        }
+        return graphNode;
+    }
 
     public int evalRPN(String[] tokens) {
         int len = tokens.length;
@@ -35,6 +48,8 @@ public class Solution {
         }
         return stack[0];
     }
+
+    ;
 
     public int[] dailyTemperatures(int[] t) {
         int[] res = new int[t.length];
@@ -68,5 +83,17 @@ public class Solution {
             }
         }
         return stack.isEmpty();
+    }
+
+    class UndirectedGraphNode {
+
+        int label;
+
+        List<UndirectedGraphNode> neighbors;
+
+        UndirectedGraphNode(int x) {
+            label = x;
+            neighbors = new ArrayList<>();
+        }
     }
 }
