@@ -23,4 +23,11 @@ public class SolutionTest {
         Console.log(solution.dailyTemperatures(new int[]{73, 74, 75, 71, 69, 72, 76, 73}));
         Console.log(solution.dailyTemperatures(new int[]{100, 56, 89, 99, 45, 65, 77}));
     }
+
+    @Test
+    public void evalRPN() {
+        assert solution.evalRPN(new String[]{"2", "1", "+", "3", "*"}) == 9;
+        assert solution.evalRPN(new String[]{"10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"}) == 22;
+        assert solution.evalRPN(new String[]{"4", "13", "5", "/", "+"}) == 6;
+    }
 }
