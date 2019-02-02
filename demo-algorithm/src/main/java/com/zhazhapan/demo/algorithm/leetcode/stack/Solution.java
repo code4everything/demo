@@ -10,6 +10,25 @@ import java.util.Stack;
  **/
 public class Solution {
 
+    private int count = 0;
+
+    public int findTargetSumWays(int[] nums, int S) {
+        count = 0;
+        calculate(nums, 0, 0, S);
+        return count;
+    }
+
+    public void calculate(int[] nums, int i, int sum, int S) {
+        if (i == nums.length) {
+            if (sum == S) {
+                count++;
+            }
+        } else {
+            calculate(nums, i + 1, sum + nums[i], S);
+            calculate(nums, i + 1, sum - nums[i], S);
+        }
+    }
+
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
         if (node == null) {
             return null;

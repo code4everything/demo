@@ -34,4 +34,12 @@ public class SolutionTest {
     @Test
     public void cloneGraph() {
     }
+
+    @Test
+    public void findTargetSumWays() {
+        assert solution.findTargetSumWays(new int[]{1, 1, 1, 1, 1}, 3) == 5;
+        assert solution.findTargetSumWays(new int[]{1, 0}, 1) == 2;
+        assert solution.findTargetSumWays(new int[]{25, 18, 47, 13, 45, 29, 15, 45, 33, 19, 39, 15, 39, 45, 17, 21,
+                29, 43, 50, 10}, 25) == 5392;
+    }
 }
