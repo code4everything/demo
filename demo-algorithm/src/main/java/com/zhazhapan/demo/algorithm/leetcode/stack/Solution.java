@@ -12,6 +12,31 @@ public class Solution {
 
     private int count = 0;
 
+    public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
+        int swap = image[sr][sc];
+        if (swap == newColor) {
+            return image;
+        }
+        image[sr][sc] = newColor;
+        int temp = sr - 1;
+        if (temp >= 0 && image[temp][sc] == swap) {
+            floodFill(image, temp, sc, newColor);
+        }
+        temp = sr + 1;
+        if (temp < image.length && image[temp][sc] == swap) {
+            floodFill(image, temp, sc, newColor);
+        }
+        temp = sc - 1;
+        if (temp >= 0 && image[sr][temp] == swap) {
+            floodFill(image, sr, temp, newColor);
+        }
+        temp = sc + 1;
+        if (temp < image[sr].length && image[sr][temp] == swap) {
+            floodFill(image, sr, temp, newColor);
+        }
+        return image;
+    }
+
     public int findTargetSumWays(int[] nums, int S) {
         count = 0;
         calculate(nums, 0, 0, S);
