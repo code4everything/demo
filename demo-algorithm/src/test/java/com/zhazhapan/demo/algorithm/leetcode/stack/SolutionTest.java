@@ -47,4 +47,11 @@ public class SolutionTest {
     public void floodFill() {
         Console.log(solution.floodFill(new int[][]{{1, 1, 1}, {1, 1, 0}, {1, 0, 1}}, 1, 1, 2));
     }
+
+    @Test
+    public void updateMatrix() {
+        Console.log(solution.updateMatrix(new int[][]{{0, 0, 0}, {0, 1, 0}, {1, 1, 1}}));
+        Console.log(solution.updateMatrix(new int[][]{{1, 1, 1}, {1, 0, 1}, {1, 1, 1}, {0, 0, 0}}));
+        Console.log(solution.updateMatrix(new int[][]{{1, 1, 1}, {0, 1, 1}, {1, 1, 1}}));
+    }
 }

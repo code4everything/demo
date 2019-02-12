@@ -12,6 +12,40 @@ public class Solution {
 
     private int count = 0;
 
+    public int[][] updateMatrix(int[][] matrix) {
+        int xlen = matrix.length;
+        for (int i = 0; i < xlen; i++) {
+            int len = matrix[i].length;
+            for (int j = 0; j < len; j++) {
+                if (matrix[i][j] == 1) {
+                    matrix[i][j] = helper(matrix, i, j, 0, 0, xlen - 1, len - 1);
+                }
+            }
+        }
+        return matrix;
+    }
+
+    private int helper(int[][] matrix, int row, int col, int minR, int minC, int maxR, int maxC) {
+        if (row < minR || col < minC || row > maxR || col > maxC) {
+            return 10000;
+        }
+        int space = matrix[row][col];
+        if (space != 1) {
+            return space;
+        }
+        int temp = helper(matrix, row - 1, col, minR, minC, row, maxC);
+        if (temp != 0) {
+            temp = Math.min(temp, helper(matrix, row + 1, col, row + 1, minC, maxR, maxC));
+            if (temp != 0) {
+                temp = Math.min(temp, helper(matrix, row, col - 1, minR, minC, maxR, col));
+                if (temp != 0) {
+                    temp = Math.min(temp, helper(matrix, row, col + 1, minR, col + 1, maxR, maxC));
+                }
+            }
+        }
+        return 1 + temp;
+    }
+
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
         int swap = image[sr][sc];
         if (swap == newColor) {
