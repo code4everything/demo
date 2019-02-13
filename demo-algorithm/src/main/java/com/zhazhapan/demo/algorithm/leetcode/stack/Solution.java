@@ -12,6 +12,25 @@ public class Solution {
 
     private int count = 0;
 
+    public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+        int len = rooms.size();
+        List<Integer> keys = new ArrayList<>(len);
+        boolean[] visited = new boolean[len];
+        keys.add(0);
+        int idx = 0;
+        visited[0] = true;
+        while (idx < keys.size()) {
+            List<Integer> room = rooms.get(keys.get(idx++));
+            for (Integer key : room) {
+                if (!visited[key]) {
+                    keys.add(key);
+                    visited[key] = true;
+                }
+            }
+        }
+        return keys.size() == len;
+    }
+
     public int[][] updateMatrix(int[][] matrix) {
         int xlen = matrix.length;
         for (int i = 0; i < xlen; i++) {

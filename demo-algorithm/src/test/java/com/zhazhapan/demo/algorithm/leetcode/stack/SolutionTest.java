@@ -1,6 +1,7 @@
 package com.zhazhapan.demo.algorithm.leetcode.stack;
 
 import cn.hutool.core.lang.Console;
+import com.google.common.collect.Lists;
 import org.junit.Test;
 
 public class SolutionTest {
@@ -39,8 +40,7 @@ public class SolutionTest {
     public void findTargetSumWays() {
         assert solution.findTargetSumWays(new int[]{1, 1, 1, 1, 1}, 3) == 5;
         assert solution.findTargetSumWays(new int[]{1, 0}, 1) == 2;
-        assert solution.findTargetSumWays(new int[]{25, 18, 47, 13, 45, 29, 15, 45, 33, 19, 39, 15, 39, 45, 17, 21,
-                29, 43, 50, 10}, 25) == 5392;
+        assert solution.findTargetSumWays(new int[]{25, 18, 47, 13, 45, 29, 15, 45, 33, 19, 39, 15, 39, 45, 17, 21, 29, 43, 50, 10}, 25) == 5392;
     }
 
     @Test
@@ -53,5 +53,11 @@ public class SolutionTest {
         Console.log(solution.updateMatrix(new int[][]{{0, 0, 0}, {0, 1, 0}, {1, 1, 1}}));
         Console.log(solution.updateMatrix(new int[][]{{1, 1, 1}, {1, 0, 1}, {1, 1, 1}, {0, 0, 0}}));
         Console.log(solution.updateMatrix(new int[][]{{1, 1, 1}, {0, 1, 1}, {1, 1, 1}}));
+    }
+
+    @Test
+    public void canVisitAllRooms() {
+        assert solution.canVisitAllRooms(Lists.newArrayList(Lists.newArrayList(1), Lists.newArrayList(2), Lists.newArrayList(3), Lists.newArrayList()));
+        assert !solution.canVisitAllRooms(Lists.newArrayList(Lists.newArrayList(1, 3), Lists.newArrayList(3, 0, 1), Lists.newArrayList(2), Lists.newArrayList(0)));
     }
 }
