@@ -19,5 +19,6 @@ public class SolutionTest {
         assert solution.hasCycle(two);
         one.next = two;
         assert solution.hasCycle(one);
+        System.out.println(solution.detectCycle(one));
     }
 }
