@@ -9,6 +9,38 @@ import java.util.Set;
  **/
 public class Solution {
 
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) {
+            return null;
+        }
+        int alen = length(headA);
+        int blen = length(headB);
+        headA = trim(alen, blen, headA);
+        headB = trim(blen, alen, headB);
+        while (headA != null && headB != null && headA != headB) {
+            headA = headA.next;
+            headB = headB.next;
+        }
+        return headA;
+    }
+
+    private ListNode trim(int maxLen, int minLen, ListNode root) {
+        if (maxLen > minLen) {
+            return trim(maxLen - 1, minLen, root.next);
+        }
+        return root;
+    }
+
+    private int length(ListNode root) {
+        int len = 1;
+        ListNode node = root.next;
+        while (node != null) {
+            node = node.next;
+            len++;
+        }
+        return len;
+    }
+
     public ListNode detectCycle(ListNode head) {
         if (head == null) {
             return null;
