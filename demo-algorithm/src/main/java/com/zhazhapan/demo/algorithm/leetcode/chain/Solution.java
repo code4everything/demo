@@ -1,6 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.chain;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -8,6 +10,23 @@ import java.util.Set;
  * @since 2019/2/15
  **/
 public class Solution {
+
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        List<ListNode> nodes = new ArrayList<>();
+        int len = 0;
+        ListNode node = head;
+        while (node != null) {
+            len++;
+            nodes.add(node);
+            node = node.next;
+        }
+        if (n == len) {
+            return head.next;
+        }
+        node = nodes.get(len - n - 1);
+        node.next = node.next.next;
+        return head;
+    }
 
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         if (headA == null || headB == null) {
