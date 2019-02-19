@@ -11,6 +11,21 @@ import java.util.Set;
  **/
 public class Solution {
 
+    public ListNode reverseList(ListNode head) {
+        ListNode pre = null;
+        while (head != null) {
+            if (head.next == null) {
+                head.next = pre;
+                return head;
+            }
+            ListNode next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
+        }
+        return head;
+    }
+
     public ListNode removeNthFromEnd(ListNode head, int n) {
         List<ListNode> nodes = new ArrayList<>();
         int len = 0;
