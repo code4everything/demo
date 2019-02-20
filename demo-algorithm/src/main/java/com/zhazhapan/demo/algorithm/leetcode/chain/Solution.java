@@ -12,7 +12,20 @@ import java.util.Set;
 public class Solution {
 
     public boolean isPalindrome(ListNode head) {
-
+        if (head == null) {
+            return true;
+        }
+        List<Integer> integers = new ArrayList<>();
+        while (head != null) {
+            integers.add(head.val);
+            head = head.next;
+        }
+        for (int i = 0, j = integers.size() - 1; i < j; i++, j--) {
+            if (!integers.get(i).equals(integers.get(j))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public ListNode oddEvenList(ListNode head) {
