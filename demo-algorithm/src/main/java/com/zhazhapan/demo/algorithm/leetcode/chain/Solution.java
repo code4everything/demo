@@ -11,6 +11,24 @@ import java.util.Set;
  **/
 public class Solution {
 
+    public ListNode removeElements(ListNode head, int val) {
+        ListNode node = head;
+        ListNode pre = null;
+        while (node != null) {
+            if (node.val == val) {
+                if (node == head) {
+                    head = node.next;
+                } else {
+                    pre.next = node.next;
+                }
+            } else {
+                pre = node;
+            }
+            node = node.next;
+        }
+        return head;
+    }
+
     public ListNode reverseList(ListNode head) {
         ListNode pre = null;
         while (head != null) {
