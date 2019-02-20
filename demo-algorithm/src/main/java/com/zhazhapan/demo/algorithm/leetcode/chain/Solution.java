@@ -11,6 +11,32 @@ import java.util.Set;
  **/
 public class Solution {
 
+    public boolean isPalindrome(ListNode head) {
+
+    }
+
+    public ListNode oddEvenList(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        ListNode pre = head;
+        int index = 1;
+        ListNode node = head.next;
+        while (node != null && node.next != null) {
+            if (index % 2 == 1) {
+                ListNode swap = pre.next;
+                pre.next = node.next;
+                node.next = node.next.next;
+                pre.next.next = swap;
+                pre = pre.next;
+            } else {
+                node = node.next;
+            }
+            index++;
+        }
+        return head;
+    }
+
     public ListNode removeElements(ListNode head, int val) {
         ListNode node = head;
         ListNode pre = null;
