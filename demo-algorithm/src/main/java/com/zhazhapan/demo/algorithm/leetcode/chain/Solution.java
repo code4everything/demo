@@ -11,6 +11,42 @@ import java.util.Set;
  **/
 public class Solution {
 
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1 == null) {
+            return l2;
+        }
+        ListNode node = l1;
+        ListNode pre = null;
+        while (l2 != null) {
+            if (node == null) {
+                pre.next = l2;
+                break;
+            }
+            if (l2.val < node.val) {
+                if (pre == null) {
+                    l1 = l2;
+                } else {
+                    pre.next = l2;
+                }
+                pre = l2;
+                ListNode swap = l2.next;
+                l2.next = node;
+                l2 = swap;
+            } else {
+                if (pre != null) {
+                    pre.next = node;
+                    pre = pre.next;
+                } else {
+                    pre = node;
+                }
+                ListNode swap = node.next;
+                node.next = l2;
+                node = swap;
+            }
+        }
+        return l1;
+    }
+
     public boolean isPalindrome(ListNode head) {
         if (head == null) {
             return true;
