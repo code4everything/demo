@@ -11,6 +11,33 @@ import java.util.Set;
  **/
 public class Solution {
 
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode head = null;
+        ListNode node = null;
+        int adv = 0;
+        while (l1 != null || l2 != null) {
+            if (l1 != null) {
+                adv += l1.val;
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                adv += l2.val;
+                l2 = l2.next;
+            }
+            if (head == null) {
+                node = head = new ListNode(adv % 10);
+            } else {
+                node.next = new ListNode(adv % 10);
+                node = node.next;
+            }
+            adv /= 10;
+        }
+        if (adv > 0) {
+            node.next = new ListNode(adv);
+        }
+        return head;
+    }
+
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if (l1 == null) {
             return l2;
