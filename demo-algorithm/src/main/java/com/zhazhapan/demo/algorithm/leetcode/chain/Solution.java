@@ -257,17 +257,16 @@ public class Solution {
             child = _child;
         }
     }
-}
 
+    class ListNode {
 
-class ListNode {
+        int val;
 
-    int val;
+        ListNode next;
 
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
-        next = null;
+        ListNode(int x) {
+            val = x;
+            next = null;
+        }
     }
 }
