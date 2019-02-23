@@ -11,6 +11,34 @@ import java.util.Set;
  **/
 public class Solution {
 
+    public Node flatten(Node head) {
+        if (head != null) {
+            lastest(head);
+        }
+        return head;
+    }
+
+    private Node lastest(Node head) {
+        Node node = head;
+        while (true) {
+            Node next = node.next;
+            if (node.child != null) {
+                node.next = node.child;
+                node.child.prev = node;
+                node.child = null;
+                Node pre = lastest(node.next);
+                if (next != null) {
+                    pre.next = next;
+                    next.prev = pre;
+                }
+            }
+            if (next == null) {
+                return node;
+            }
+            node = next;
+        }
+    }
+
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode head = null;
         ListNode node = null;
@@ -208,6 +236,26 @@ public class Solution {
             slow = slow.next;
         }
         return true;
+    }
+
+    class Node {
+
+        public int val;
+
+        public Node prev;
+
+        public Node next;
+
+        public Node child;
+
+        public Node() {}
+
+        public Node(int _val, Node _prev, Node _next, Node _child) {
+            val = _val;
+            prev = _prev;
+            next = _next;
+            child = _child;
+        }
     }
 }
 

@@ -26,4 +26,8 @@ public class SolutionTest {
     public void oddEvenList() {
 
     }
+
+    @Test
+    public void flatten() {
+    }
 }
