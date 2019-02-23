@@ -11,6 +11,34 @@ import java.util.Set;
  **/
 public class Solution {
 
+    public ListNode rotateRight(ListNode head, int k) {
+        if (head == null) {
+            return null;
+        }
+        ListNode node = head;
+        int len = 0;
+        while (node != null) {
+            len++;
+            node = node.next;
+        }
+        k %= len;
+        if (k == 0) {
+            return head;
+        }
+        node = head;
+        for (int i = 1; i + k < len; i++) {
+            node = node.next;
+        }
+        ListNode next = node.next;
+        node.next = null;
+        node = next;
+        while (node.next != null) {
+            node = node.next;
+        }
+        node.next = head;
+        return next;
+    }
+
     public Node flatten(Node head) {
         if (head != null) {
             lastest(head);
