@@ -286,15 +286,16 @@ public class Solution {
         }
     }
 
-    class ListNode {
+}
 
-        int val;
+class ListNode {
 
-        ListNode next;
+    int val;
 
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
+    ListNode next;
+
+    ListNode(int x) {
+        val = x;
+        next = null;
     }
 }
