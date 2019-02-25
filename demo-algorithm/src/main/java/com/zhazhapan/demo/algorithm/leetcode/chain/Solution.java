@@ -11,6 +11,62 @@ import java.util.Set;
  **/
 public class Solution {
 
+    public ListNode rotateRight(ListNode head, int k) {
+        if (head == null) {
+            return null;
+        }
+        ListNode node = head;
+        int len = 0;
+        while (node != null) {
+            len++;
+            node = node.next;
+        }
+        k %= len;
+        if (k == 0) {
+            return head;
+        }
+        node = head;
+        for (int i = 1; i + k < len; i++) {
+            node = node.next;
+        }
+        ListNode next = node.next;
+        node.next = null;
+        node = next;
+        while (node.next != null) {
+            node = node.next;
+        }
+        node.next = head;
+        return next;
+    }
+
+    public Node flatten(Node head) {
+        if (head != null) {
+            lastest(head);
+        }
+        return head;
+    }
+
+    private Node lastest(Node head) {
+        Node node = head;
+        while (true) {
+            Node next = node.next;
+            if (node.child != null) {
+                node.next = node.child;
+                node.child.prev = node;
+                node.child = null;
+                Node pre = lastest(node.next);
+                if (next != null) {
+                    pre.next = next;
+                    next.prev = pre;
+                }
+            }
+            if (next == null) {
+                return node;
+            }
+            node = next;
+        }
+    }
+
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode head = null;
         ListNode node = null;
@@ -209,8 +265,28 @@ public class Solution {
         }
         return true;
     }
-}
 
+    class Node {
+
+        public int val;
+
+        public Node prev;
+
+        public Node next;
+
+        public Node child;
+
+        public Node() {}
+
+        public Node(int _val, Node _prev, Node _next, Node _child) {
+            val = _val;
+            prev = _prev;
+            next = _next;
+            child = _child;
+        }
+    }
+
+}
 
 class ListNode {
 

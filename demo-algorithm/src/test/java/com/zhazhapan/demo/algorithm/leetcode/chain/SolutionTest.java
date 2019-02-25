@@ -21,9 +21,4 @@ public class SolutionTest {
         assert solution.hasCycle(one);
         System.out.println(solution.detectCycle(one));
     }
-
-    @Test
-    public void oddEvenList() {
-
-    }
 }
