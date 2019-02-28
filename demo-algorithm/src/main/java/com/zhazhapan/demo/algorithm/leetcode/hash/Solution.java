@@ -1,14 +1,24 @@
 package com.zhazhapan.demo.algorithm.leetcode.hash;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author pantao
  * @since 2019/2/26
  **/
 public class Solution {
+
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int diff = target - nums[i];
+            if (map.containsKey(diff)) {
+                return new int[]{map.get(diff), i};
+            }
+            map.put(nums[i], i);
+        }
+        return null;
+    }
 
     public boolean isHappy(int n) {
         if (n < 1) {
