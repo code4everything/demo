@@ -8,6 +8,29 @@ import java.util.*;
  **/
 public class Solution {
 
+    public boolean isIsomorphic(String s, String t) {
+        int len = s.length();
+        char[] temp = new char[len];
+        Map<Character, Character> maped = new HashMap<>(len);
+        for (int i = 0; i < len; i++) {
+            char c = s.charAt(i);
+            char v = t.charAt(i);
+            if (maped.containsKey(c)) {
+                temp[i] = maped.get(c);
+            } else if (maped.containsValue(v)) {
+                return false;
+            } else {
+                char map = t.charAt(i);
+                temp[i] = map;
+                maped.put(c, map);
+            }
+            if (temp[i] != v) {
+                return false;
+            }
+        }
+        return t.equals(new String(temp));
+    }
+
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
