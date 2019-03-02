@@ -8,6 +8,32 @@ import java.util.*;
  **/
 public class Solution {
 
+    public String[] findRestaurant(String[] list1, String[] list2) {
+        int len1 = list1.length;
+        int len2 = list2.length;
+        int minSum = len1 + len2;
+        String[] rest = new String[len1];
+        int idx = 0;
+        Map<String, Integer> map = new HashMap<>(len1);
+        for (int i = 0; i < len1; i++) {
+            map.put(list1[i], i);
+        }
+        for (int i = 0; i < len2; i++) {
+            String key = list2[i];
+            if (map.containsKey(key)) {
+                int sum = i + map.get(key);
+                if (sum < minSum) {
+                    idx = 0;
+                    rest[idx++] = key;
+                    minSum = sum;
+                } else if (sum == minSum) {
+                    rest[idx++] = key;
+                }
+            }
+        }
+        return Arrays.copyOf(rest, idx);
+    }
+
     public boolean isIsomorphic(String s, String t) {
         int len = s.length();
         char[] temp = new char[len];
