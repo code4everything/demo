@@ -25,9 +25,16 @@ public class SolutionTest {
     @Test
     public void findRestaurant() {
         Console.log(solution.findRestaurant(new String[]{"Shogun", "Tapioca Express", "Burger King", "KFC"},
-                new String[]{"Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse", "Shogun"}));
+                                            new String[]{"Piatti", "The Grill at Torrey Pines", "Hungry Hunter " +
+                                                    "Steakhouse", "Shogun"}));
         Console.log(solution.findRestaurant(new String[]{"Shogun", "Tapioca Express", "Burger King", "KFC"},
-                new String[]{"KFC", "Shogun", "Burger King"}));
+                                            new String[]{"KFC", "Shogun", "Burger King"}));
         Console.log(solution.findRestaurant(new String[]{"1", "2"}, new String[]{"2", "1"}));
+    }
+
+    @Test
+    public void firstUniqChar() {
+        assert 0 == solution.firstUniqChar("leetcode");
+        assert 2 == solution.firstUniqChar("loveleetcode");
     }
 }
