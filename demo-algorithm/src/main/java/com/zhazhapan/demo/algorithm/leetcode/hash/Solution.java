@@ -8,6 +8,21 @@ import java.util.*;
  **/
 public class Solution {
 
+    public int firstUniqChar(String s) {
+        int len = s.length();
+        char[] chars = s.toCharArray();
+        int[] has = new int[26];
+        for (int i = 0; i < len; i++) {
+            has[chars[i] - 'a']++;
+        }
+        for (int i = 0; i < len; i++) {
+            if (has[chars[i] - 'a'] == 1) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public String[] findRestaurant(String[] list1, String[] list2) {
         int len1 = list1.length;
         int len2 = list2.length;
