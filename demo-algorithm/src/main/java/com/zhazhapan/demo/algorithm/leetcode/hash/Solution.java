@@ -8,6 +8,19 @@ import java.util.*;
  **/
 public class Solution {
 
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        for (int i = 0; i < nums.length - 1; i++) {
+            int j = 0;
+            int x = i;
+            while (j++ < k && ++x < nums.length) {
+                if (nums[i] == nums[x]) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public int firstUniqChar(String s) {
         int len = s.length();
         char[] chars = s.toCharArray();

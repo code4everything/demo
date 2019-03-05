@@ -37,4 +37,11 @@ public class SolutionTest {
         assert 0 == solution.firstUniqChar("leetcode");
         assert 2 == solution.firstUniqChar("loveleetcode");
     }
+
+    @Test
+    public void containsNearbyDuplicate() {
+        assert solution.containsNearbyDuplicate(new int[]{1, 2, 3, 1}, 3);
+        assert solution.containsNearbyDuplicate(new int[]{1, 0, 1, 1}, 1);
+        assert !solution.containsNearbyDuplicate(new int[]{1, 2, 3, 1, 2, 3}, 2);
+    }
 }
