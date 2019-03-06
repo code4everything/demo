@@ -8,6 +8,23 @@ import java.util.*;
  **/
 public class Solution {
 
+    public List<List<String>> groupAnagrams(String[] strs) {
+        int len = strs.length;
+        Map<String, List<String>> map = new HashMap<>(len);
+        for (int i = 0; i < len; i++) {
+            char[] cs = strs[i].toCharArray();
+            Arrays.sort(cs);
+            String key = new String(cs);
+            List<String> list = map.get(key);
+            if (list == null) {
+                list = new ArrayList<>();
+                map.put(key, list);
+            }
+            list.add(strs[i]);
+        }
+        return new ArrayList<>(map.values());
+    }
+
     public boolean containsNearbyDuplicate(int[] nums, int k) {
         for (int i = 0; i < nums.length - 1; i++) {
             int j = 0;

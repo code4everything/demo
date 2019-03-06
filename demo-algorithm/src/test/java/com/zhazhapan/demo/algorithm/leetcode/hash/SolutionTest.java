@@ -44,4 +44,20 @@ public class SolutionTest {
         assert solution.containsNearbyDuplicate(new int[]{1, 0, 1, 1}, 1);
         assert !solution.containsNearbyDuplicate(new int[]{1, 2, 3, 1, 2, 3}, 2);
     }
+
+    @Test
+    public void groupAnagrams() {
+        Console.log(solution.groupAnagrams(new String[]{"eat", "tea", "tan", "ate", "nat", "bat"}));
+        Console.log(solution.groupAnagrams(new String[]{"cab", "tin", "pew", "duh", "may", "ill", "buy", "bar", "max"
+                , "doc"}));
+        Console.log(solution.groupAnagrams(new String[]{"run", "had", "lot", "kim", "fat", "net", "fin", "rca", "chi"
+                , "lei", "lox", "iva", "liz", "hug", "hot", "irk", "lap", "tan", "tux", "yuk", "hep", "map", "ran",
+                "ell", "kit", "put", "non", "aol", "add", "lad", "she", "job", "mes", "pen", "vic", "fag", "bud",
+                "ken", "nod", "jam", "coy", "hui", "sue", "nap", "ton", "coy", "rut", "fit", "cut", "eta", "our",
+                "oho", "zip"}));
+        Console.log(solution.groupAnagrams(new String[]{"tho", "tin", "erg", "end", "pug", "ton", "alb", "mes", "job"
+                , "ads", "soy", "toe", "tap", "sen", "ape", "led", "rig", "rig", "con", "wac", "gog", "zen", "hay",
+                "lie", "pay", "kid", "oaf", "arc", "hay", "vet", "sat", "gap", "hop", "ben", "gem", "dem", "pie",
+                "eco", "cub", "coy", "pep", "wot", "wee"}));
+    }
 }
