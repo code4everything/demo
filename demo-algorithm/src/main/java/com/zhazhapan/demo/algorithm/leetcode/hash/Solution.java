@@ -1,5 +1,7 @@
 package com.zhazhapan.demo.algorithm.leetcode.hash;
 
+import com.zhazhapan.demo.algorithm.leetcode.model.TreeNode;
+
 import java.util.*;
 
 /**
@@ -7,6 +9,33 @@ import java.util.*;
  * @since 2019/2/26
  **/
 public class Solution {
+
+    public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
+        Map<String, Integer> has = new HashMap<>();
+        List<TreeNode> duplicated = new ArrayList<>();
+        helper(duplicated, has, root);
+        return duplicated;
+    }
+
+    private String helper(List<TreeNode> nodes, Map<String, Integer> has, TreeNode node) {
+        if (node == null) {
+            return "$";
+        }
+        String str = node.val + "," + helper(nodes, has, node.left) + "," + helper(nodes, has, node.right);
+        if (has.containsKey(str)) {
+            if (has.get(str) == 0) {
+                nodes.add(node);
+                has.put(str, 1);
+            }
+        } else {
+            has.put(str, 0);
+        }
+        return str;
+    }
+
+    private boolean isDuplicated(TreeNode root, TreeNode node) {
+
+    }
 
     public List<List<String>> groupAnagrams(String[] strs) {
         int len = strs.length;
