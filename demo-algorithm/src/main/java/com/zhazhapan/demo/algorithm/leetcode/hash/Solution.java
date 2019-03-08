@@ -10,6 +10,22 @@ import java.util.*;
  **/
 public class Solution {
 
+    public int numJewelsInStones(String j, String s) {
+        boolean[] map = new boolean[128];
+        char[] js = j.toCharArray();
+        for (int i = 0; i < js.length; i++) {
+            map[js[i]] = true;
+        }
+        char[] ss = s.toCharArray();
+        int jewels = 0;
+        for (int i = 0; i < ss.length; i++) {
+            if (map[ss[i]]) {
+                jewels++;
+            }
+        }
+        return jewels;
+    }
+
     public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
         Map<String, Integer> has = new HashMap<>();
         List<TreeNode> duplicated = new ArrayList<>();
@@ -31,10 +47,6 @@ public class Solution {
             has.put(str, 0);
         }
         return str;
-    }
-
-    private boolean isDuplicated(TreeNode root, TreeNode node) {
-
     }
 
     public List<List<String>> groupAnagrams(String[] strs) {

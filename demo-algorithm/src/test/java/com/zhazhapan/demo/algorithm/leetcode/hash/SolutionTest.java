@@ -60,4 +60,9 @@ public class SolutionTest {
                 "lie", "pay", "kid", "oaf", "arc", "hay", "vet", "sat", "gap", "hop", "ben", "gem", "dem", "pie",
                 "eco", "cub", "coy", "pep", "wot", "wee"}));
     }
+
+    @Test
+    public void numJewelsInStones() {
+        assert 3 == solution.numJewelsInStones("aA", "aAAbbbb");
+    }
 }
