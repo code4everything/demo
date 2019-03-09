@@ -10,6 +10,24 @@ import java.util.*;
  **/
 public class Solution {
 
+    public int fourSumCount(int[] a, int[] b, int[] c, int[] d) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < b.length; j++) {
+                Integer key = a[i] + b[j];
+                map.put(key, map.getOrDefault(key, 0) + 1);
+            }
+        }
+        int cnt = 0;
+        for (int i = 0; i < c.length; i++) {
+            for (int j = 0; j < d.length; j++) {
+                cnt += map.getOrDefault(-c[i] - d[j], 0);
+            }
+        }
+        return cnt;
+    }
+
+
     public int numJewelsInStones(String j, String s) {
         boolean[] map = new boolean[128];
         char[] js = j.toCharArray();
