@@ -27,7 +27,6 @@ public class Solution {
         return cnt;
     }
 
-
     public int numJewelsInStones(String j, String s) {
         boolean[] map = new boolean[128];
         char[] js = j.toCharArray();
