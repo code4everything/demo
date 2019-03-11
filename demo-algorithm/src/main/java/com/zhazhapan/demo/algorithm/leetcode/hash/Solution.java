@@ -10,6 +10,21 @@ import java.util.*;
  **/
 public class Solution {
 
+    public List<Integer> topKFrequent(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<>(nums.length);
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
+        }
+        Queue<Map.Entry<Integer, Integer>> queue =
+                new PriorityQueue<>((o1, o2) -> o2.getValue().compareTo(o1.getValue()));
+        queue.addAll(map.entrySet());
+        List<Integer> list = new ArrayList<>(k);
+        for (int i = 0; i < k; i++) {
+            list.add(queue.poll().getKey());
+        }
+        return list;
+    }
+
     public int fourSumCount(int[] a, int[] b, int[] c, int[] d) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < a.length; i++) {

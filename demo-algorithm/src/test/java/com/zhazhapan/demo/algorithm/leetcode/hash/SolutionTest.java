@@ -25,9 +25,10 @@ public class SolutionTest {
     @Test
     public void findRestaurant() {
         Console.log(solution.findRestaurant(new String[]{"Shogun", "Tapioca Express", "Burger King", "KFC"},
-                new String[]{"Piatti", "The Grill at Torrey Pines", "Hungry Hunter " + "Steakhouse", "Shogun"}));
+                                            new String[]{"Piatti", "The Grill at Torrey Pines", "Hungry Hunter " +
+                                                    "Steakhouse", "Shogun"}));
         Console.log(solution.findRestaurant(new String[]{"Shogun", "Tapioca Express", "Burger King", "KFC"},
-                new String[]{"KFC", "Shogun", "Burger King"}));
+                                            new String[]{"KFC", "Shogun", "Burger King"}));
         Console.log(solution.findRestaurant(new String[]{"1", "2"}, new String[]{"2", "1"}));
     }
 
@@ -63,5 +64,10 @@ public class SolutionTest {
     @Test
     public void numJewelsInStones() {
         assert 3 == solution.numJewelsInStones("aA", "aAAbbbb");
+    }
+
+    @Test
+    public void topKFrequent() {
+        Console.log(solution.topKFrequent(new int[]{1, 1, 1, 2, 2, 3}, 2));
     }
 }
