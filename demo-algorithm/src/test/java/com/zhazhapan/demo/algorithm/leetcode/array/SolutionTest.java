@@ -127,4 +127,11 @@ public class SolutionTest {
         solution.moveZeroes(arr);
         Console.log(arr);
     }
+
+    @Test
+    public void maxProfit() {
+        assert 7 == solution.maxProfit(new int[]{7, 1, 5, 3, 6, 4});
+        assert 4 == solution.maxProfit(new int[]{1, 2, 3, 4, 5});
+        assert 0 == solution.maxProfit(new int[]{7, 6, 4, 3, 1});
+    }
 }

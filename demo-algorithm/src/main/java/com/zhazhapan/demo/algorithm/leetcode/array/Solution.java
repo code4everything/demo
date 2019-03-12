@@ -10,6 +10,24 @@ import java.util.List;
  */
 public class Solution {
 
+    public int maxProfit(int[] prices) {
+        int profit = 0;
+        int start = Integer.MAX_VALUE;
+        int currProfit = 0;
+        for (int i = 0; i < prices.length; i++) {
+            int curr = prices[i];
+            int diff = curr - start;
+            if (diff > currProfit) {
+                currProfit = diff;
+                continue;
+            }
+            start = curr;
+            profit += currProfit;
+            currProfit = 0;
+        }
+        return profit + currProfit;
+    }
+
     public void moveZeroes(int[] nums) {
         int k = 0;
         for (int num : nums) {
