@@ -10,7 +10,7 @@ import cn.hutool.core.util.RandomUtil;
  **/
 class SortTest {
 
-    private int[] data = new int[100000];
+    private int[] data = new int[10000];
 
     public static void main(String[] args) {
         SortTest test = new SortTest();
@@ -110,6 +110,7 @@ class SortTest {
 
     private String duration(long start) {
         long diff = System.currentTimeMillis() - start;
+        checkSortResult();
         return (diff / 1000) + "." + (diff % 1000) + " s";
     }
 
@@ -117,5 +118,20 @@ class SortTest {
         for (int i = 0; i < data.length; i++) {
             data[i] = RandomUtil.randomInt(data.length);
         }
+    }
+
+    private void checkSortResult() {
+        for (int i = 1; i < data.length; i++) {
+            if (data[i] < data[i - 1]) {
+                throw new SortErrorException("sort error");
+            }
+        }
+    }
+}
+
+class SortErrorException extends RuntimeException {
+
+    SortErrorException(String msg) {
+        super(msg);
     }
 }
