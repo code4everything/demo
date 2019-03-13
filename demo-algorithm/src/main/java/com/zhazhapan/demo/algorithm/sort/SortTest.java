@@ -10,13 +10,13 @@ import cn.hutool.core.util.RandomUtil;
  **/
 class SortTest {
 
-    private int[] data = new int[10000];
+    private int[] data = new int[100000];
 
     public static void main(String[] args) {
         SortTest test = new SortTest();
 
         test.resetData();
-        test.ordinarySort();
+        test.forceSort();
 
         test.resetData();
         test.bubbleSort();
@@ -28,6 +28,28 @@ class SortTest {
         test.quickSort();
 
         test.resetData();
+        test.selectSort();
+
+        test.resetData();
+    }
+
+    /**
+     * 选择排序：数据移动次数最少
+     */
+    private void selectSort() {
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < data.length - 1; i++) {
+            int lowIdx = i;
+            for (int j = i + 1; j < data.length; j++) {
+                if (data[j] < data[lowIdx]) {
+                    lowIdx = j;
+                }
+            }
+            if (lowIdx != i) {
+                ArrayUtil.swap(data, i, lowIdx);
+            }
+        }
+        Console.log("select sort used times: " + duration(start));
     }
 
     /**
@@ -96,7 +118,7 @@ class SortTest {
     /**
      * 普通排序
      */
-    private void ordinarySort() {
+    private void forceSort() {
         long start = System.currentTimeMillis();
         for (int i = 0; i < data.length - 1; i++) {
             for (int j = i + 1; j < data.length; j++) {
@@ -110,7 +132,7 @@ class SortTest {
 
     private String duration(long start) {
         long diff = System.currentTimeMillis() - start;
-        checkSortResult();
+        checkSortedResult();
         return (diff / 1000) + "." + (diff % 1000) + " s";
     }
 
@@ -120,18 +142,18 @@ class SortTest {
         }
     }
 
-    private void checkSortResult() {
+    private void checkSortedResult() {
         for (int i = 1; i < data.length; i++) {
             if (data[i] < data[i - 1]) {
                 throw new SortErrorException("sort error");
             }
         }
     }
-}
 
-class SortErrorException extends RuntimeException {
+    private class SortErrorException extends RuntimeException {
 
-    SortErrorException(String msg) {
-        super(msg);
+        SortErrorException(String msg) {
+            super(msg);
+        }
     }
 }
