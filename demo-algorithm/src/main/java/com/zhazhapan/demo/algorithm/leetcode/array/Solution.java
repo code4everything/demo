@@ -10,6 +10,23 @@ import java.util.List;
  */
 public class Solution {
 
+    public void rotate(int[][] matrix) {
+        int yLen = matrix.length;
+        if (yLen == 0) {
+            return;
+        }
+        int xLen = matrix[0].length;
+        int[][] mirror = new int[yLen][xLen];
+        int x = xLen - 1;
+        for (int i = 0; i < yLen; i++, x--) {
+            for (int j = 0; j < xLen; j++) {
+                // 保存到镜像
+                mirror[j][x] = matrix[j][x];
+                matrix[j][x] = j < x || (i > j && j == x) ? matrix[i][j] : mirror[i][j];
+            }
+        }
+    }
+
     public int maxProfit(int[] prices) {
         int profit = 0;
         int start = Integer.MAX_VALUE;

@@ -134,4 +134,14 @@ public class SolutionTest {
         assert 4 == solution.maxProfit(new int[]{1, 2, 3, 4, 5});
         assert 0 == solution.maxProfit(new int[]{7, 6, 4, 3, 1});
     }
+
+    @Test
+    public void rotate1() {
+        int[][] matrix = new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        solution.rotate(matrix);
+        Console.log(matrix);
+        matrix = new int[][]{{5, 1, 9, 11}, {2, 4, 8, 10}, {13, 3, 6, 7}, {15, 14, 12, 16}};
+        solution.rotate(matrix);
+        Console.log(matrix);
+    }
 }
