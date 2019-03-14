@@ -31,6 +31,28 @@ class SortTest {
         test.selectSort();
 
         test.resetData();
+        test.shellSort();
+
+        test.resetData();
+    }
+
+    /**
+     * 希尔排序
+     */
+    private void shellSort() {
+        long start = System.currentTimeMillis();
+        for (int gap = data.length / 2; gap > 0; gap /= 2) {
+            for (int i = gap; i < data.length; i++) {
+                int curr = data[i];
+                int j = i - gap;
+                while (j >= 0 && data[j] > curr) {
+                    data[j + gap] = data[j];
+                    j -= gap;
+                }
+                data[j + gap] = curr;
+            }
+        }
+        Console.log("shell sort used times: " + duration(start));
     }
 
     /**
