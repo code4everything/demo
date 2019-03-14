@@ -4,7 +4,6 @@ import cn.hutool.core.lang.Console;
 import cn.hutool.core.lang.Pair;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.RandomUtil;
-import com.zhazhapan.util.ArrayUtils;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
@@ -49,14 +48,45 @@ class SortTest {
 
         while (!test.queue.isEmpty()) {
             Pair<String, Long> pair = test.queue.poll();
-            Console.log(pair.getKey() + " sort used times: " + (pair.getValue() / 1000) + "." + (pair.getValue() % 1000) + " s");
+            Console.log(pair.getKey() + " sort used times: " + pair.getValue() + " ms");
         }
     }
 
     private void heapSort() {
         long start = System.currentTimeMillis();
-        ArrayUtils.heapSort(data);
+        // 将待排序的序列构建成一个大顶堆
+        for (int i = data.length / 2; i >= 0; i--) {
+            heapSortHelper(data, i, data.length);
+        }
+        // 逐步将堆顶元素与末尾元素交换，并且再次调整二叉树，使其成为大顶堆
+        for (int i = data.length - 1; i > 0; i--) {
+            // 将堆顶记录和当前未排序序列的最后一个记录交换
+            ArrayUtil.swap(data, 0, i);
+            // 交换之后，需要重新检查堆是否符合大顶堆，不符合则要调整
+            heapSortHelper(data, 0, i);
+        }
         calculateDurationAndCheckResult(start, "heap");
+    }
+
+    private void heapSortHelper(int[] data, int i, int n) {
+        int child;
+        int father;
+        for (father = data[i]; 2 * i + 1 < n; i = child) {
+            child = 2 * i + 1;
+            // 如果左子树小于右子树，则需要比较右子树和父节点
+            if (child != n - 1 && data[child] < data[child + 1]) {
+                // 指向右子树
+                child++;
+            }
+            // 如果父节点小于孩子结点，则需要交换
+            if (father < data[child]) {
+                data[i] = data[child];
+            } else {
+                // 大顶堆结构未被破坏，不需要调整
+                break;
+            }
+        }
+        data[i] = father;
     }
 
     /**
@@ -234,7 +264,7 @@ class SortTest {
                 }
             }
         }
-        calculateDurationAndCheckResult(start, "ordinary");
+        calculateDurationAndCheckResult(start, "force");
     }
 
     /**
