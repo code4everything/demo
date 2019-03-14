@@ -10,6 +10,18 @@ import java.util.List;
  */
 public class Solution {
 
+    public int reverse(int x) {
+        int result = 0;
+        while (x != 0) {
+            if ((Integer.MAX_VALUE / 10) < result || (Integer.MIN_VALUE / 10) > result) {
+                return 0;
+            }
+            result = result * 10 + (x % 10);
+            x /= 10;
+        }
+        return result;
+    }
+
     public void rotate(int[][] matrix) {
         int yLen = matrix.length;
         if (yLen == 0) {
