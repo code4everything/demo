@@ -1,8 +1,14 @@
 package com.zhazhapan.demo.algorithm.sort;
 
 import cn.hutool.core.lang.Console;
+import cn.hutool.core.lang.Pair;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.RandomUtil;
+import com.zhazhapan.util.ArrayUtils;
+
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 /**
  * @author pantao
@@ -11,6 +17,8 @@ import cn.hutool.core.util.RandomUtil;
 class SortTest {
 
     private int[] data = new int[100000];
+
+    private Queue<Pair<String, Long>> queue = new PriorityQueue<>(Comparator.comparing(Pair::getValue));
 
     public static void main(String[] args) {
         SortTest test = new SortTest();
@@ -37,6 +45,18 @@ class SortTest {
         test.mergeSort();
 
         test.resetData();
+        test.heapSort();
+
+        while (!test.queue.isEmpty()) {
+            Pair<String, Long> pair = test.queue.poll();
+            Console.log(pair.getKey() + " sort used times: " + (pair.getValue() / 1000) + "." + (pair.getValue() % 1000) + " s");
+        }
+    }
+
+    private void heapSort() {
+        long start = System.currentTimeMillis();
+        ArrayUtils.heapSort(data);
+        calculateDurationAndCheckResult(start, "heap");
     }
 
     /**
@@ -76,7 +96,7 @@ class SortTest {
                 System.arraycopy(temp, 0, data, j, temp.length);
             }
         }
-        Console.log("merge sort used times: " + duration(start));
+        calculateDurationAndCheckResult(start, "merge");
     }
 
     /**
@@ -98,7 +118,7 @@ class SortTest {
                 data[j + gap] = curr;
             }
         }
-        Console.log("shell sort used times: " + duration(start));
+        calculateDurationAndCheckResult(start, "shell");
     }
 
     /**
@@ -121,7 +141,7 @@ class SortTest {
                 ArrayUtil.swap(data, i, lowIdx);
             }
         }
-        Console.log("select sort used times: " + duration(start));
+        calculateDurationAndCheckResult(start, "select");
     }
 
     /**
@@ -130,7 +150,7 @@ class SortTest {
     private void quickSort() {
         long start = System.currentTimeMillis();
         quickSortHelper(data, 0, data.length - 1);
-        Console.log("quick sort used times: " + duration(start));
+        calculateDurationAndCheckResult(start, "quick");
     }
 
     private void quickSortHelper(int[] data, int start, int end) {
@@ -180,7 +200,7 @@ class SortTest {
             }
             data[j + 1] = curr;
         }
-        Console.log("insert sort used times: " + duration(start));
+        calculateDurationAndCheckResult(start, "insert");
     }
 
     /**
@@ -197,7 +217,7 @@ class SortTest {
                 }
             }
         }
-        Console.log("bubble sort used times: " + duration(start));
+        calculateDurationAndCheckResult(start, "bubble");
     }
 
     /**
@@ -214,16 +234,16 @@ class SortTest {
                 }
             }
         }
-        Console.log("ordinary sort used times: " + duration(start));
+        calculateDurationAndCheckResult(start, "ordinary");
     }
 
     /**
      * 格式化运行时长
      */
-    private String duration(long start) {
+    private void calculateDurationAndCheckResult(long start, String sortName) {
         long diff = System.currentTimeMillis() - start;
         checkSortedResult();
-        return (diff / 1000) + "." + (diff % 1000) + " s";
+        queue.offer(new Pair<>(sortName, diff));
     }
 
     /**
