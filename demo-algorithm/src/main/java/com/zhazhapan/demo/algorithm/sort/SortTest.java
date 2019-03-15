@@ -15,7 +15,7 @@ import java.util.Queue;
  **/
 class SortTest {
 
-    private int[] data = new int[10000000];
+    private int[] data = new int[1000000];
 
     private Queue<Pair<String, Long>> queue = new PriorityQueue<>(Comparator.comparing(Pair::getValue));
 
@@ -52,6 +52,9 @@ class SortTest {
         }
     }
 
+    /**
+     * 堆排序
+     */
     private void heapSort() {
         long start = System.currentTimeMillis();
         // 将待排序的序列构建成一个大顶堆
