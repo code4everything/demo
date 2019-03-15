@@ -15,7 +15,7 @@ import java.util.Queue;
  **/
 class SortTest {
 
-    private int[] data = new int[100000];
+    private int[] data = new int[10000000];
 
     private Queue<Pair<String, Long>> queue = new PriorityQueue<>(Comparator.comparing(Pair::getValue));
 
@@ -68,6 +68,9 @@ class SortTest {
         calculateDurationAndCheckResult(start, "heap");
     }
 
+    /**
+     * 堆化节点
+     */
     private void heapSortHelper(int[] data, int i, int n) {
         int child;
         int father;
