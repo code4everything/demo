@@ -17,6 +17,43 @@ public class Solution {
 
     private final char nine = '9';
 
+    public int myAtoi(String str) {
+        if (str.isEmpty()) {
+            return 0;
+        }
+        long res = 0;
+        int i = 0;
+        char[] chars = str.toCharArray();
+        for (; i < chars.length; ) {
+            if (chars[i] == ' ') {
+                i++;
+            } else {
+                break;
+            }
+        }
+        if (i == chars.length) {
+            return 0;
+        }
+        boolean negative = false;
+        if (chars[i] == '+' || chars[i] == '-') {
+            negative = chars[i++] == '-';
+        }
+        for (; i < chars.length; i++) {
+            int num = chars[i] - '0';
+            if (num < 0 || num > 9) {
+                break;
+            }
+            res = res * 10 + num;
+            if (negative && res > Integer.MAX_VALUE) {
+                return Integer.MIN_VALUE;
+            }
+            if (!negative && res >= Integer.MAX_VALUE) {
+                return Integer.MAX_VALUE;
+            }
+        }
+        return (int) (negative ? -res : res);
+    }
+
     public boolean isPalindrome(String s) {
         char[] chars = s.toLowerCase().toCharArray();
         for (int i = 0, j = chars.length - 1; i < j; i++, j--) {
