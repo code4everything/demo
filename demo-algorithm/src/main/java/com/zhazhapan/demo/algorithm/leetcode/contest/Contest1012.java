@@ -9,8 +9,8 @@ public class Contest1012 {
     public int bitwiseComplement(int n) {
         int bit = 1;
         int nc = n;
-        while (nc > 1 || nc < -1) {
-            nc >>>= 1;
+        while (nc > 1) {
+            nc >>= 1;
             bit = (bit << 1) + 1;
         }
         return n ^ bit;
