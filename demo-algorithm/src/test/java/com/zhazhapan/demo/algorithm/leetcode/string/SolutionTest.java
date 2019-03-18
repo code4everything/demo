@@ -27,4 +27,9 @@ public class SolutionTest {
         assert solution.myAtoi("+23-442") == 23;
         assert 0 == solution.myAtoi("      ");
     }
+
+    @Test
+    public void countAndSay() {
+        System.out.println(solution.countAndSay(6));
+    }
 }

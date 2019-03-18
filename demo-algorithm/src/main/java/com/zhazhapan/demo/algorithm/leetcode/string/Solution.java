@@ -17,6 +17,26 @@ public class Solution {
 
     private final char nine = '9';
 
+    public String countAndSay(int n) {
+        char[] chars;
+        StringBuilder builder = new StringBuilder("1");
+        for (int i = 1; i < n; i++) {
+            chars = builder.toString().toCharArray();
+            builder.delete(0, chars.length);
+            int cnt = 1;
+            for (int j = 1; j < chars.length; j++) {
+                if (chars[j] == chars[j - 1]) {
+                    cnt++;
+                } else {
+                    builder.append(cnt).append(chars[j - 1]);
+                    cnt = 1;
+                }
+            }
+            builder.append(cnt).append(chars[chars.length - 1]);
+        }
+        return builder.toString();
+    }
+
     public int myAtoi(String str) {
         if (str.isEmpty()) {
             return 0;
