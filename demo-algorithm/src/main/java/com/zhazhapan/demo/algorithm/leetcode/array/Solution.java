@@ -10,6 +10,17 @@ import java.util.List;
  */
 public class Solution {
 
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int[] tmp = Arrays.copyOf(nums1, m);
+        for (int i = 0, x = 0, y = 0; i < (m + n); i++) {
+            if (y >= n || (x < m && tmp[x] < nums2[y])) {
+                nums1[i] = tmp[x++];
+            } else {
+                nums1[i] = nums2[y++];
+            }
+        }
+    }
+
     public int reverse(int x) {
         int result = 0;
         while (x != 0) {
