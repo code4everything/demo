@@ -10,6 +10,17 @@ import java.util.List;
  */
 public class Solution {
 
+    public int climbStairs(int n) {
+        int curr = 1;
+        int pre = 1;
+        for (int i = 1; i < n; i++) {
+            int tmp = curr;
+            curr += pre;
+            pre = tmp;
+        }
+        return curr;
+    }
+
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         int[] tmp = Arrays.copyOf(nums1, m);
         for (int i = 0, x = 0, y = 0; i < (m + n); i++) {

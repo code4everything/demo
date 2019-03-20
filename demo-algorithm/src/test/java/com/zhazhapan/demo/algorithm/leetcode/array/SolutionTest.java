@@ -144,4 +144,9 @@ public class SolutionTest {
         solution.rotate(matrix);
         Console.log(matrix);
     }
+
+    @Test
+    public void climbStairs() {
+        System.out.println(solution.climbStairs(29));
+    }
 }
