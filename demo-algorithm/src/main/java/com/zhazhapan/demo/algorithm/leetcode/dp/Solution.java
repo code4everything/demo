@@ -6,6 +6,16 @@ package com.zhazhapan.demo.algorithm.leetcode.dp;
  **/
 public class Solution {
 
+    public int maxSubArray(int[] nums) {
+        int max = nums[0];
+        int sum = max;
+        for (int i = 1; i < nums.length; i++) {
+            sum = sum < 0 ? nums[i] : sum + nums[i];
+            max = Math.max(max, sum);
+        }
+        return max;
+    }
+
     public int maxProfit(int[] prices) {
         int maxProfit = 0;
         int maxPrice = 0;
