@@ -6,6 +6,23 @@ package com.zhazhapan.demo.algorithm.leetcode.dp;
  **/
 public class Solution {
 
+    public int rob(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        int pre = nums[0];
+        if (nums.length == 1) {
+            return pre;
+        }
+        int curr = Math.max(nums[0], nums[1]);
+        for (int i = 2; i < nums.length; i++) {
+            int tmp = curr;
+            curr = Math.max(nums[i] + pre, curr);
+            pre = tmp;
+        }
+        return curr;
+    }
+
     public int maxSubArray(int[] nums) {
         int max = nums[0];
         int sum = max;
