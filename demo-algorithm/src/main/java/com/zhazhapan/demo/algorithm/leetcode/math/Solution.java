@@ -9,6 +9,31 @@ import java.util.List;
  **/
 public class Solution {
 
+    public int countPrimes(int n) {
+        if (n <= 2) {
+            return 0;
+        }
+        int cnt = 1;
+        for (int i = 3; i < n; i++) {
+            if (isPreme(i)) {
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+
+    private boolean isPreme(int num) {
+        if ((num & 1) == 1) {
+            for (int i = 2; i * i <= num; i++) {
+                if (num % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
     public List<String> fizzBuzz(int n) {
         final String s1 = "Fizz";
         final String s2 = "Buzz";
