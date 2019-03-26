@@ -1,13 +1,44 @@
 package com.zhazhapan.demo.algorithm.leetcode.math;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author pantao
  * @since 2019/3/25
  **/
 public class Solution {
+
+    private final Map<Character, Integer> romanMap = new HashMap<>(8);
+
+    {
+        romanMap.put('I', 1);
+        romanMap.put('V', 5);
+        romanMap.put('X', 10);
+        romanMap.put('L', 50);
+        romanMap.put('C', 100);
+        romanMap.put('D', 500);
+        romanMap.put('M', 1000);
+    }
+
+    public int romanToInt(String s) {
+        char[] chars = s.toCharArray();
+        int num = 0;
+        int last = 0;
+        int curr;
+        for (int i = chars.length - 1; i >= 0; i--) {
+            curr = romanMap.get(chars[i]);
+            if (curr < last) {
+                num -= curr;
+            } else {
+                num += curr;
+            }
+            last = curr;
+        }
+        return num;
+    }
 
     public boolean isPowerOfThree(int n) {
         if (n < 1) {

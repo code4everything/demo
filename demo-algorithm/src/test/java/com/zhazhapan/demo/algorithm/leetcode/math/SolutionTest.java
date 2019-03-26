@@ -14,4 +14,13 @@ public class SolutionTest {
         assert solution.isPowerOfThree(1);
         assert !solution.isPowerOfThree(2147483647);
     }
+
+    @Test
+    public void romanToInt() {
+        assert 3 == solution.romanToInt("III");
+        assert 4 == solution.romanToInt("IV");
+        assert 9 == solution.romanToInt("IX");
+        assert 58 == solution.romanToInt("LVIII");
+        assert 1994 == solution.romanToInt("MCMXCIV");
+    }
 }
