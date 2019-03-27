@@ -23,6 +23,22 @@ public class Solution {
         romanMap.put('M', 1000);
     }
 
+    public int hammingWeight(int n) {
+        int cnt = 0;
+        int base = 1;
+        if (n < 0) {
+            n ^= (1 << 31);
+            cnt = 1;
+        }
+        while (base <= n && base > 0) {
+            if (base == (n & base)) {
+                cnt++;
+            }
+            base <<= 1;
+        }
+        return cnt;
+    }
+
     public int romanToInt(String s) {
         char[] chars = s.toCharArray();
         int num = 0;
