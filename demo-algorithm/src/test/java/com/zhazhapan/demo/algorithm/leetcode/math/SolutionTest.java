@@ -1,5 +1,6 @@
 package com.zhazhapan.demo.algorithm.leetcode.math;
 
+import cn.hutool.core.util.RandomUtil;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -31,8 +32,11 @@ public class SolutionTest {
 
     @Test
     public void hammingWeight() {
-        for (int i = Integer.MIN_VALUE; i <= Integer.MAX_VALUE; i++) {
+        int random = 0;
+        for (int i = Integer.MIN_VALUE; Integer.MAX_VALUE - random > i; i += random) {
+            System.out.println(i);
             assert Integer.bitCount(i) == solution.hammingWeight(i);
+            random = RandomUtil.randomInt(0, 1_0000_0000);
         }
     }
 }
