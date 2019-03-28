@@ -23,6 +23,20 @@ public class Solution {
         romanMap.put('M', 1000);
     }
 
+    public int reverseBits(int n) {
+        int num = 0;
+        for (int i = 0; i < 32; i++) {
+            int bit = n & 1;
+            num = (num << 1) + bit;
+            n >>= 1;
+        }
+        return num;
+    }
+
+    public int hammingDistance(int x, int y) {
+        return Integer.bitCount(x ^ y);
+    }
+
     public int hammingWeight(int n) {
         int cnt = 0;
         int base = 1;
