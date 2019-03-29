@@ -23,11 +23,20 @@ public class Solution {
         romanMap.put('M', 1000);
     }
 
+    public int missingNumber(int[] nums) {
+        int sum = (1 + nums.length) * nums.length / 2;
+        int numSum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            numSum += nums[i];
+        }
+        return sum - numSum;
+    }
+
     public int reverseBits(int n) {
         int num = 0;
         for (int i = 0; i < 32; i++) {
             int bit = n & 1;
-            num = (num << 1) + bit;
+            num = (num << 1) | bit;
             n >>= 1;
         }
         return num;
