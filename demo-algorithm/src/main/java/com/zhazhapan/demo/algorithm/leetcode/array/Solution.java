@@ -1,14 +1,26 @@
 package com.zhazhapan.demo.algorithm.leetcode.array;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author pantao
  * @since 2019-01-21
  */
 public class Solution {
+
+    public int majorityElement(int[] nums) {
+        int least = nums.length / 2;
+        Map<Integer, Integer> times = new HashMap<>(least + 1);
+        for (int i = 0; i < nums.length; i++) {
+            int num = nums[i];
+            Integer time = times.getOrDefault(num, 0) + 1;
+            if (time > least) {
+                return num;
+            }
+            times.put(num, time);
+        }
+        return -1;
+    }
 
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         int[] tmp = Arrays.copyOf(nums1, m);
