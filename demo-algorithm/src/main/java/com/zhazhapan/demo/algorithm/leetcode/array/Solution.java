@@ -8,6 +8,25 @@ import java.util.*;
  */
 public class Solution {
 
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if (matrix.length == 0) {
+            return false;
+        }
+        int i = 0;
+        int j = matrix[0].length - 1;
+        while (j >= 0 && i < matrix.length) {
+            int val = matrix[i][j];
+            if (val == target) {
+                return true;
+            } else if (val > target) {
+                j--;
+            } else {
+                i++;
+            }
+        }
+        return false;
+    }
+
     public int majorityElement(int[] nums) {
         int least = nums.length / 2;
         Map<Integer, Integer> times = new HashMap<>(least + 1);
