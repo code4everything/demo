@@ -3,6 +3,7 @@ package com.zhazhapan.demo.algorithm.leetcode.string;
 import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
 import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +42,36 @@ public class Solution {
             }
         }
         return maxLen;
+    }
+
+    @LeetCode(id = 140, difficulty = Difficulty.HARD, title = "单词拆分 II")
+    public List<String> wordBreak2(String s, List<String> wordDict) {
+        List<String> result = new ArrayList<>();
+        wordBreakHelper(s, 0, 1, wordDict, result, null, 1);
+        return result;
+    }
+
+    private void wordBreakHelper(String s, int start, int end, List<String> dict, List<String> result, int[] splits,
+                                 int size) {
+        if (end > s.length()) {
+            return;
+        }
+        if (dict.contains(s.substring(start, end))) {
+            if (end == s.length()) {
+                String sep = "";
+                StringBuilder builder = new StringBuilder();
+                for (int i = 1; i < size; i++) {
+                    builder.append(sep).append(s, splits[i - 1], splits[i]);
+                    sep = " ";
+                }
+                result.add(builder.append(sep).append(s, start, end).toString());
+            } else {
+                int[] copy = splits == null ? new int[s.length()] : splits.clone();
+                copy[size] = end;
+                wordBreakHelper(s, end, end + 1, dict, result, copy, size + 1);
+            }
+        }
+        wordBreakHelper(s, start, end + 1, dict, result, splits, size);
     }
 
     @LeetCode(id = 139, title = "单词拆分", difficulty = Difficulty.MEDIUM, important = true, selfResolved = false)

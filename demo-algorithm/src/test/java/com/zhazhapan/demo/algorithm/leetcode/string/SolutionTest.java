@@ -1,5 +1,6 @@
 package com.zhazhapan.demo.algorithm.leetcode.string;
 
+import cn.hutool.core.lang.Console;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 
@@ -39,5 +40,13 @@ public class SolutionTest {
         assert solution.wordBreak("leetcode", Lists.newArrayList("leet", "code"));
         assert solution.wordBreak("applepenapple", Lists.newArrayList("apple", "pen"));
         assert !solution.wordBreak("catsandog", Lists.newArrayList("cats", "dog", "sand", "and", "cat"));
+    }
+
+    @Test
+    public void wordBreak2() {
+        Console.log(solution.wordBreak2("catsanddog", Lists.newArrayList("cat", "cats", "and", "sand", "dog")));
+        Console.log(solution.wordBreak2("pineapplepenapple", Lists.newArrayList("apple", "pen", "applepen", "pine",
+                "pineapple")));
+        Console.log(solution.wordBreak2("catsandog", Lists.newArrayList("cats", "dog", "sand", "and", "cat")));
     }
 }
