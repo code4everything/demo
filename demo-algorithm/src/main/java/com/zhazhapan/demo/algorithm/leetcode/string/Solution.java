@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.string;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.LeetCodeDifficulty;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,46 +21,24 @@ public class Solution {
 
     private final char nine = '9';
 
+    @LeetCode(problemId = 139, problemTitle = "单词拆分", difficulty = LeetCodeDifficulty.MEDIUM, important = true)
     public boolean wordBreak(String s, List<String> wordDict) {
-        return wordBreakHelper(s.toCharArray(), 0, s.length() - 1, wordDict);
-    }
-
-    private boolean wordBreakHelper(char[] str, int low, int high, List<String> wordDict) {
-        if (low > high) {
-            return true;
+        if (s == null || s.length() == 0) {
+            return false;
         }
-        for (int i = 0; i < wordDict.size(); i++) {
-            String word = wordDict.get(i);
-            int idx = indexOf(str, word.toCharArray(), low, high);
-            int start = idx + word.length();
-            if (idx >= 0) {
-                if (wordBreakHelper(str, low, idx - 1, wordDict) && wordBreakHelper(str, start, high, wordDict)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    private int indexOf(char[] str, char[] sub, int low, int high) {
-        while (low <= high) {
-            int tmp = low;
-            int j = 0;
-            for (; j < sub.length && tmp <= high; ) {
-                if (str[tmp] == sub[j]) {
-                    tmp++;
-                    j++;
-                } else {
-                    low++;
+        boolean[] res = new boolean[s.length() + 1];
+        res[0] = true;
+        for (int i = 0; i < s.length(); i++) {
+            StringBuilder str = new StringBuilder(s.substring(0, i + 1));
+            for (int j = 0; j <= i; j++) {
+                if (res[j] && wordDict.contains(str.toString())) {
+                    res[i + 1] = true;
                     break;
                 }
+                str.deleteCharAt(0);
             }
-            if (j == sub.length) {
-                return low;
-            }
-            break;
         }
-        return -1;
+        return res[s.length()];
     }
 
     public String countAndSay(int n) {
