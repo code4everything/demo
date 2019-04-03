@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.array;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.*;
 
 /**
@@ -8,6 +11,7 @@ import java.util.*;
  */
 public class Solution {
 
+    @LeetCode(id = 240, title = "搜索二维矩阵 II", difficulty = Difficulty.MEDIUM, resolved = false)
     public boolean searchMatrix(int[][] matrix, int target) {
         if (matrix.length == 0) {
             return false;
@@ -27,6 +31,7 @@ public class Solution {
         return false;
     }
 
+    @LeetCode(id = 169, title = "求众数", difficulty = Difficulty.EASY)
     public int majorityElement(int[] nums) {
         int least = nums.length / 2;
         Map<Integer, Integer> times = new HashMap<>(least + 1);
@@ -41,6 +46,7 @@ public class Solution {
         return -1;
     }
 
+    @LeetCode(id = 88, title = "合并两个有序数组", difficulty = Difficulty.EASY)
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         int[] tmp = Arrays.copyOf(nums1, m);
         for (int i = 0, x = 0, y = 0; i < (m + n); i++) {
@@ -52,6 +58,7 @@ public class Solution {
         }
     }
 
+    @LeetCode(id = 7, title = "整数反转", difficulty = Difficulty.EASY)
     public int reverse(int x) {
         int result = 0;
         while (x != 0) {

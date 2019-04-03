@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.math;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +35,7 @@ public class Solution {
         return sum - numSum;
     }
 
+    @LeetCode(id = 190, title = "颠倒二进制位", difficulty = Difficulty.EASY)
     public int reverseBits(int n) {
         int num = 0;
         for (int i = 0; i < 32; i++) {

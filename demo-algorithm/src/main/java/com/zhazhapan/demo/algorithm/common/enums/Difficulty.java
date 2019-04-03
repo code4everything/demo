@@ -4,7 +4,7 @@ package com.zhazhapan.demo.algorithm.common.enums;
  * @author pantao
  * @since 2019/4/3
  **/
-public enum LeetCodeDifficulty {
+public enum Difficulty {
 
     /**
      * 简单

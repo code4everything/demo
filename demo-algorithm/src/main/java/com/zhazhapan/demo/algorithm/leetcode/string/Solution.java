@@ -1,7 +1,7 @@
 package com.zhazhapan.demo.algorithm.leetcode.string;
 
 import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
-import com.zhazhapan.demo.algorithm.common.enums.LeetCodeDifficulty;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +21,7 @@ public class Solution {
 
     private final char nine = '9';
 
-    @LeetCode(problemId = 139, problemTitle = "单词拆分", difficulty = LeetCodeDifficulty.MEDIUM, important = true)
+    @LeetCode(id = 139, title = "单词拆分", difficulty = Difficulty.MEDIUM, important = true, resolved = false)
     public boolean wordBreak(String s, List<String> wordDict) {
         if (s == null || s.length() == 0) {
             return false;

@@ -1,6 +1,6 @@
 package com.zhazhapan.demo.algorithm.common.annotation;
 
-import com.zhazhapan.demo.algorithm.common.enums.LeetCodeDifficulty;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
 
 import java.lang.annotation.*;
 
@@ -13,15 +13,18 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface LeetCode {
 
-    int problemId();
+    int id();
 
-    String problemTitle();
+    String title();
 
-    LeetCodeDifficulty difficulty();
+    Difficulty difficulty();
 
     String description() default "";
 
     boolean important() default false;
 
+    /**
+     * 自己是否解决了该问题，在没有看答案的情况下
+     */
     boolean resolved() default true;
 }
