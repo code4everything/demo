@@ -1,5 +1,6 @@
 package com.zhazhapan.demo.algorithm.leetcode.string;
 
+import com.google.common.collect.Lists;
 import org.junit.Test;
 
 public class SolutionTest {
@@ -31,5 +32,12 @@ public class SolutionTest {
     @Test
     public void countAndSay() {
         System.out.println(solution.countAndSay(6));
+    }
+
+    @Test
+    public void wordBreak() {
+        assert solution.wordBreak("leetcode", Lists.newArrayList("leet", "code"));
+        assert solution.wordBreak("applepenapple", Lists.newArrayList("apple", "pen"));
+        assert !solution.wordBreak("catsandog", Lists.newArrayList("cats", "dog", "sand", "and", "cat"));
     }
 }

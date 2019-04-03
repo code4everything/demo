@@ -1,6 +1,7 @@
 package com.zhazhapan.demo.algorithm.leetcode.string;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,6 +17,48 @@ public class Solution {
     private final char zero = '0';
 
     private final char nine = '9';
+
+    public boolean wordBreak(String s, List<String> wordDict) {
+        return wordBreakHelper(s.toCharArray(), 0, s.length() - 1, wordDict);
+    }
+
+    private boolean wordBreakHelper(char[] str, int low, int high, List<String> wordDict) {
+        if (low > high) {
+            return true;
+        }
+        for (int i = 0; i < wordDict.size(); i++) {
+            String word = wordDict.get(i);
+            int idx = indexOf(str, word.toCharArray(), low, high);
+            int start = idx + word.length();
+            if (idx >= 0) {
+                if (wordBreakHelper(str, low, idx - 1, wordDict) && wordBreakHelper(str, start, high, wordDict)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private int indexOf(char[] str, char[] sub, int low, int high) {
+        while (low <= high) {
+            int tmp = low;
+            int j = 0;
+            for (; j < sub.length && tmp <= high; ) {
+                if (str[tmp] == sub[j]) {
+                    tmp++;
+                    j++;
+                } else {
+                    low++;
+                    break;
+                }
+            }
+            if (j == sub.length) {
+                return low;
+            }
+            break;
+        }
+        return -1;
+    }
 
     public String countAndSay(int n) {
         char[] chars;
