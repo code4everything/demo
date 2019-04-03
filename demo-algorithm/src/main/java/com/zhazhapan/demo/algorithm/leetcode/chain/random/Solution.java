@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.chain.random;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,6 +12,7 @@ import java.util.Map;
  */
 public class Solution {
 
+    @LeetCode(id = 138, title = "复制带随机指针的链表", difficulty = Difficulty.MEDIUM)
     public Node copyRandomList(Node head) {
         Node root = new Node();
         Node curr = root;

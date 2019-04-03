@@ -9,7 +9,7 @@ import java.lang.annotation.*;
  * @since 2019/4/3
  **/
 @Documented
-@Target(ElementType.METHOD)
+@Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface LeetCode {
 
@@ -26,5 +26,5 @@ public @interface LeetCode {
     /**
      * 自己是否解决了该问题，在没有看答案的情况下
      */
-    boolean resolved() default true;
+    boolean selfResolved() default true;
 }

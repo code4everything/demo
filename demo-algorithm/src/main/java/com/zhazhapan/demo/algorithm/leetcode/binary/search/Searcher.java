@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.binary.search;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -67,6 +70,7 @@ public class Searcher {
         return left;
     }
 
+    @LeetCode(id = 4, title = "寻找两个有序数组的中位数", difficulty = Difficulty.HARD)
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int[] nums;
         if (nums1 == null || nums1.length == 0) {
@@ -190,6 +194,7 @@ public class Searcher {
         return false;
     }
 
+    @LeetCode(id = 50, title = "Pow(x, n)", difficulty = Difficulty.MEDIUM)
     public double myPow(double x, int n) {
         if (x == 1 || n == 0) {
             return 1;
@@ -227,6 +232,7 @@ public class Searcher {
         return res;
     }
 
+    @LeetCode(id = 34, title = "在排序数组中查找元素的第一个和最后一个位置", difficulty = Difficulty.MEDIUM)
     public int[] searchRange(int[] nums, int target) {
         int[] res = new int[]{-1, -1};
         if (nums == null || nums.length == 0) {
@@ -297,6 +303,7 @@ public class Searcher {
         return -1;
     }
 
+    @LeetCode(id = 69, title = "x 的平方根", difficulty = Difficulty.EASY)
     public int mySqrt(int x) {
         if (x == 0) {
             return 0;

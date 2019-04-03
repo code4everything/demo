@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.dp;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 /**
  * @author pantao
  * @since 2019/3/21
@@ -23,6 +26,7 @@ public class Solution {
         return curr;
     }
 
+    @LeetCode(id = 53, title = "最大子序和", difficulty = Difficulty.EASY)
     public int maxSubArray(int[] nums) {
         int max = nums[0];
         int sum = max;
@@ -33,6 +37,7 @@ public class Solution {
         return max;
     }
 
+    @LeetCode(id = 121, title = "买卖股票的最佳时机", difficulty = Difficulty.EASY)
     public int maxProfit(int[] prices) {
         int maxProfit = 0;
         int maxPrice = 0;
@@ -43,6 +48,7 @@ public class Solution {
         return maxProfit;
     }
 
+    @LeetCode(id = 70, title = "爬楼梯", difficulty = Difficulty.EASY)
     public int climbStairs(int n) {
         int curr = 1;
         int pre = 1;

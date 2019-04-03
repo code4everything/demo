@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.stack;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -107,6 +110,7 @@ public class Solution {
         }
     }
 
+    @LeetCode(id = 133, title = "克隆图", difficulty = Difficulty.MEDIUM)
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
         if (node == null) {
             return null;
@@ -118,6 +122,7 @@ public class Solution {
         return graphNode;
     }
 
+    @LeetCode(id = 150, title = "逆波兰表达式求值", difficulty = Difficulty.MEDIUM)
     public int evalRPN(String[] tokens) {
         int len = tokens.length;
         int[] stack = new int[len];
@@ -162,6 +167,7 @@ public class Solution {
         return res;
     }
 
+    @LeetCode(id = 20, title = "有效的括号", difficulty = Difficulty.EASY)
     public boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();
         char[] chars = s.toCharArray();

@@ -1,5 +1,7 @@
 package com.zhazhapan.demo.algorithm.leetcode.hash;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
 import com.zhazhapan.demo.algorithm.leetcode.model.TreeNode;
 
 import java.util.*;
@@ -9,6 +11,27 @@ import java.util.*;
  * @since 2019/2/26
  **/
 public class Solution {
+
+    @LeetCode(id = 36, title = "有效的数独", difficulty = Difficulty.MEDIUM)
+    public boolean isValidSudoku(char[][] board) {
+        for (int i = 0; i < board.length; i++) {
+            HashSet<Character> rows = new HashSet<>();
+            HashSet<Character> cols = new HashSet<>();
+            HashSet<Character> cube = new HashSet<>();
+            for (int j = 0; j < board[0].length; j++) {
+                if (board[i][j] != '.' && !rows.add(board[i][j])) {
+                    return false;
+                }
+                if (board[j][i] != '.' && !cols.add(board[j][i])) {
+                    return false;
+                }
+                if (board[(i / 3) * 3 + j / 3][(i % 3) * 3 + j % 3] != '.' && !cube.add(board[(i / 3) * 3 + j / 3][(i % 3) * 3 + j % 3])) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
     public List<Integer> topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>(nums.length);
@@ -81,6 +104,7 @@ public class Solution {
         return str;
     }
 
+    @LeetCode(id = 49, title = "字母异位词分组", difficulty = Difficulty.MEDIUM)
     public List<List<String>> groupAnagrams(String[] strs) {
         int len = strs.length;
         Map<String, List<String>> map = new HashMap<>(len);
@@ -175,6 +199,7 @@ public class Solution {
         return t.equals(new String(temp));
     }
 
+    @LeetCode(id = 1, title = "两数之和", difficulty = Difficulty.EASY)
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
@@ -211,6 +236,7 @@ public class Solution {
         return false;
     }
 
+    @LeetCode(id = 136, title = "只出现一次的数字", difficulty = Difficulty.EASY)
     public int singleNumber(int[] nums) {
         int single = 0;
         for (int i = 0; i < nums.length; i++) {

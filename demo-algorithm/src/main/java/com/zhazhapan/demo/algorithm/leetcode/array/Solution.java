@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class Solution {
 
-    @LeetCode(id = 240, title = "搜索二维矩阵 II", difficulty = Difficulty.MEDIUM, resolved = false)
+    @LeetCode(id = 240, title = "搜索二维矩阵 II", difficulty = Difficulty.MEDIUM, selfResolved = false)
     public boolean searchMatrix(int[][] matrix, int target) {
         if (matrix.length == 0) {
             return false;
@@ -71,6 +71,7 @@ public class Solution {
         return result;
     }
 
+    @LeetCode(id = 48, title = "旋转图像", difficulty = Difficulty.MEDIUM)
     public void rotate(int[][] matrix) {
         int yLen = matrix.length;
         if (yLen == 0) {
@@ -88,6 +89,7 @@ public class Solution {
         }
     }
 
+    @LeetCode(id = 122, title = "买卖股票的最佳时机 II", difficulty = Difficulty.EASY)
     public int maxProfit(int[] prices) {
         int profit = 0;
         int start = Integer.MAX_VALUE;
@@ -106,6 +108,7 @@ public class Solution {
         return profit + currProfit;
     }
 
+    @LeetCode(id = 283, title = "移动零", difficulty = Difficulty.EASY)
     public void moveZeroes(int[] nums) {
         int k = 0;
         for (int num : nums) {
@@ -118,6 +121,7 @@ public class Solution {
         }
     }
 
+    @LeetCode(id = 26, title = "删除排序数组中的重复项", difficulty = Difficulty.EASY)
     public int removeDuplicates(int[] nums) {
         if (nums.length < 1) {
             return 0;
@@ -133,6 +137,7 @@ public class Solution {
         return len;
     }
 
+    @LeetCode(id = 557, title = "反转字符串中的单词 III", difficulty = Difficulty.EASY)
     public String reverseWords2(String s) {
         char[] cs = s.toCharArray();
         int start = 0;
@@ -153,6 +158,7 @@ public class Solution {
         return String.valueOf(cs);
     }
 
+    @LeetCode(id = 151, title = "翻转字符串里的单词", difficulty = Difficulty.MEDIUM)
     public String reverseWords(String s) {
         String[] strings = s.trim().split("\\s+");
         if (strings.length < 1) {
@@ -165,6 +171,7 @@ public class Solution {
         return builder.toString().trim();
     }
 
+    @LeetCode(id = 119, title = "杨辉三角 II", difficulty = Difficulty.EASY)
     public List<Integer> getRow(int rowIndex) {
         List<Integer> preList = null;
         for (int i = 1; i < rowIndex + 2; i++) {
@@ -182,6 +189,7 @@ public class Solution {
         return preList;
     }
 
+    @LeetCode(id = 189, title = "旋转数组", difficulty = Difficulty.EASY)
     public void rotate(int[] nums, int k) {
         if (nums.length < 2 || k == 0) {
             return;
@@ -245,6 +253,7 @@ public class Solution {
         }
     }
 
+    @LeetCode(id = 14, title = "最长公共前缀", difficulty = Difficulty.EASY)
     public String longestCommonPrefix(String[] strs) {
         if (strs.length == 0) {
             return "";
@@ -261,6 +270,7 @@ public class Solution {
         return prefix;
     }
 
+    @LeetCode(id = 67, title = "二进制求和", difficulty = Difficulty.EASY)
     public String addBinary(String a, String b) {
         int al = a.length();
         int bl = b.length();
@@ -281,6 +291,7 @@ public class Solution {
         return String.valueOf(ccs, 1, ccs.length - 1);
     }
 
+    @LeetCode(id = 118, title = "杨辉三角", difficulty = Difficulty.EASY)
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> lists = new ArrayList<>();
         List<Integer> preList = null;
@@ -300,6 +311,7 @@ public class Solution {
         return lists;
     }
 
+    @LeetCode(id = 54, title = "螺旋矩阵", difficulty = Difficulty.MEDIUM)
     public List<Integer> spiralOrder(int[][] matrix) {
         int m = matrix.length;
         if (m == 0) {
@@ -377,6 +389,7 @@ public class Solution {
         return res;
     }
 
+    @LeetCode(id = 66, title = "加一", difficulty = Difficulty.EASY)
     public int[] plusOne(int[] digits) {
         for (int i = digits.length - 1; i > 0; i--) {
             if (digits[i] == 9) {

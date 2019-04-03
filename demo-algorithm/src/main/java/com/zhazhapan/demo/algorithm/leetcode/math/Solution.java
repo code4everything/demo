@@ -66,6 +66,7 @@ public class Solution {
         return cnt;
     }
 
+    @LeetCode(id = 13, title = "罗马数字转整数", difficulty = Difficulty.EASY)
     public int romanToInt(String s) {
         char[] chars = s.toCharArray();
         int num = 0;

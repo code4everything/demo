@@ -1,5 +1,7 @@
 package com.zhazhapan.demo.algorithm.leetcode.tree;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
 import com.zhazhapan.demo.algorithm.leetcode.model.TreeNode;
 
 import java.util.SortedSet;
@@ -11,6 +13,7 @@ import java.util.TreeSet;
  */
 public class BinarySearchTree {
 
+    @LeetCode(id = 108, title = "将有序数组转换为二叉搜索树", difficulty = Difficulty.EASY)
     public TreeNode sortedArrayToBST(int[] nums) {
         return nums == null || nums.length == 0 ? null : sortedArrayToBST(nums, 0, nums.length - 1);
     }
@@ -27,6 +30,7 @@ public class BinarySearchTree {
         return root;
     }
 
+    @LeetCode(id = 110, title = "平衡二叉树", difficulty = Difficulty.EASY)
     public boolean isBalanced(TreeNode root) {
         return depth(root) >= 0;
     }
@@ -141,6 +145,7 @@ public class BinarySearchTree {
         return null;
     }
 
+    @LeetCode(id = 98, title = "验证二叉搜索树", difficulty = Difficulty.MEDIUM)
     public boolean isValidBST(TreeNode root) {
         return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }

@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.chain;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -11,6 +14,7 @@ import java.util.Set;
  **/
 public class Solution {
 
+    @LeetCode(id = 61, title = "旋转链表", difficulty = Difficulty.MEDIUM)
     public ListNode rotateRight(ListNode head, int k) {
         if (head == null) {
             return null;
@@ -67,6 +71,7 @@ public class Solution {
         }
     }
 
+    @LeetCode(id = 2, title = "两数相加", difficulty = Difficulty.MEDIUM)
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode head = null;
         ListNode node = null;
@@ -94,6 +99,7 @@ public class Solution {
         return head;
     }
 
+    @LeetCode(id = 21, title = "合并两个有序链表", difficulty = Difficulty.EASY)
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if (l1 == null) {
             return l2;
@@ -151,6 +157,7 @@ public class Solution {
         return head;
     }
 
+    @LeetCode(id = 27, title = "移除元素", difficulty = Difficulty.EASY)
     public ListNode removeElements(ListNode head, int val) {
         ListNode node = head;
         ListNode pre = null;
@@ -184,6 +191,7 @@ public class Solution {
         return head;
     }
 
+    @LeetCode(id = 19, title = "删除链表的倒数第N个节点", difficulty = Difficulty.MEDIUM)
     public ListNode removeNthFromEnd(ListNode head, int n) {
         List<ListNode> nodes = new ArrayList<>();
         int len = 0;
@@ -233,6 +241,7 @@ public class Solution {
         return len;
     }
 
+    @LeetCode(id = 142, title = "环形链表 II", difficulty = Difficulty.MEDIUM)
     public ListNode detectCycle(ListNode head) {
         if (head == null) {
             return null;
@@ -250,6 +259,7 @@ public class Solution {
         return null;
     }
 
+    @LeetCode(id = 141, title = "环形链表", difficulty = Difficulty.EASY)
     public boolean hasCycle(ListNode head) {
         if (head == null || head.next == null) {
             return false;

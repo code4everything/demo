@@ -21,7 +21,29 @@ public class Solution {
 
     private final char nine = '9';
 
-    @LeetCode(id = 139, title = "单词拆分", difficulty = Difficulty.MEDIUM, important = true, resolved = false)
+    @LeetCode(id = 3, title = "无重复字符的最长子串", difficulty = Difficulty.MEDIUM)
+    public int lengthOfLongestSubstring(String s) {
+        if (s == null) {
+            return 0;
+        }
+        if (s.length() == 1) {
+            return 1;
+        }
+        int nowLen = 0;
+        int maxLen = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            int index = s.substring(i - nowLen, i).indexOf(c);
+            if (index < 0) {
+                maxLen = Math.max(maxLen, ++nowLen);
+            } else {
+                nowLen -= index;
+            }
+        }
+        return maxLen;
+    }
+
+    @LeetCode(id = 139, title = "单词拆分", difficulty = Difficulty.MEDIUM, important = true, selfResolved = false)
     public boolean wordBreak(String s, List<String> wordDict) {
         if (s == null || s.length() == 0) {
             return false;
@@ -41,6 +63,7 @@ public class Solution {
         return res[s.length()];
     }
 
+    @LeetCode(id = 38, title = "报数", difficulty = Difficulty.EASY)
     public String countAndSay(int n) {
         char[] chars;
         StringBuilder builder = new StringBuilder("1");
@@ -61,6 +84,7 @@ public class Solution {
         return builder.toString();
     }
 
+    @LeetCode(id = 8, title = "字符串转换整数 (atoi)", difficulty = Difficulty.MEDIUM)
     public int myAtoi(String str) {
         if (str.isEmpty()) {
             return 0;
@@ -98,6 +122,7 @@ public class Solution {
         return (int) (negative ? -res : res);
     }
 
+    @LeetCode(id = 125, title = "验证回文串", difficulty = Difficulty.EASY)
     public boolean isPalindrome(String s) {
         char[] chars = s.toLowerCase().toCharArray();
         for (int i = 0, j = chars.length - 1; i < j; i++, j--) {

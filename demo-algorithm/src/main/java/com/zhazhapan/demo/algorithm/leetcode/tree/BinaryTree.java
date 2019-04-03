@@ -1,5 +1,7 @@
 package com.zhazhapan.demo.algorithm.leetcode.tree;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
 import com.zhazhapan.demo.algorithm.leetcode.model.TreeNode;
 import org.junit.Assert;
 
@@ -191,6 +193,7 @@ public class BinaryTree {
      *
      * @return {@link List}
      */
+    @LeetCode(id = 94, title = "二叉树的中序遍历", difficulty = Difficulty.MEDIUM)
     public List<Integer> inOrderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         if (root != null) {
