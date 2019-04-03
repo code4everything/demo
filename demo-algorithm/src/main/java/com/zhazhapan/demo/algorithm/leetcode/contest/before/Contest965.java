@@ -1,5 +1,7 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.before;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
 import com.zhazhapan.demo.algorithm.leetcode.model.TreeNode;
 
 /**
@@ -8,6 +10,7 @@ import com.zhazhapan.demo.algorithm.leetcode.model.TreeNode;
  **/
 public class Contest965 {
 
+    @LeetCode(id = 965, difficulty = Difficulty.MEDIUM, title = "单值二叉树")
     public boolean isUnivalTree(TreeNode root) {
         if (root == null) {
             return true;

@@ -47,6 +47,7 @@ public class Solution {
         return num;
     }
 
+    @LeetCode(id = 461, difficulty = Difficulty.EASY, title = "汉明距离")
     public int hammingDistance(int x, int y) {
         return Integer.bitCount(x ^ y);
     }

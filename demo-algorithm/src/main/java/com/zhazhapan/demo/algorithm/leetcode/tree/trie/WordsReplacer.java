@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.tree.trie;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.List;
 
 /**
@@ -12,6 +15,7 @@ public class WordsReplacer {
 
     private TrieNode root = new TrieNode();
 
+    @LeetCode(id = 648, difficulty = Difficulty.MEDIUM, title = "单词替换")
     public String replaceWords(List<String> dict, String sentence) {
         for (String s : dict) {
             insert(s);

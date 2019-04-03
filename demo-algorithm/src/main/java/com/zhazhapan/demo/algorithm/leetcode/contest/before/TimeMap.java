@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.before;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +12,7 @@ import java.util.Map;
  * @author pantao
  * @since 2019-01-27
  */
+@LeetCode(id = 981, difficulty = Difficulty.MEDIUM, title = "基于时间的键值存储")
 public class TimeMap {
 
     private final Map<String, List<VTime>> map = new HashMap<>();

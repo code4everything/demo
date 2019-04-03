@@ -35,6 +35,7 @@ public class Solution {
         return 3;
     }
 
+    @LeetCode(id = 752, difficulty = Difficulty.MEDIUM, title = "打开转盘锁")
     public int openLock(String[] deadends, String target) {
         final String defaultLock = "0000";
         Set<String> visited = new HashSet<>();

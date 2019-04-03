@@ -49,6 +49,7 @@ public class Searcher {
         return true;
     }
 
+    @LeetCode(id = 719, difficulty = Difficulty.HARD, title = "找出第 k 小的距离对")
     public int smallestDistancePair(int[] nums, int k) {
         Arrays.sort(nums);
         int left = 0;
@@ -164,6 +165,7 @@ public class Searcher {
         return Arrays.copyOf(nums2, index);
     }
 
+    @LeetCode(id = 744, difficulty = Difficulty.EASY, title = "寻找比目标字母大的最小字母")
     public char nextGreatestLetter(char[] letters, char target) {
         int len = letters.length;
         int start = 0;
@@ -220,6 +222,7 @@ public class Searcher {
         return res;
     }
 
+    @LeetCode(id = 658, difficulty = Difficulty.MEDIUM, title = "找到 K 个最接近的元素")
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
         int left = 0;
         int right = arr.length - k;
@@ -336,6 +339,7 @@ public class Searcher {
         }
     }
 
+    @LeetCode(id = 704, difficulty = Difficulty.EASY, title = "二分查找")
     public int search(int[] nums, int target) {
         int start = 0;
         int end = nums.length - 1;

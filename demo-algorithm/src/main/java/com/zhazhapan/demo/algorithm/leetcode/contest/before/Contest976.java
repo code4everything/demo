@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.before;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.Arrays;
 
 /**
@@ -8,6 +11,7 @@ import java.util.Arrays;
  */
 public class Contest976 {
 
+    @LeetCode(id = 76, difficulty = Difficulty.EASY, title = "三角形的最大周长")
     public int largestPerimeter(int[] a) {
         Arrays.sort(a);
         for (int i = a.length - 1; i >= 2; i--) {

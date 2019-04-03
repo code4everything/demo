@@ -1,11 +1,15 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.before;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 /**
  * @author pantao
  * @since 2018/12/23
  **/
 public class Contest962 {
 
+    @LeetCode(id = 962, difficulty = Difficulty.MEDIUM, title = "最大宽度坡")
     public int maxWidthRamp(int[] a) {
         return maxWidthRamp(a, a.length);
     }

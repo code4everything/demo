@@ -215,6 +215,7 @@ public class Solution {
         return k;
     }
 
+    @LeetCode(id = 485, difficulty = Difficulty.EASY, title = "最大连续1的个数")
     public int findMaxConsecutiveOnes(int[] nums) {
         if (nums.length == 0) {
             return 0;
@@ -235,6 +236,7 @@ public class Solution {
         return max;
     }
 
+    @LeetCode(id = 561, difficulty = Difficulty.EASY, title = "数组拆分 I")
     public int arrayPairSum(int[] nums) {
         Arrays.sort(nums);
         int sum = 0;
@@ -358,6 +360,7 @@ public class Solution {
         return list;
     }
 
+    @LeetCode(id = 498, difficulty = Difficulty.MEDIUM, title = "对角线遍历")
     public int[] findDiagonalOrder(int[][] matrix) {
         int m = matrix.length;
         if (m == 0) {
@@ -412,6 +415,7 @@ public class Solution {
         return digits;
     }
 
+    @LeetCode(id = 747, difficulty = Difficulty.EASY, title = "至少是其他数字两倍的最大数")
     public int dominantIndex(int[] nums) {
         int max = 0;
         int preMax = 0;
@@ -428,6 +432,7 @@ public class Solution {
         return max < (preMax << 1) ? -1 : maxIdx;
     }
 
+    @LeetCode(id = 724, difficulty = Difficulty.EASY, title = "寻找数组的中心索引")
     public int pivotIndex(int[] nums) {
         int sum = 0;
         for (int num : nums) {

@@ -1,9 +1,13 @@
 package com.zhazhapan.demo.algorithm.leetcode.queue;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 /**
  * @author pantao
  * @since 2019/1/28
  **/
+@LeetCode(id = 622, difficulty = Difficulty.MEDIUM, title = "设计循环队列")
 public class MyCircularQueue {
 
     private final int[] queues;

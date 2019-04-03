@@ -1,9 +1,13 @@
 package com.zhazhapan.demo.algorithm.leetcode.chain;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 /**
  * @author pantao
  * @since 2019/2/14
  **/
+@LeetCode(id = 707, difficulty = Difficulty.EASY, title = "设计链表")
 public class MyLinkedList {
 
     private MyNode head;

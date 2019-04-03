@@ -69,6 +69,7 @@ public class BinarySearchTree {
         return false;
     }
 
+    @LeetCode(id = 450, difficulty = Difficulty.MEDIUM, title = "删除二叉搜索树中的节点")
     public TreeNode deleteNode(TreeNode root, int key) {
         if (root == null) {
             return null;
@@ -107,6 +108,7 @@ public class BinarySearchTree {
         return root;
     }
 
+    @LeetCode(id = 701, difficulty = Difficulty.MEDIUM, title = "二叉搜索树中的插入操作")
     public TreeNode insertIntoBST(TreeNode root, int val) {
         TreeNode childNode = new TreeNode(val);
         if (root == null) {
@@ -133,6 +135,7 @@ public class BinarySearchTree {
         return root;
     }
 
+    @LeetCode(id = 700, difficulty = Difficulty.EASY, title = "二叉搜索树中的搜索")
     public TreeNode searchBST(TreeNode root, int val) {
         while (root != null) {
             if (root.val == val) {

@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.tree.trie;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,6 +10,7 @@ import java.util.Map;
  * @author pantao
  * @since 2018-12-24
  */
+@LeetCode(id = 677, difficulty = Difficulty.MEDIUM, title = "键值映射")
 public class MapSum {
 
     private TrieNode root = new TrieNode();

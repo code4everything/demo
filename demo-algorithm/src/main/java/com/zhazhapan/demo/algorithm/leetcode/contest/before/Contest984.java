@@ -1,11 +1,15 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.before;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 /**
  * @author pantao
  * @since 2019-01-27
  */
 public class Contest984 {
 
+    @LeetCode(id = 984, difficulty = Difficulty.MEDIUM, title = "不含 AAA 或 BBB 的字符串")
     public String strWithout3a3b(int a, int b) {
         char[] cs = new char[a + b];
         boolean aWritable = a >= b;

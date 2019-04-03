@@ -15,6 +15,7 @@ public class Solution {
 
     private int count = 0;
 
+    @LeetCode(id = 841, difficulty = Difficulty.MEDIUM, title = "钥匙和房间")
     public boolean canVisitAllRooms(List<List<Integer>> rooms) {
         int len = rooms.size();
         List<Integer> keys = new ArrayList<>(len);
@@ -34,6 +35,7 @@ public class Solution {
         return keys.size() == len;
     }
 
+    @LeetCode(id = 542, difficulty = Difficulty.MEDIUM, title = "01 矩阵")
     public int[][] updateMatrix(int[][] matrix) {
         int xlen = matrix.length;
         for (int i = 0; i < xlen; i++) {
@@ -68,6 +70,7 @@ public class Solution {
         return 1 + temp;
     }
 
+    @LeetCode(id = 733, difficulty = Difficulty.EASY, title = "图像渲染")
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
         int swap = image[sr][sc];
         if (swap == newColor) {
@@ -93,6 +96,7 @@ public class Solution {
         return image;
     }
 
+    @LeetCode(id = 494, difficulty = Difficulty.MEDIUM, title = "目标和")
     public int findTargetSumWays(int[] nums, int S) {
         count = 0;
         calculate(nums, 0, 0, S);
@@ -151,8 +155,7 @@ public class Solution {
         return stack[0];
     }
 
-    ;
-
+    @LeetCode(id = 739, difficulty = Difficulty.MEDIUM, title = "每日温度")
     public int[] dailyTemperatures(int[] t) {
         int[] res = new int[t.length];
         int[] stack = new int[t.length];

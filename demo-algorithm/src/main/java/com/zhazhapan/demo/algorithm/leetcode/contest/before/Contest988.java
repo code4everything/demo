@@ -1,5 +1,7 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.before;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
 import com.zhazhapan.demo.algorithm.leetcode.model.TreeNode;
 
 /**
@@ -10,6 +12,7 @@ public class Contest988 {
 
     private static final char[] CHARS = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 
+    @LeetCode(id = 988, difficulty = Difficulty.MEDIUM, title = "从叶结点开始的最小字符串")
     public String smallestFromLeaf(TreeNode root) {
         if (root == null) {
             return "";

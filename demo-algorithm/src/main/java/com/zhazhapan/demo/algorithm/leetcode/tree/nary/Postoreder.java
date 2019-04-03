@@ -1,5 +1,7 @@
 package com.zhazhapan.demo.algorithm.leetcode.tree.nary;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
 import com.zhazhapan.demo.algorithm.leetcode.model.Node;
 
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ public class Postoreder {
 
     private List<Integer> list = new ArrayList<>();
 
+    @LeetCode(id = 590, difficulty = Difficulty.EASY, title = "N叉树的后序遍历")
     public List<Integer> postorder(Node root) {
         post(root);
         return list;

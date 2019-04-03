@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.before;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +12,7 @@ import java.util.List;
  */
 public class Contest970 {
 
+    @LeetCode(id = 970, difficulty = Difficulty.EASY, title = "强整数")
     public List<Integer> powerfulIntegers(int x, int y, int bound) {
         List<Integer> list = new ArrayList<>();
         for (int i = 2; i <= bound; i++) {

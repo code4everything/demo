@@ -49,6 +49,7 @@ public class Solution {
         return list;
     }
 
+    @LeetCode(id = 454, difficulty = Difficulty.MEDIUM, title = "四数相加 II")
     public int fourSumCount(int[] a, int[] b, int[] c, int[] d) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < a.length; i++) {
@@ -66,6 +67,7 @@ public class Solution {
         return cnt;
     }
 
+    @LeetCode(id = 771, difficulty = Difficulty.EASY, title = "宝石与石头")
     public int numJewelsInStones(String j, String s) {
         boolean[] map = new boolean[128];
         char[] js = j.toCharArray();
@@ -82,6 +84,7 @@ public class Solution {
         return jewels;
     }
 
+    @LeetCode(id = 652, difficulty = Difficulty.MEDIUM, title = "寻找重复的子树")
     public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
         Map<String, Integer> has = new HashMap<>();
         List<TreeNode> duplicated = new ArrayList<>();
@@ -153,6 +156,7 @@ public class Solution {
         return -1;
     }
 
+    @LeetCode(id = 599, difficulty = Difficulty.EASY, title = "两个列表的最小索引总和")
     public String[] findRestaurant(String[] list1, String[] list2) {
         int len1 = list1.length;
         int len2 = list2.length;

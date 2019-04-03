@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.before;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +12,7 @@ import java.util.List;
  */
 public class Contest994 {
 
+    @LeetCode(id = 994, difficulty = Difficulty.EASY, title = "腐烂的橘子")
     public int orangesRotting(int[][] grid) {
         List<Integer> location = new ArrayList<>();
         int rowLen = grid.length;

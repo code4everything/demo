@@ -1,11 +1,15 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.before;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 /**
  * @author pantao
  * @since 2019/2/3
  **/
 public class Contest985 {
 
+    @LeetCode(id = 985, difficulty = Difficulty.EASY, title = "查询后的偶数和")
     public int[] sumEvenAfterQueries(int[] a, int[][] queries) {
         int sum = 0;
         for (int i : a) {

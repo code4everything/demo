@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.before;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -12,6 +15,7 @@ public class Contest973 implements Comparator<Integer[]> {
 
     private Queue<Integer[]> queue;
 
+    @LeetCode(id = 973, difficulty = Difficulty.MEDIUM, title = "最接近原点的 K 个点")
     public int[][] kClosest(int[][] points, int k) {
         queue = new PriorityQueue<>(k, this);
         for (int[] point : points) {

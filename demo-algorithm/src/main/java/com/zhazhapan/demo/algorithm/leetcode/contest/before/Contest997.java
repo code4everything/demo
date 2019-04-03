@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.before;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +12,7 @@ import java.util.List;
  */
 public class Contest997 {
 
+    @LeetCode(id = 997, difficulty = Difficulty.EASY, title = "找到小镇的法官")
     public int findJudge(int n, int[][] trust) {
         if (n == 1) {
             return 1;

@@ -1,11 +1,15 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.before;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 /**
  * @author pantao
  * @since 2019-02-24
  */
 public class Contest999 {
 
+    @LeetCode(id = 999, difficulty = Difficulty.EASY, title = "车的可用捕获量")
     public int numRookCaptures(char[][] board) {
         int i = 0, j = 0;
         boolean ret = true;

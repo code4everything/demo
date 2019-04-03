@@ -43,6 +43,7 @@ public class Solution {
         return next;
     }
 
+    @LeetCode(id = 430, difficulty = Difficulty.MEDIUM, title = "扁平化多级双向链表")
     public Node flatten(Node head) {
         if (head != null) {
             lastest(head);

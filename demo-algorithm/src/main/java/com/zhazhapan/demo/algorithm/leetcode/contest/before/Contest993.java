@@ -1,5 +1,7 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.before;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
 import com.zhazhapan.demo.algorithm.leetcode.model.TreeNode;
 
 import java.util.ArrayList;
@@ -11,6 +13,7 @@ import java.util.List;
  */
 public class Contest993 {
 
+    @LeetCode(id = 993, difficulty = Difficulty.EASY, title = "二叉树的堂兄弟节点")
     public boolean isCousins(TreeNode root, int x, int y) {
         if (root == null) {
             return false;
