@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.before;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +12,7 @@ import java.util.List;
  */
 public class Contest1002 {
 
+    @LeetCode(id = 1002, difficulty = Difficulty.EASY, title = "查找常用字符")
     public List<String> commonChars(String[] a) {
         if (a == null || a.length == 0) {
             return null;

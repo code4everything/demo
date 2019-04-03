@@ -1,11 +1,15 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.before;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 /**
  * @author pantao
  * @since 2019-03-17
  */
-public class Contest1014 {
+public class Contest1011 {
 
+    @LeetCode(id = 1011, difficulty = Difficulty.MEDIUM, title = "在 D 天内送达包裹的能力")
     public int shipWithinDays(int[] weights, int d) {
         int minWeight = weights[0];
         int maxWeight = minWeight;

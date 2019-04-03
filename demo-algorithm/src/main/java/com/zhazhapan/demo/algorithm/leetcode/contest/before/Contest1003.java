@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.before;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.Stack;
 
 /**
@@ -8,6 +11,7 @@ import java.util.Stack;
  */
 public class Contest1003 {
 
+    @LeetCode(id = 1003, difficulty = Difficulty.MEDIUM, title = "检查替换后的词是否有效")
     public boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();
         for (int i = 0; i < s.length(); i++) {

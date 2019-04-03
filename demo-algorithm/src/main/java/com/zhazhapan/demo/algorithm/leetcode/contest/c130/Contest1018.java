@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.c130;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +11,9 @@ import java.util.List;
  * @author pantao
  * @since 2019-03-31
  */
-public class Contest1029 {
+public class Contest1018 {
 
+    @LeetCode(id = 1018, difficulty = Difficulty.EASY, title = "可被 5 整除的二进制前缀")
     public List<Boolean> prefixesDivBy5(int[] a) {
         List<Boolean> list = new ArrayList<>();
         BigInteger base = BigInteger.ZERO;

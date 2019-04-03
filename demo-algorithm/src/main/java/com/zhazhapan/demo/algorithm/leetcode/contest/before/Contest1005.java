@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.before;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.Arrays;
 
 /**
@@ -8,6 +11,7 @@ import java.util.Arrays;
  */
 public class Contest1005 {
 
+    @LeetCode(id = 1005, difficulty = Difficulty.EASY, title = "K 次取反后最大化的数组和")
     public int largestSumAfterKNegations(int[] a, int k) {
         Arrays.sort(a);
         int sum = 0;

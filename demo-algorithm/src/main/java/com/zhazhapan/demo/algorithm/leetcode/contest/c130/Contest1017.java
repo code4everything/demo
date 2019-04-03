@@ -1,11 +1,15 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.c130;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 /**
  * @author pantao
  * @since 2019-03-31
  */
-public class Contest1028 {
+public class Contest1017 {
 
+    @LeetCode(id = 1017, difficulty = Difficulty.MEDIUM, title = "负二进制转换")
     public String baseNeg2(int n) {
         if (n == 0) {
             return "0";

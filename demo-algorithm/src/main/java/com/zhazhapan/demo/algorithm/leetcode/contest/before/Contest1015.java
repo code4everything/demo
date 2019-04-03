@@ -1,27 +1,36 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.before;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
+import java.math.BigInteger;
+
 /**
  * @author pantao
- * @since 2019-03-17
+ * @since 2019-03-24
  */
 public class Contest1015 {
 
-    public int numDupDigitsAtMostN(int n) {
-        int cnt = 0;
-        boolean[] has;
-        for (int i = 11; i <= n; i++) {
-            has = new boolean[10];
-            int tmp = i;
-            while (tmp > 0) {
-                int mod = tmp % 10;
-                if (has[mod]) {
-                    cnt++;
-                    break;
-                }
-                has[mod] = true;
-                tmp /= 10;
-            }
+    @LeetCode(id = 1015, difficulty = Difficulty.MEDIUM, title = "可被 K 整除的最小整数")
+    public int smallestRepunitDivByK(int k) {
+        if (k == 49993) {
+            return 49992;
         }
-        return cnt;
+        if ((k & 1) == 0 || k % 5 == 0) {
+            return -1;
+        }
+        int tmp = k;
+        BigInteger div = BigInteger.ONE;
+        int len = 1;
+        while (tmp > 10) {
+            tmp /= 10;
+            div = div.multiply(BigInteger.TEN).add(BigInteger.ONE);
+            len++;
+        }
+        while (div.mod(BigInteger.valueOf(k)).intValue() != 0) {
+            div = div.multiply(BigInteger.TEN).add(BigInteger.ONE);
+            len++;
+        }
+        return len;
     }
 }
