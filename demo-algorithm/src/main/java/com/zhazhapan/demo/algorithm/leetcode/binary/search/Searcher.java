@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class Searcher {
 
+    @LeetCode(id = 410, difficulty = Difficulty.HARD, title = "分割数组的最大值")
     public int splitArray(int[] nums, int m) {
         int left = Integer.MIN_VALUE;
         int right = 0;
@@ -90,6 +91,7 @@ public class Searcher {
         return ((double) nums[nums.length / 2] + (double) nums[(nums.length - 1) / 2]) / 2;
     }
 
+    @LeetCode(id = 287, difficulty = Difficulty.MEDIUM, title = "寻找重复数")
     public int findDuplicate(int[] nums) {
         int i = 0;
         while (nums[i] != 0) {
@@ -100,6 +102,7 @@ public class Searcher {
         return i;
     }
 
+    @LeetCode(id = 167, title = "两数之和 II - 输入有序数组", difficulty = Difficulty.EASY)
     public int[] twoSum(int[] numbers, int target) {
         int start = 0;
         int end = numbers.length - 1;
@@ -116,6 +119,7 @@ public class Searcher {
         return new int[0];
     }
 
+    @LeetCode(id = 350, difficulty = Difficulty.EASY, title = "两个数组的交集 II")
     public int[] intersect(int[] nums1, int[] nums2) {
         Arrays.sort(nums1);
         Arrays.sort(nums2);
@@ -135,6 +139,7 @@ public class Searcher {
         return Arrays.copyOf(res, start);
     }
 
+    @LeetCode(id = 349, difficulty = Difficulty.EASY, title = "两个数组的交集")
     public int[] intersection(int[] nums1, int[] nums2) {
         int max = Integer.MIN_VALUE;
         int min = Integer.MAX_VALUE;
@@ -177,6 +182,7 @@ public class Searcher {
         return letters[start];
     }
 
+    @LeetCode(id = 367, difficulty = Difficulty.EASY, title = "有效的完全平方数")
     public boolean isPerfectSquare(int num) {
         int start = 1;
         int end = num > 46340 ? 46340 : num;

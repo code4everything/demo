@@ -1,11 +1,15 @@
 package com.zhazhapan.demo.algorithm.leetcode.design;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.Random;
 
 /**
  * @author pantao
  * @since 2019-03-23
  */
+@LeetCode(id = 384, difficulty = Difficulty.MEDIUM, title = "打乱数组")
 public class Solution {
 
     private int[] nums;

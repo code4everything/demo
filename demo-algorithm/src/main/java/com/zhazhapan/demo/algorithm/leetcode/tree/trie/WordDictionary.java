@@ -1,9 +1,13 @@
 package com.zhazhapan.demo.algorithm.leetcode.tree.trie;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 /**
  * @author pantao
  * @since 2018-12-26
  */
+@LeetCode(id = 211, title = "添加与搜索单词 - 数据结构设计", difficulty = Difficulty.MEDIUM)
 public class WordDictionary {
 
     private static final Character DOT = '.';

@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.tree.trie;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +16,7 @@ public class WordsSearcher {
 
     private List<String> list;
 
+    @LeetCode(id = 212, title = "单词搜索 II", difficulty = Difficulty.HARD)
     public List<String> findWords(char[][] board, String[] words) {
         root = new TrieNode();
         list = new ArrayList<>();

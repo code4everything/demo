@@ -118,6 +118,7 @@ public class Solution {
         return head;
     }
 
+    @LeetCode(id = 234, difficulty = Difficulty.EASY, title = "回文链表")
     public boolean isPalindrome(ListNode head) {
         if (head == null) {
             return true;
@@ -135,6 +136,7 @@ public class Solution {
         return true;
     }
 
+    @LeetCode(id = 328, difficulty = Difficulty.MEDIUM, title = "奇偶链表")
     public ListNode oddEvenList(ListNode head) {
         if (head == null) {
             return null;
@@ -157,7 +159,7 @@ public class Solution {
         return head;
     }
 
-    @LeetCode(id = 27, title = "移除元素", difficulty = Difficulty.EASY)
+    @LeetCode(id = 203, title = "移除链表元素", difficulty = Difficulty.EASY)
     public ListNode removeElements(ListNode head, int val) {
         ListNode node = head;
         ListNode pre = null;
@@ -176,6 +178,7 @@ public class Solution {
         return head;
     }
 
+    @LeetCode(id = 206, title = "反转链表", difficulty = Difficulty.EASY)
     public ListNode reverseList(ListNode head) {
         ListNode pre = null;
         while (head != null) {
@@ -209,6 +212,7 @@ public class Solution {
         return head;
     }
 
+    @LeetCode(id = 160, title = "相交链表", difficulty = Difficulty.EASY)
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         if (headA == null || headB == null) {
             return null;

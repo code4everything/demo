@@ -1,9 +1,13 @@
 package com.zhazhapan.demo.algorithm.leetcode.binary.search;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 /**
  * @author pantao
  * @since 2019/1/4
  **/
+@LeetCode(id = 374, difficulty = Difficulty.EASY, title = "猜数字大小")
 public class GameGuesser extends GuessGame {
 
     public int guessNumber(int n) {

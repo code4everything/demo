@@ -50,6 +50,7 @@ public class BinarySearchTree {
         return 1 + Math.max(leftDepth, rightDepth);
     }
 
+    @LeetCode(id = 220, difficulty = Difficulty.MEDIUM, title = "存在重复元素 III")
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
         if (nums.length > 1 && k > 0 && t >= 0) {
             SortedSet<Long> binaryTree = new TreeSet<>();

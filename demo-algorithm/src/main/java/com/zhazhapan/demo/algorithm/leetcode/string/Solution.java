@@ -151,6 +151,7 @@ public class Solution {
         return c < zero || (c > nine && c < a) || c > z;
     }
 
+    @LeetCode(id = 242, difficulty = Difficulty.EASY, title = "有效的字母异位词")
     public boolean isAnagram(String s, String t) {
         int aLen = s.length();
         int bLen = t.length();

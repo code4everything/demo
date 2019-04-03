@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.queue;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -11,6 +14,7 @@ import java.util.Set;
  **/
 public class Solution {
 
+    @LeetCode(id = 279, difficulty = Difficulty.MEDIUM, title = "完全平方数")
     public int numSquares(int n) {
         while (n % 4 == 0) {
             n /= 4;
@@ -72,6 +76,7 @@ public class Solution {
         return -1;
     }
 
+    @LeetCode(id = 200, title = "岛屿的个数", difficulty = Difficulty.MEDIUM)
     public int numIslands(char[][] grid) {
         int nums = 0;
         for (int i = 0; i < grid.length; i++) {

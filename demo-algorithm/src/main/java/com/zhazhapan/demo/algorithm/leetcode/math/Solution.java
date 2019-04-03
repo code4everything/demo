@@ -26,6 +26,7 @@ public class Solution {
         romanMap.put('M', 1000);
     }
 
+    @LeetCode(id = 268, difficulty = Difficulty.EASY, title = "缺失数字")
     public int missingNumber(int[] nums) {
         int sum = (1 + nums.length) * nums.length / 2;
         int numSum = 0;
@@ -50,6 +51,7 @@ public class Solution {
         return Integer.bitCount(x ^ y);
     }
 
+    @LeetCode(id = 191, title = "位1的个数", difficulty = Difficulty.EASY)
     public int hammingWeight(int n) {
         int cnt = 0;
         int base = 1;
@@ -84,6 +86,7 @@ public class Solution {
         return num;
     }
 
+    @LeetCode(id = 326, difficulty = Difficulty.EASY, title = "3的幂")
     public boolean isPowerOfThree(int n) {
         if (n < 1) {
             return false;
@@ -97,6 +100,7 @@ public class Solution {
         return true;
     }
 
+    @LeetCode(id = 204, title = "计数质数", difficulty = Difficulty.EASY)
     public int countPrimes(int n) {
         if (n <= 2) {
             return 0;
@@ -122,6 +126,7 @@ public class Solution {
         return false;
     }
 
+    @LeetCode(id = 412, difficulty = Difficulty.EASY, title = "Fizz Buzz")
     public List<String> fizzBuzz(int n) {
         final String s1 = "Fizz";
         final String s2 = "Buzz";

@@ -9,6 +9,7 @@ import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
  **/
 public class Solution {
 
+    @LeetCode(id = 198, title = "打家劫舍", difficulty = Difficulty.EASY)
     public int rob(int[] nums) {
         if (nums.length == 0) {
             return 0;

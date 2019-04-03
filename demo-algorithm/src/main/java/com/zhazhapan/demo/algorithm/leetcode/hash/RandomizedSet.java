@@ -1,11 +1,15 @@
 package com.zhazhapan.demo.algorithm.leetcode.hash;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.*;
 
 /**
  * @author pantao
  * @since 2019/3/11
  **/
+@LeetCode(id = 380, difficulty = Difficulty.MEDIUM, title = "常数时间插入、删除和获取随机元素")
 public class RandomizedSet {
 
     private List<Integer> data = new ArrayList<>();

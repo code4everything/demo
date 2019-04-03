@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.tree.trie;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 /**
  * @author pantao
  * @since 2018/12/27
@@ -8,6 +11,7 @@ public class MaximumXORFinder {
 
     public static final int THIRTY_ONE = 31;
 
+    @LeetCode(id = 421, difficulty = Difficulty.MEDIUM, title = "数组中两个数的最大异或值")
     public int findMaximumXOR(int[] nums) {
         TrieNode root = new TrieNode();
         for (int num : nums) {

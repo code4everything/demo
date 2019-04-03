@@ -33,6 +33,7 @@ public class Solution {
         return true;
     }
 
+    @LeetCode(id = 347, difficulty = Difficulty.MEDIUM, title = "前K个高频元素")
     public List<Integer> topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>(nums.length);
         for (int i = 0; i < nums.length; i++) {
@@ -122,6 +123,7 @@ public class Solution {
         return new ArrayList<>(map.values());
     }
 
+    @LeetCode(id = 219, difficulty = Difficulty.EASY, title = "存在重复元素 II")
     public boolean containsNearbyDuplicate(int[] nums, int k) {
         for (int i = 0; i < nums.length - 1; i++) {
             int j = 0;
@@ -135,6 +137,7 @@ public class Solution {
         return false;
     }
 
+    @LeetCode(id = 387, difficulty = Difficulty.EASY, title = "字符串中的第一个唯一字符")
     public int firstUniqChar(String s) {
         int len = s.length();
         char[] chars = s.toCharArray();
@@ -176,6 +179,7 @@ public class Solution {
         return Arrays.copyOf(rest, idx);
     }
 
+    @LeetCode(id = 205, title = "同构字符串", difficulty = Difficulty.EASY)
     public boolean isIsomorphic(String s, String t) {
         int len = s.length();
         char[] temp = new char[len];
@@ -212,6 +216,7 @@ public class Solution {
         return null;
     }
 
+    @LeetCode(id = 202, title = "快乐数", difficulty = Difficulty.EASY)
     public boolean isHappy(int n) {
         if (n < 1) {
             return false;
@@ -245,6 +250,7 @@ public class Solution {
         return single;
     }
 
+    @LeetCode(id = 217, title = "存在重复元素", difficulty = Difficulty.EASY)
     public boolean containsDuplicate(int[] nums) {
         Arrays.sort(nums);
         for (int i = 0; i < nums.length - 1; i++) {

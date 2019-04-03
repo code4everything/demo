@@ -135,6 +135,7 @@ public class BinaryTree {
      *
      * @return {@link List}
      */
+    @LeetCode(id = 429, difficulty = Difficulty.EASY, title = "N叉树的层序遍历")
     public List<List<Integer>> levelOrder(TreeNode root) {
         if (root != null) {
             List<Integer> list = new ArrayList<>();

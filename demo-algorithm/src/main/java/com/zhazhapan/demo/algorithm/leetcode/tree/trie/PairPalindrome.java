@@ -1,5 +1,8 @@
 package com.zhazhapan.demo.algorithm.leetcode.tree.trie;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +18,7 @@ public class PairPalindrome {
 
     private int emptyIdx = -1;
 
+    @LeetCode(id = 336, difficulty = Difficulty.HARD, title = "回文对")
     public List<List<Integer>> palindromePairs(String[] words) {
         root = new TrieNode();
         list = new ArrayList<>();

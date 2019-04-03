@@ -201,6 +201,7 @@ public class Solution {
         System.arraycopy(temp, len, nums, 0, k);
     }
 
+    @LeetCode(id = 209, title = "长度最小的子数组", difficulty = Difficulty.MEDIUM)
     public int minSubArrayLen(int s, int[] nums) {
         Arrays.sort(nums);
         int k = 0;
@@ -243,6 +244,7 @@ public class Solution {
         return sum;
     }
 
+    @LeetCode(id = 344, difficulty = Difficulty.EASY, title = "反转字符串")
     public void reverseString(char[] s) {
         int len = s.length;
         for (int i = 0; i < len / 2; i++) {

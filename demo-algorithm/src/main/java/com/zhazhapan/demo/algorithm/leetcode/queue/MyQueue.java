@@ -1,11 +1,15 @@
 package com.zhazhapan.demo.algorithm.leetcode.queue;
 
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+
 import java.util.Stack;
 
 /**
  * @author pantao
  * @since 2019-02-04
  */
+@LeetCode(id = 232, difficulty = Difficulty.EASY, title = "用栈实现队列")
 public class MyQueue {
 
     Stack<Integer> pushStack = new Stack<>();
