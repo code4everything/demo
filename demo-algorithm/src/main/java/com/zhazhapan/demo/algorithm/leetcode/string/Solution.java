@@ -45,22 +45,20 @@ public class Solution {
 
     @LeetCode(id = 139, title = "单词拆分", difficulty = Difficulty.MEDIUM, important = true, selfResolved = false)
     public boolean wordBreak(String s, List<String> wordDict) {
-        if (s == null || s.length() == 0) {
+        if (wordDict.isEmpty() || s.length() == 0) {
             return false;
         }
-        boolean[] res = new boolean[s.length() + 1];
-        res[0] = true;
-        for (int i = 0; i < s.length(); i++) {
-            StringBuilder str = new StringBuilder(s.substring(0, i + 1));
-            for (int j = 0; j <= i; j++) {
-                if (res[j] && wordDict.contains(str.toString())) {
-                    res[i + 1] = true;
+        boolean[] dp = new boolean[s.length() + 1];
+        dp[0] = true;
+        for (int i = 1; i <= s.length(); i++) {
+            for (int j = 0; j < i; j++) {
+                if (dp[j] && wordDict.contains(s.substring(j, i))) {
+                    dp[i] = true;
                     break;
                 }
-                str.deleteCharAt(0);
             }
         }
-        return res[s.length()];
+        return dp[s.length()];
     }
 
     @LeetCode(id = 38, title = "报数", difficulty = Difficulty.EASY)
