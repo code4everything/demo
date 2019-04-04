@@ -11,6 +11,12 @@ import java.util.*;
  */
 public class Solution {
 
+    @LeetCode(id = 152, difficulty = Difficulty.MEDIUM, title = "乘积最大子序列")
+    public int maxProduct(int[] nums) {
+        int max = nums[0];
+        
+    }
+
     @LeetCode(id = 240, title = "搜索二维矩阵 II", difficulty = Difficulty.MEDIUM, selfResolved = false)
     public boolean searchMatrix(int[][] matrix, int target) {
         if (matrix.length == 0) {
