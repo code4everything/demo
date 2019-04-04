@@ -47,31 +47,42 @@ public class Solution {
     @LeetCode(id = 140, difficulty = Difficulty.HARD, title = "单词拆分 II")
     public List<String> wordBreak2(String s, List<String> wordDict) {
         List<String> result = new ArrayList<>();
-        wordBreakHelper(s, 0, 1, wordDict, result, null, 1);
+        if (wordDict.isEmpty() || s.length() == 0) {
+            return result;
+        }
+        boolean[] dp = new boolean[s.length() + 1];
+        List<Integer> splits = new ArrayList<>(dp.length);
+        splits.add(0);
+        dp[0] = true;
+        for (int i = 1; i <= s.length(); i++) {
+            for (int j = 0; j < i; j++) {
+                if (dp[j] && wordDict.contains(s.substring(j, i))) {
+                    dp[i] = true;
+                    splits.add(i);
+                    break;
+                }
+            }
+        }
+        if (dp[s.length()]) {
+            wordBreakHelper(s, wordDict, result, splits, 0, splits.size() - 1, "", "");
+        }
         return result;
     }
 
-    private void wordBreakHelper(String s, int start, int end, List<String> dict, List<String> result, int[] splits,
-                                 int size) {
-        if (end > s.length()) {
-            return;
-        }
-        if (dict.contains(s.substring(start, end))) {
-            if (end == s.length()) {
-                String sep = "";
-                StringBuilder builder = new StringBuilder();
-                for (int i = 1; i < size; i++) {
-                    builder.append(sep).append(s, splits[i - 1], splits[i]);
-                    sep = " ";
+    private void wordBreakHelper(String s, List<String> dict, List<String> result, List<Integer> splits, int start,
+                                 int end, String w, String sep) {
+        int j = start + 1;
+        for (; j <= end; j++) {
+            String tmp = s.substring(splits.get(start), splits.get(j));
+            if (dict.contains(tmp)) {
+                String str = w + sep + tmp;
+                if (j == end) {
+                    result.add(str);
+                } else {
+                    wordBreakHelper(s, dict, result, splits, j, end, str, " ");
                 }
-                result.add(builder.append(sep).append(s, start, end).toString());
-            } else {
-                int[] copy = splits == null ? new int[s.length()] : splits.clone();
-                copy[size] = end;
-                wordBreakHelper(s, end, end + 1, dict, result, copy, size + 1);
             }
         }
-        wordBreakHelper(s, start, end + 1, dict, result, splits, size);
     }
 
     @LeetCode(id = 139, title = "单词拆分", difficulty = Difficulty.MEDIUM, important = true, selfResolved = false)

@@ -46,7 +46,7 @@ public class SolutionTest {
     public void wordBreak2() {
         Console.log(solution.wordBreak2("catsanddog", Lists.newArrayList("cat", "cats", "and", "sand", "dog")));
         Console.log(solution.wordBreak2("pineapplepenapple", Lists.newArrayList("apple", "pen", "applepen", "pine",
-                "pineapple")));
+                                                                                "pineapple")));
         Console.log(solution.wordBreak2("catsandog", Lists.newArrayList("cats", "dog", "sand", "and", "cat")));
     }
 }
