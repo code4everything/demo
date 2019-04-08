@@ -13,8 +13,22 @@ public class Solution {
 
     @LeetCode(id = 152, difficulty = Difficulty.MEDIUM, title = "乘积最大子序列")
     public int maxProduct(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        if (nums.length == 1) {
+            return nums[0];
+        }
         int max = nums[0];
-        
+        int min = nums[0];
+        int curr = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            int tmp = max;
+            max = Math.max(nums[i], Math.max(nums[i] * min, nums[i] * max));
+            min = Math.min(nums[i], Math.min(nums[i] * min, nums[i] * tmp));
+            curr = Math.max(curr, max);
+        }
+        return curr;
     }
 
     @LeetCode(id = 240, title = "搜索二维矩阵 II", difficulty = Difficulty.MEDIUM, selfResolved = false)
