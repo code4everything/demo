@@ -11,6 +11,23 @@ import java.util.*;
  */
 public class Solution {
 
+    @LeetCode(id = 334, difficulty = Difficulty.MEDIUM, title = "递增的三元子序列", important = true, selfResolved = false)
+    public boolean increasingTriplet(int[] nums) {
+        int first = Integer.MAX_VALUE;
+        int second = Integer.MAX_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            int now = nums[i];
+            if (now <= first) {
+                first = now;
+            } else if (now <= second) {
+                second = now;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @LeetCode(id = 152, difficulty = Difficulty.MEDIUM, title = "乘积最大子序列")
     public int maxProduct(int[] nums) {
         if (nums.length == 0) {

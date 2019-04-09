@@ -1,6 +1,7 @@
 package com.zhazhapan.demo.algorithm.leetcode.array;
 
 import cn.hutool.core.lang.Console;
+import cn.hutool.core.util.RandomUtil;
 import org.junit.Test;
 
 public class SolutionTest {
@@ -151,5 +152,26 @@ public class SolutionTest {
                 {18, 21, 23, 26, 30}};
         assert solution.searchMatrix(matrix, 5);
         assert !solution.searchMatrix(matrix, 20);
+    }
+
+    @Test
+    public void increasingTriplet() {
+        assert solution.increasingTriplet(new int[]{1, 2, 3, 4, 5});
+        assert !solution.increasingTriplet(new int[]{5, 4, 3, 2, 1});
+        assert !solution.increasingTriplet(new int[]{1, 3, 2, 0});
+        assert solution.increasingTriplet(new int[]{1, 3, 2, 0, 3});
+        assert solution.increasingTriplet(new int[]{1, 3, 2, 0, 1, 2});
+        assert solution.increasingTriplet(new int[]{1, 3, 2, 1, 4});
+        assert solution.increasingTriplet(new int[]{1, 3, 2, 0, 2, 3});
+        assert !solution.increasingTriplet(new int[]{1, 3, 2, 0, 2});
+    }
+
+    @Test
+    public void generateArray() {
+        int[] arr = new int[10];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = RandomUtil.randomInt(5, 10);
+        }
+        Console.log(arr);
     }
 }
