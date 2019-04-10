@@ -11,6 +11,25 @@ import java.util.*;
  */
 public class Solution {
 
+    @LeetCode(id = 238, difficulty = Difficulty.MEDIUM, title = "除自身以外数组的乘积", selfResolved = false)
+    public int[] productExceptSelf(int[] nums) {
+        int[] output = new int[nums.length];
+        int[] res1 = new int[nums.length + 1];
+        int[] res2 = new int[nums.length + 1];
+        res1[0] = res2[res2.length - 1] = 1;
+        for (int i = 0; i < nums.length; i++) {
+            res1[i + 1] = res1[i] * nums[i];
+        }
+        for (int i = nums.length - 1; i >= 0; i--) {
+            res2[i] = res2[i + 1] * nums[i];
+        }
+        output[0] = res2[1];
+        for (int i = 1; i < output.length; i++) {
+            output[i] = res1[i - 1] * res2[i + 1];
+        }
+        return output;
+    }
+
     @LeetCode(id = 334, difficulty = Difficulty.MEDIUM, title = "递增的三元子序列", important = true, selfResolved = false)
     public boolean increasingTriplet(int[] nums) {
         int first = Integer.MAX_VALUE;
