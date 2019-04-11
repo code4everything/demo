@@ -11,6 +11,12 @@ import java.util.*;
  */
 public class Solution {
 
+    @LeetCode(id = 215, title = "数组中的第K个最大元素", difficulty = Difficulty.MEDIUM)
+    public int findKthLargest(int[] nums, int k) {
+        Arrays.sort(nums);
+        return nums[nums.length - k];
+    }
+
     @LeetCode(id = 238, difficulty = Difficulty.MEDIUM, title = "除自身以外数组的乘积", selfResolved = false)
     public int[] productExceptSelf(int[] nums) {
         int[] output = new int[nums.length];
