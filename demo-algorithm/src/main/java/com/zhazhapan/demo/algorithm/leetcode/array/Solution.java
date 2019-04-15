@@ -13,26 +13,21 @@ public class Solution {
 
     @LeetCode(id = 378, difficulty = Difficulty.MEDIUM, title = "有序矩阵中第K小的元素")
     public int kthSmallest(int[][] matrix, int k) {
-        if (k == 1) {
-            return matrix[0][0];
-        }
         int len = matrix.length;
-        int nlen = len * len;
-        if (k == nlen) {
+        if (k == len * len) {
             return matrix[len - 1][len - 1];
         }
-        int[] arr = new int[nlen];
         int[] idxes = new int[len];
-        arr[0] = matrix[0][0];
         idxes[0] = 1;
         int j = 0;
+        int res = matrix[0][0];
         for (int i = 1; i < k; i++) {
-            arr[i] = smallestHelper(matrix, len, j, j + 1, idxes);
+            res = smallestHelper(matrix, len, j, j + 1, idxes);
             if (idxes[j] == len) {
                 j++;
             }
         }
-        return arr[k - 1];
+        return res;
     }
 
     private int smallestHelper(int[][] matrix, int len, int x, int y, int[] idxes) {
