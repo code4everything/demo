@@ -174,4 +174,13 @@ public class SolutionTest {
         }
         Console.log(arr);
     }
+
+    @Test
+    public void kthSmallest() {
+        int[][] arr = new int[][]{{1, 5, 9}, {10, 11, 13}, {12, 13, 15}};
+        System.out.println(solution.kthSmallest(arr, 8));
+        arr = new int[][]{{1, 4, 7, 11, 15}, {2, 5, 8, 12, 19}, {3, 6, 9, 16, 22}, {10, 13, 14, 17, 24}, {18, 21, 23,
+                26, 30}};
+        Console.log(solution.kthSmallest(arr, 5));
+    }
 }

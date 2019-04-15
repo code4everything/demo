@@ -11,6 +11,45 @@ import java.util.*;
  */
 public class Solution {
 
+    @LeetCode(id = 378, difficulty = Difficulty.MEDIUM, title = "有序矩阵中第K小的元素")
+    public int kthSmallest(int[][] matrix, int k) {
+        if (k == 1) {
+            return matrix[0][0];
+        }
+        int len = matrix.length;
+        int nlen = len * len;
+        if (k == nlen) {
+            return matrix[len - 1][len - 1];
+        }
+        int[] arr = new int[nlen];
+        int[] idxes = new int[len];
+        arr[0] = matrix[0][0];
+        idxes[0] = 1;
+        int j = 0;
+        for (int i = 1; i < k; i++) {
+            arr[i] = smallestHelper(matrix, len, j, j + 1, idxes);
+            if (idxes[j] == len) {
+                j++;
+            }
+        }
+        return arr[k - 1];
+    }
+
+    private int smallestHelper(int[][] matrix, int len, int x, int y, int[] idxes) {
+        if (y == len) {
+            return matrix[x][idxes[x]++];
+        }
+        boolean max = matrix[x][idxes[x]] > matrix[y][idxes[y]];
+        if (idxes[y] == 0 || y + 1 == len) {
+            return max ? matrix[y][idxes[y]++] : matrix[x][idxes[x]++];
+        }
+        if (max) {
+            return smallestHelper(matrix, len, y, y + 1, idxes);
+        } else {
+            return smallestHelper(matrix, len, x, y + 1, idxes);
+        }
+    }
+
     @LeetCode(id = 215, title = "数组中的第K个最大元素", difficulty = Difficulty.MEDIUM)
     public int findKthLargest(int[] nums, int k) {
         Arrays.sort(nums);
