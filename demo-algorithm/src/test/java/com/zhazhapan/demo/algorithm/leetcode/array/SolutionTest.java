@@ -183,4 +183,10 @@ public class SolutionTest {
                 26, 30}};
         Console.log(solution.kthSmallest(arr, 5));
     }
+
+    @Test
+    public void maxSlidingWindow() {
+        int[] arr = new int[]{1, 3, -1, -3, 5, 3, 6, 7};
+        Console.log(solution.maxSlidingWindow(arr, 3));
+    }
 }

@@ -11,6 +11,36 @@ import java.util.*;
  */
 public class Solution {
 
+    @LeetCode(id = 239, title = "滑动窗口最大值", difficulty = Difficulty.HARD, selfResolved = false)
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        if (nums.length == 0) {
+            return new int[0];
+        }
+        int[] max = new int[nums.length - k + 1];
+        Queue<Integer> window = new PriorityQueue<>((o1, o2) -> o2 - o1);
+        int[] temp = new int[k];
+        for (int i = 0; i < k; i++) {
+            window.offer(nums[i]);
+        }
+        max[0] = window.peek();
+        for (int i = k; i < nums.length; i++) {
+            int idx = i - k;
+            int size = 0;
+            int tmp = window.peek();
+            while (tmp != nums[idx]) {
+                temp[size++] = window.poll();
+                tmp = window.peek();
+            }
+            window.poll();
+            while (size > 0) {
+                window.offer(temp[--size]);
+            }
+            window.offer(nums[i]);
+            max[idx + 1] = window.peek();
+        }
+        return max;
+    }
+
     @LeetCode(id = 378, difficulty = Difficulty.MEDIUM, title = "有序矩阵中第K小的元素")
     public int kthSmallest(int[][] matrix, int k) {
         int len = matrix.length;
