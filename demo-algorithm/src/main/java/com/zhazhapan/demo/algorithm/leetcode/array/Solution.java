@@ -18,25 +18,25 @@ public class Solution {
         }
         int[] max = new int[nums.length - k + 1];
         Queue<Integer> window = new PriorityQueue<>((o1, o2) -> o2 - o1);
-        int[] temp = new int[k];
-        for (int i = 0; i < k; i++) {
+        window.offer(Integer.MIN_VALUE);
+        for (int i = 0; i < k - 1; i++) {
+            if (!window.isEmpty() && nums[i] > window.peek()) {
+                window.clear();
+            }
             window.offer(nums[i]);
         }
-        max[0] = window.peek();
-        for (int i = k; i < nums.length; i++) {
-            int idx = i - k;
-            int size = 0;
-            int tmp = window.peek();
-            while (tmp != nums[idx]) {
-                temp[size++] = window.poll();
-                tmp = window.peek();
-            }
-            window.poll();
-            while (size > 0) {
-                window.offer(temp[--size]);
+        for (int i = k - 1; i < nums.length; i++) {
+            int idx = i - k + 1;
+            if (!window.isEmpty() && nums[i] > window.peek()) {
+                window.clear();
             }
             window.offer(nums[i]);
-            max[idx + 1] = window.peek();
+            max[idx] = window.peek();
+            if (max[idx] == nums[idx]) {
+                window.poll();
+            } else {
+
+            }
         }
         return max;
     }

@@ -188,5 +188,8 @@ public class SolutionTest {
     public void maxSlidingWindow() {
         int[] arr = new int[]{1, 3, -1, -3, 5, 3, 6, 7};
         Console.log(solution.maxSlidingWindow(arr, 3));
+        Console.log(solution.maxSlidingWindow(new int[]{1, -1}, 1));
+        Console.log(solution.maxSlidingWindow(new int[]{-7, -8, 7, 5, 7, 1, 6, 0}, 4));
+        Console.log(solution.maxSlidingWindow(new int[]{9, 10, 9, -7, -4, -8, 2, -6}, 5));
     }
 }
