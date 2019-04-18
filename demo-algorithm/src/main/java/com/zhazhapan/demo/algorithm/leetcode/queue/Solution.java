@@ -3,16 +3,56 @@ package com.zhazhapan.demo.algorithm.leetcode.queue;
 import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
 import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author pantao
  * @since 2019/1/29
  **/
 public class Solution {
+
+    @LeetCode(id = 227, title = "基本计算器 II", difficulty = Difficulty.MEDIUM)
+    public int calculate(String s) {
+        int result = 0;
+        Deque<String> queue = new LinkedList<>();
+        StringBuilder builder = new StringBuilder(0);
+        char[] chars = s.trim().toCharArray();
+        int sign = 1;
+        for (int i = 0; i < chars.length; i++) {
+            char c = chars[i];
+            if (c == ' ') {
+                continue;
+            } else if (c == '+' || c == '-' || i == chars.length - 1) {
+                if (i == chars.length - 1) {
+                    builder.append(c);
+                }
+                queue.add(builder.toString());
+                int res = Integer.parseInt(queue.poll());
+                while (!queue.isEmpty()) {
+                    String tmp = queue.poll();
+                    if (tmp.equals("*")) {
+                        res *= Integer.parseInt(queue.poll());
+                    } else {
+                        res /= Integer.parseInt(queue.poll());
+                    }
+                }
+                result += res * sign;
+                sign = c == '+' ? 1 : -1;
+                builder.delete(0, builder.length());
+            } else if (c == '*') {
+                queue.offer(builder.toString());
+                queue.offer("*");
+                builder.delete(0, builder.length());
+            } else if (c == '/') {
+                queue.offer(builder.toString());
+                queue.offer("/");
+                builder.delete(0, builder.length());
+            } else {
+                builder.append(c);
+            }
+        }
+        return result;
+    }
 
     @LeetCode(id = 279, difficulty = Difficulty.MEDIUM, title = "完全平方数")
     public int numSquares(int n) {
