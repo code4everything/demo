@@ -14,6 +14,26 @@ import java.util.Set;
  **/
 public class Solution {
 
+    @LeetCode(id = 148, title = "排序链表", difficulty = Difficulty.MEDIUM)
+    public ListNode sortList(ListNode head) {
+        List<Integer> list = new ArrayList<>();
+        while (head != null) {
+            list.add(head.val);
+            head = head.next;
+        }
+        if (list.isEmpty()) {
+            return null;
+        }
+        list.sort(Integer::compareTo);
+        head = new ListNode(list.get(0));
+        ListNode node = head;
+        for (int i = 1; i < list.size(); i++) {
+            node.next = new ListNode(list.get(i));
+            node = node.next;
+        }
+        return head;
+    }
+
     @LeetCode(id = 61, title = "旋转链表", difficulty = Difficulty.MEDIUM)
     public ListNode rotateRight(ListNode head, int k) {
         if (head == null) {
