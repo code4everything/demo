@@ -3,10 +3,7 @@ package com.zhazhapan.demo.algorithm.leetcode.chain;
 import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
 import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author pantao
@@ -16,20 +13,28 @@ public class Solution {
 
     @LeetCode(id = 148, title = "排序链表", difficulty = Difficulty.MEDIUM)
     public ListNode sortList(ListNode head) {
-        List<Integer> list = new ArrayList<>();
-        while (head != null) {
-            list.add(head.val);
-            head = head.next;
+        if (head == null || head.next == null) {
+            return head;
         }
-        if (list.isEmpty()) {
-            return null;
+        int size = 0;
+        ListNode curr = head;
+        while (curr != null) {
+            size++;
+            curr = curr.next;
         }
-        list.sort(Integer::compareTo);
-        head = new ListNode(list.get(0));
-        ListNode node = head;
-        for (int i = 1; i < list.size(); i++) {
-            node.next = new ListNode(list.get(i));
-            node = node.next;
+        int[] array = new int[size];
+        curr = head;
+        int idx = 0;
+        while (curr != null) {
+            array[idx++] = curr.val;
+            curr = curr.next;
+        }
+        Arrays.sort(array);
+        curr = head;
+        idx = 0;
+        while (curr != null) {
+            curr.val = array[idx++];
+            curr = curr.next;
         }
         return head;
     }
