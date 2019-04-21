@@ -1,9 +1,7 @@
 package com.zhazhapan.demo.algorithm.leetcode.contest.c133;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
+import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
 
 /**
  * @author pantao
@@ -11,33 +9,24 @@ import java.util.TreeMap;
  */
 public class Contest1029 {
 
+    @LeetCode(id = 1029, difficulty = Difficulty.EASY, title = "两地调度")
     public int twoCitySchedCost(int[][] costs) {
-        Map<Double, List<Integer>> map = new TreeMap<>();
-        for (int i = 0; i < costs.length; i++) {
-            int[] cost = costs[i];
-            double x = cost[0];
-            double y = cost[1];
-            double res = x / y;
-            List<Integer> list = map.get(res);
-            if (list == null) {
-                list = new ArrayList<>();
-                map.put(res, list);
-            }
-            list.add(i);
-        }
-        int cost = 0;
-        int i = 0;
         int len = costs.length / 2;
-        for (List<Integer> value : map.values()) {
-            for (Integer integer : value) {
-                if (i < len) {
-                    cost += costs[integer][0];
-                } else {
-                    cost += costs[integer][1];
-                }
-                i++;
-            }
+        return helper(costs, 0, len, len);
+    }
+
+    private int helper(int[][] costs, int i, int a, int b) {
+        if (i == costs.length) {
+            return 0;
         }
-        return cost;
+        int as = Integer.MAX_VALUE;
+        if (a > 0) {
+            as = costs[i][0] + helper(costs, i + 1, a - 1, b);
+        }
+        int bs = Integer.MAX_VALUE;
+        if (b > 0) {
+            bs = costs[i][1] + helper(costs, i + 1, a, b - 1);
+        }
+        return Math.min(as, bs);
     }
 }
