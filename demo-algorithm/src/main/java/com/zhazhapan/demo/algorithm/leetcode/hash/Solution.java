@@ -12,6 +12,17 @@ import java.util.*;
  **/
 public class Solution {
 
+    @LeetCode(id = 171, title = "Excel表列序号", difficulty = Difficulty.EASY)
+    public int titleToNumber(String s) {
+        char[] cs = s.toCharArray();
+        int idx = 0;
+        int res = 0;
+        for (int i = cs.length - 1; i >= 0; i--) {
+            res += Math.pow(26, idx++) * (cs[i] - 64);
+        }
+        return res;
+    }
+
     @LeetCode(id = 36, title = "有效的数独", difficulty = Difficulty.MEDIUM)
     public boolean isValidSudoku(char[][] board) {
         for (int i = 0; i < board.length; i++) {
