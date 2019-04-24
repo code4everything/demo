@@ -11,6 +11,52 @@ import java.util.*;
  */
 public class Solution {
 
+    @LeetCode(id = 179, title = "最大数", difficulty = Difficulty.MEDIUM, important = true, selfResolved = false)
+    public String largestNumber(int[] nums) {
+        Queue<Integer> queue = new PriorityQueue<>(new Comparator<Integer>() {
+
+            @Override
+            public int compare(Integer i1, Integer i2) {
+                if (i1.equals(i2)) {
+                    return 0;
+                }
+                boolean isMax = i1 > i2;
+                int max = isMax ? i1 : i2;
+                int min = isMax ? i2 : i1;
+                int tmp = 0;
+                int shift = 1;
+                int limit = 10;
+                while (min >= 10) {
+                    min /= 10;
+                    limit *= 10;
+                }
+                while (max >= limit) {
+                    tmp += shift * (max % 10);
+                    max /= 10;
+                    shift *= 10;
+                }
+                if (isMax) {
+                    i1 = max;
+                } else {
+                    i2 = max;
+                }
+                if (i1.equals(i2)) {
+                    return isMax ? compare(tmp, i2) : compare(i1, tmp);
+                }
+                return i2.compareTo(i1);
+            }
+        });
+        for (int i = 0; i < nums.length; i++) {
+            queue.offer(nums[i]);
+        }
+        StringBuilder builder = new StringBuilder();
+        while (!queue.isEmpty()) {
+            builder.append(queue.poll());
+        }
+        String res = builder.toString();
+        return res.charAt(0) == '0' ? "0" : res;
+    }
+
     @LeetCode(id = 239, title = "滑动窗口最大值", difficulty = Difficulty.HARD, selfResolved = false)
     public int[] maxSlidingWindow(int[] nums, int k) {
         if (nums.length == 0) {

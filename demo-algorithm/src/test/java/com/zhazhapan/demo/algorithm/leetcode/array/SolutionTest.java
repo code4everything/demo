@@ -192,4 +192,13 @@ public class SolutionTest {
         Console.log(solution.maxSlidingWindow(new int[]{-7, -8, 7, 5, 7, 1, 6, 0}, 4));
         Console.log(solution.maxSlidingWindow(new int[]{9, 10, 9, -7, -4, -8, 2, -6}, 5));
     }
+
+    @Test
+    public void largestNumber() {
+        assert solution.largestNumber(new int[]{3, 30, 34, 5, 9}).equals("9534330");
+        assert solution.largestNumber(new int[]{23, 2322}).equals("232322");
+        assert solution.largestNumber(new int[]{23, 2333}).equals("233323");
+        assert solution.largestNumber(new int[]{1, 23}).equals("231");
+        assert solution.largestNumber(new int[]{0, 0, 0, 0}).equals("0");
+    }
 }
