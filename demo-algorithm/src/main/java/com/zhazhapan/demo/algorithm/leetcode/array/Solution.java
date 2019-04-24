@@ -13,38 +13,34 @@ public class Solution {
 
     @LeetCode(id = 179, title = "最大数", difficulty = Difficulty.MEDIUM, important = true, selfResolved = false)
     public String largestNumber(int[] nums) {
-        Queue<Integer> queue = new PriorityQueue<>(new Comparator<Integer>() {
-
-            @Override
-            public int compare(Integer i1, Integer i2) {
-                if (i1.equals(i2)) {
-                    return 0;
-                }
-                boolean isMax = i1 > i2;
-                int max = isMax ? i1 : i2;
-                int min = isMax ? i2 : i1;
-                int tmp = 0;
-                int shift = 1;
-                int limit = 10;
-                while (min >= 10) {
-                    min /= 10;
-                    limit *= 10;
-                }
-                while (max >= limit) {
-                    tmp += shift * (max % 10);
-                    max /= 10;
-                    shift *= 10;
-                }
-                if (isMax) {
-                    i1 = max;
-                } else {
-                    i2 = max;
-                }
-                if (i1.equals(i2)) {
-                    return isMax ? compare(tmp, i2) : compare(i1, tmp);
-                }
-                return i2.compareTo(i1);
+        Queue<Integer> queue = new PriorityQueue<>((i1, i2) -> {
+            if (i1.equals(i2)) {
+                return 0;
             }
+            long s2 = i2 * 10;
+            int tmp = i1;
+            int sum = 0;
+            int shift = 1;
+            while (tmp >= 10) {
+                sum += shift * (tmp % 10);
+                tmp /= 10;
+                shift *= 10;
+                s2 *= 10;
+            }
+            s2 += sum + shift * tmp;
+
+            long s1 = i1 * 10;
+            tmp = i2;
+            sum = 0;
+            shift = 1;
+            while (tmp >= 10) {
+                sum += shift * (tmp % 10);
+                tmp /= 10;
+                shift *= 10;
+                s1 *= 10;
+            }
+            s1 += sum + shift * tmp;
+            return s2 > s1 ? 1 : -1;
         });
         for (int i = 0; i < nums.length; i++) {
             queue.offer(nums[i]);
