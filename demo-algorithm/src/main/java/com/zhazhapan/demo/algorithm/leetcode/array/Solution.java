@@ -11,6 +11,31 @@ import java.util.*;
  */
 public class Solution {
 
+    @LeetCode(difficulty = Difficulty.MEDIUM, id = 324, title = "摆动排序 II", selfResolved = false)
+    public void wiggleSort(int[] nums) {
+        Arrays.sort(nums);
+        for (int i = 1; i < nums.length; i += 2) {
+            int num = nums[i];
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[j] > num) {
+                    nums[i] = nums[j];
+                    nums[j] = num;
+                    break;
+                }
+            }
+            if (nums[i - 1] >= nums[i]) {
+                num = nums[i - 1];
+                for (int j = i - 1; j >= 0; j -= 2) {
+                    if (nums[j] < num) {
+                        nums[i - 1] = nums[j];
+                        nums[j] = num;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
     @LeetCode(id = 179, title = "最大数", difficulty = Difficulty.MEDIUM, important = true, selfResolved = false)
     public String largestNumber(int[] nums) {
         Queue<Integer> queue = new PriorityQueue<>((i1, i2) -> {
