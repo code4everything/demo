@@ -201,4 +201,11 @@ public class SolutionTest {
         assert solution.largestNumber(new int[]{1, 23}).equals("231");
         assert solution.largestNumber(new int[]{0, 0, 0, 0}).equals("0");
     }
+
+    @Test
+    public void countSmaller() {
+        int[] arr = new int[]{1, 2, 3, 4, 5, 6};
+        System.arraycopy(arr, 1, arr, 2, 3);
+        Console.log(arr);
+    }
 }

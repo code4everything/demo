@@ -11,6 +11,35 @@ import java.util.*;
  */
 public class Solution {
 
+    @LeetCode(difficulty = Difficulty.HARD, title = "计算右侧小于当前元素的个数", id = 315)
+    public List<Integer> countSmaller(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return new ArrayList<>();
+        }
+        int[] sorted = new int[nums.length];
+        Integer[] res = new Integer[nums.length];
+        res[nums.length - 1] = 0;
+        sorted[0] = nums[nums.length - 1];
+        int size = 1;
+        for (int i = nums.length - 2; i >= 0; i--) {
+            int start = 0;
+            int end = size - 1;
+            while (start <= end) {
+                int mid = start + ((end - start) >> 1);
+                if (nums[i] > sorted[mid]) {
+                    start = mid + 1;
+                } else {
+                    end = mid - 1;
+                }
+            }
+            res[i] = start;
+            System.arraycopy(sorted, start, sorted, start + 1, size - start);
+            sorted[start] = nums[i];
+            size++;
+        }
+        return Arrays.asList(res);
+    }
+
     @LeetCode(difficulty = Difficulty.MEDIUM, id = 324, title = "摆动排序 II", selfResolved = false)
     public void wiggleSort(int[] nums) {
         int len = nums.length;
