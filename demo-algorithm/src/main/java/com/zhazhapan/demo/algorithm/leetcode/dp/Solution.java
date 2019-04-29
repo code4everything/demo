@@ -3,11 +3,50 @@ package com.zhazhapan.demo.algorithm.leetcode.dp;
 import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
 import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * @author pantao
  * @since 2019/3/21
  **/
 public class Solution {
+
+    @LeetCode(id = 395, title = "至少有K个重复字符的最长子串", difficulty = Difficulty.MEDIUM, selfResolved = false)
+    public int longestSubstring(String s, int k) {
+        Map<Character, Integer> map = new HashMap<>(s.length());
+        char[] chars = s.toCharArray();
+        for (char c : chars) {
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+        StringBuilder regex = new StringBuilder();
+        String sep = "";
+        int letters = 0;
+        Set<Map.Entry<Character, Integer>> set = map.entrySet();
+        for (Map.Entry<Character, Integer> entry : set) {
+            if (entry.getValue() < k) {
+                regex.append(sep).append(entry.getKey());
+                sep = "|";
+                letters++;
+            }
+        }
+        if (letters == 0) {
+            return s.length();
+        }
+        if (letters == map.size()) {
+            return 0;
+        }
+        String[] strs = s.split(regex.toString());
+        int max = 0;
+        for (int i = 0; i < strs.length; i++) {
+            String str = strs[i];
+            if (str.length() > 0) {
+                max = Math.max(max, longestSubstring(str, k));
+            }
+        }
+        return max;
+    }
 
     @LeetCode(id = 198, title = "打家劫舍", difficulty = Difficulty.EASY)
     public int rob(int[] nums) {
