@@ -2,6 +2,7 @@ package com.zhazhapan.demo.algorithm.leetcode.dp;
 
 import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
 import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
+import com.zhazhapan.demo.algorithm.leetcode.model.TreeNode;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,6 +13,24 @@ import java.util.Set;
  * @since 2019/3/21
  **/
 public class Solution {
+
+    private int max = Integer.MIN_VALUE;
+
+    @LeetCode(title = "二叉树中的最大路径和", difficulty = Difficulty.HARD, id = 124, selfResolved = false)
+    public int maxPathSum(TreeNode root) {
+        sumHelper(root);
+        return max;
+    }
+
+    private int sumHelper(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int left = Math.max(sumHelper(root.left), 0);
+        int right = Math.max(sumHelper(root.right), 0);
+        max = Math.max(max, root.val + left + right);
+        return root.val + Math.max(left, right);
+    }
 
     @LeetCode(id = 395, title = "至少有K个重复字符的最长子串", difficulty = Difficulty.MEDIUM, selfResolved = false)
     public int longestSubstring(String s, int k) {
