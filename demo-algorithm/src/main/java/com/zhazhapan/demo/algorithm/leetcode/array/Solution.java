@@ -11,6 +11,26 @@ import java.util.*;
  */
 public class Solution {
 
+    @LeetCode(id = 128, title = "最长连续序列", difficulty = Difficulty.HARD)
+    public int longestConsecutive(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        Arrays.sort(nums);
+        int cnt = 1;
+        int max = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] - 1 == nums[i - 1]) {
+                cnt++;
+            } else if (nums[i] != nums[i - 1]) {
+                max = Math.max(cnt, max);
+                cnt = 1;
+            }
+        }
+        max = Math.max(max, cnt);
+        return max;
+    }
+
     @LeetCode(difficulty = Difficulty.HARD, title = "计算右侧小于当前元素的个数", id = 315)
     public List<Integer> countSmaller(int[] nums) {
         if (nums == null || nums.length == 0) {
