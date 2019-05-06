@@ -11,6 +11,34 @@ import java.util.*;
  */
 public class Solution {
 
+    @LeetCode(id = 300, title = "最长上升子序列", difficulty = Difficulty.MEDIUM)
+    public int lengthOfLIS(int[] seq) {
+        if (seq == null || seq.length == 0) {
+            return 0;
+        }
+        int[][] array = new int[seq.length][2];
+        array[0] = new int[]{seq[0], 1};
+        int size = 1;
+        for (int i = 1; i < seq.length; i++) {
+            int num = seq[i];
+            int len = 1;
+            for (int j = size - 1; j >= 0; j--) {
+                int compare = array[j][0];
+                if (num > compare) {
+                    len = Math.max(array[j][1] + 1, len);
+                } else if (num == compare) {
+                    len = Math.max(array[j][1], len);
+                }
+            }
+            array[size++] = new int[]{num, len};
+        }
+        int max = 0;
+        for (int[] ints : array) {
+            max = Math.max(max, ints[1]);
+        }
+        return max;
+    }
+
     @LeetCode(id = 128, title = "最长连续序列", difficulty = Difficulty.HARD)
     public int longestConsecutive(int[] nums) {
         if (nums == null || nums.length == 0) {
