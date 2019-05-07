@@ -26,4 +26,11 @@ public class SolutionTest {
                 180, 249, 106, 37, 169, 225, 54, 103, 55, 166, 124};
         Console.log(solution.rob(test));
     }
+
+    @Test
+    public void coinChange() {
+        assert solution.coinChange(new int[]{3, 5}, 22) == 6;
+        assert solution.coinChange(new int[]{2}, 3) == -1;
+        Console.log(solution.coinChange(new int[]{186, 419, 83, 408}, 6249));
+    }
 }

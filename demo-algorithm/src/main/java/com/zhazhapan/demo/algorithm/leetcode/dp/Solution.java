@@ -4,6 +4,7 @@ import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
 import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
 import com.zhazhapan.demo.algorithm.leetcode.model.TreeNode;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -15,6 +16,35 @@ import java.util.Set;
 public class Solution {
 
     private int max = Integer.MIN_VALUE;
+
+    @LeetCode(id = 322, title = "零钱兑换", difficulty = Difficulty.MEDIUM)
+    public int coinChange(int[] coins, int amount) {
+        Arrays.sort(coins);
+        return coinHelper(coins, coins.length - 1, amount);
+    }
+
+    private int coinHelper(int[] coins, int high, int amount) {
+        if (high < 0) {
+            return -1;
+        }
+        int coin = coins[high];
+        int res = amount / coin;
+        int mod = amount % coin;
+        if (mod == 0) {
+            return res;
+        }
+        int result = -1;
+        while (res >= 0 && high > 0) {
+            int num = coinHelper(coins, high - 1, mod);
+            if (num > 0) {
+                int tmp = res + num;
+                result = result > 0 ? Math.min(result, tmp) : tmp;
+            }
+            res--;
+            mod += coin;
+        }
+        return result;
+    }
 
     @LeetCode(title = "二叉树中的最大路径和", difficulty = Difficulty.HARD, id = 124, selfResolved = false)
     public int maxPathSum(TreeNode root) {
