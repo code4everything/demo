@@ -17,6 +17,52 @@ public class Solution {
 
     private int max = Integer.MIN_VALUE;
 
+    private int[][] lens;
+
+    @LeetCode(id = 329, title = "矩阵中的最长递增路径", difficulty = Difficulty.HARD)
+    public int longestIncreasingPath(int[][] matrix) {
+        if (matrix.length == 0) {
+            return 0;
+        }
+        lens = new int[matrix.length][matrix[0].length];
+        int pathLen = 0;
+        for (int i = 0; i < lens.length; i++) {
+            for (int j = 0; j < lens[i].length; j++) {
+                lens[i][j] = -1;
+            }
+        }
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                pathLen = Math.max(pathLen, requestPathLength(matrix, i, j));
+            }
+        }
+        return pathLen + 1;
+    }
+
+    private int requestPathLength(int[][] matrix, int i, int j) {
+        if (lens[i][j] != -1) {
+            return lens[i][j];
+        }
+        int a = 0;
+        if (i - 1 > -1 && matrix[i][j] < matrix[i - 1][j]) {
+            a = 1 + requestPathLength(matrix, i - 1, j);
+        }
+        int b = 0;
+        if (i + 1 < matrix.length && matrix[i][j] < matrix[i + 1][j]) {
+            b = 1 + requestPathLength(matrix, i + 1, j);
+        }
+        int c = 0;
+        if (j - 1 > -1 && matrix[i][j] < matrix[i][j - 1]) {
+            c = 1 + requestPathLength(matrix, i, j - 1);
+        }
+        int d = 0;
+        if (j + 1 < matrix[0].length && matrix[i][j] < matrix[i][j + 1]) {
+            d = 1 + requestPathLength(matrix, i, j + 1);
+        }
+        lens[i][j] = Math.max(Math.max(a, b), Math.max(c, d));
+        return lens[i][j];
+    }
+
     @LeetCode(id = 322, title = "零钱兑换", difficulty = Difficulty.MEDIUM, selfResolved = false)
     public int coinChange(int[] coins, int amount) {
         if (amount == 0) {
