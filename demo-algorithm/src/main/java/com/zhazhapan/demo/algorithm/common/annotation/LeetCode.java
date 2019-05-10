@@ -27,4 +27,9 @@ public @interface LeetCode {
      * 自己是否解决了该问题，在没有看答案的情况下
      */
     boolean selfResolved() default true;
+
+    /**
+     * 答案参考
+     */
+    String refer() default "";
 }

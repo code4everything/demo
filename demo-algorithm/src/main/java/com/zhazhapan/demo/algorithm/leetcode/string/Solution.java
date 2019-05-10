@@ -19,7 +19,7 @@ public class Solution {
 
     private final char nine = '9';
 
-    @LeetCode(id = 127, title = "单词接龙", difficulty = Difficulty.MEDIUM)
+    @LeetCode(id = 127, title = "单词接龙", difficulty = Difficulty.MEDIUM, selfResolved = false)
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         int ans = 0;
         boolean[] hashset = new boolean[wordList.size()];
