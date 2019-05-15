@@ -13,7 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <util.version>1.1.1</util.version>
+        <util.version>1.1.2</util.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
@@ -32,6 +32,7 @@
         <module>demo-concurrency</module>
         <module>demo-over8</module>
         <module>demo-springcloud</module>
+        <module>demo-lombok</module>
     </modules>
 
     <dependencies>
