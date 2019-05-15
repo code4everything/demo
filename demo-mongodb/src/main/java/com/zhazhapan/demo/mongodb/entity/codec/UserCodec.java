@@ -21,6 +21,7 @@ public class UserCodec implements Codec<User> {
 
     private final String BIRTH = "birth";
 
+    @Override
     public User decode(BsonReader bsonReader, DecoderContext decoderContext) {
         User user = new User();
         bsonReader.readStartDocument();
@@ -33,6 +34,7 @@ public class UserCodec implements Codec<User> {
         return user;
     }
 
+    @Override
     public void encode(BsonWriter bsonWriter, User user, EncoderContext encoderContext) {
         bsonWriter.writeStartDocument();
         bsonWriter.writeString(NAME, user.getName());
@@ -41,6 +43,7 @@ public class UserCodec implements Codec<User> {
         bsonWriter.writeEndDocument();
     }
 
+    @Override
     public Class<User> getEncoderClass() {
         return User.class;
     }
