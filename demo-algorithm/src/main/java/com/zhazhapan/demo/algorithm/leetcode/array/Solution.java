@@ -11,6 +11,48 @@ import java.util.*;
  */
 public class Solution {
 
+    @LeetCode(id = 210, title = "课程表 II", difficulty = Difficulty.MEDIUM, selfResolved = false)
+    public int[] findOrder(int numCourses, int[][] prerequisites) {
+        int[] indegree = new int[numCourses];
+        HashMap<Integer, LinkedList<Integer>> table = new HashMap<>();
+        for (int[] req : prerequisites) {
+            indegree[req[0]]++;
+            if (!table.containsKey(req[1])) {
+                table.put(req[1], new LinkedList<>());
+            }
+            table.get(req[1]).add(req[0]);
+        }
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < numCourses; i++) {
+            if (indegree[i] == 0) {
+                queue.add(i);
+            }
+        }
+        LinkedList<Integer> order = new LinkedList<>();
+        while (queue.size() > 0) {
+            int c = queue.poll();
+            order.add(c);
+            if (table.containsKey(c)) {
+                for (int a : table.get(c)) {
+                    if (indegree[a] > 0) {
+                        indegree[a]--;
+                        if (indegree[a] == 0) {
+                            queue.add(a);
+                        }
+                    }
+                }
+            }
+        }
+        if (order.size() != numCourses) {
+            return new int[0];
+        }
+        int[] res = new int[order.size()];
+        for (int i = 0; i < order.size(); i++) {
+            res[i] = order.get(i);
+        }
+        return res;
+    }
+
     @LeetCode(refer = "https://www.cnblogs.com/MrSaver/p/9996941.html", id = 207, title = "课程表", difficulty =
             Difficulty.MEDIUM)
     public boolean canFinish(int numCourses, int[][] prerequisites) {
