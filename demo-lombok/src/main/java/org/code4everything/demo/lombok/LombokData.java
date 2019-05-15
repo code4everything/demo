@@ -1,6 +1,8 @@
 package org.code4everything.demo.lombok;
 
 import lombok.*;
+import lombok.experimental.Accessors;
+import lombok.experimental.Wither;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -13,9 +15,11 @@ import java.util.List;
 @Data
 @Builder
 @ToString
+@Wither
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
+@Accessors(chain = true)
 // @Value(staticConstructor = "of")
 @RequiredArgsConstructor(onConstructor_ = {@NonNull})
 class LombokData implements Serializable {
@@ -45,8 +49,11 @@ class LombokData implements Serializable {
         System.out.println(data.setMood("nice"));
 
         // test builder
-        data = new LombokDataBuilder().date(new Date()).mood("curious").weather("sunny").city("chengdu").build();
-        System.out.println(data);
+        data = new LombokDataBuilder().date(new Date()).mood("curious").city("chengdu").build();
+        System.out.println(data.setWeather("sunny"));
+
+        // test wither
+        System.out.println(data.withWeather("cloud"));
 
         // test non null, this will throw a null pointer exception
         data.setDate(null);
