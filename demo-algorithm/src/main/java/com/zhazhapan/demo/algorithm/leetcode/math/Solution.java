@@ -26,6 +26,58 @@ public class Solution {
         romanMap.put('M', 1000);
     }
 
+    @LeetCode(id = 149, title = "直线上最多的点数", difficulty = Difficulty.HARD, selfResolved = false)
+    public int maxPoints(int[][] points) {
+        if (points.length <= 2) {
+            return points.length;
+        }
+        int result = 0;
+        int n = points.length;
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            // clear the map to avoid counting points in different parallel lines
+            map.clear();
+            int samePoints = 1;
+            for (int j = i + 1; j < n; j++) {
+                int dx = points[i][0] - points[j][0];
+                int dy = points[i][1] - points[j][1];
+                // check for the duplicate points
+                if (dx == 0 && dy == 0) {
+                    samePoints++;
+                    continue;
+                }
+
+                // find the greatest common divisor of dx and dy
+                int gcd = GCD(dx, dy);
+                String slope = (dx / gcd) + "#" + (dy / gcd);
+
+                if (!map.containsKey(slope)) {
+                    map.put(slope, 1);
+                } else {
+                    map.put(slope, map.get(slope) + 1);
+                }
+
+            }
+
+            if (map.isEmpty()) {
+                if (samePoints > result) {
+                    result = samePoints;
+                }
+            } else {
+                for (int num : map.values()) {
+                    if (num + samePoints > result) {
+                        result = num + samePoints;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    private int GCD(int a, int b) {
+        return (b == 0) ? a : GCD(b, a % b);
+    }
+
     @LeetCode(id = 268, difficulty = Difficulty.EASY, title = "缺失数字")
     public int missingNumber(int[] nums) {
         int sum = (1 + nums.length) * nums.length / 2;
