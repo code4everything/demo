@@ -37,5 +37,7 @@
     - [Security Demo](demo-springboot/demo-springboot-security)
     
     - [Shiro Demo](demo-springboot/demo-springboot-shiro)
+    
+    - [OAuth Demo](demo-springboot/demo-springboot-oauth)
 
 - [Lombok Demo](demo-lombok)
