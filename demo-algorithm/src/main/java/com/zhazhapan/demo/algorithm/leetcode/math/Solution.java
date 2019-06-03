@@ -26,6 +26,15 @@ public class Solution {
         romanMap.put('M', 1000);
     }
 
+    @LeetCode(id = 172, title = "阶乘后的零", difficulty = Difficulty.EASY)
+    public int trailingZeroes(int n) {
+        if (n < 5) {
+            return 0;
+        }
+        int s = n / 5;
+        return s + trailingZeroes(s);
+    }
+
     @LeetCode(id = 149, title = "直线上最多的点数", difficulty = Difficulty.HARD, selfResolved = false)
     public int maxPoints(int[][] points) {
         if (points.length <= 2) {
