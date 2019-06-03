@@ -22,5 +22,6 @@
         <module>demo-springboot-rabbitmq</module>
         <module>demo-springboot-integration</module>
         <module>demo-springboot-monitor</module>
+        <module>demo-springboot-oauth</module>
     </modules>
 </project>
