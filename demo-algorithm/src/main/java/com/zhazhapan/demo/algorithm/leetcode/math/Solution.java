@@ -26,6 +26,11 @@ public class Solution {
         romanMap.put('M', 1000);
     }
 
+    @LeetCode(id = 371, title = "两整数之和", difficulty = Difficulty.EASY, selfResolved = false)
+    public int getSum(int a, int b) {
+        return b == 0 ? a : getSum(a ^ b, (a & b) << 1);
+    }
+
     @LeetCode(id = 172, title = "阶乘后的零", difficulty = Difficulty.EASY)
     public int trailingZeroes(int n) {
         if (n < 5) {
