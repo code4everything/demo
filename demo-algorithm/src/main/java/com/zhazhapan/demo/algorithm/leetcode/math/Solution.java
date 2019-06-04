@@ -1,5 +1,6 @@
 package com.zhazhapan.demo.algorithm.leetcode.math;
 
+import cn.hutool.core.math.MathUtil;
 import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
 import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
 
@@ -24,6 +25,24 @@ public class Solution {
         romanMap.put('C', 100);
         romanMap.put('D', 500);
         romanMap.put('M', 1000);
+    }
+
+    @LeetCode(id = 134, title = "加油站", difficulty = Difficulty.MEDIUM, selfResolved = false)
+    public int canCompleteCircuit(int[] gas, int[] cost) {
+        int n = gas.length;
+        int totalTank = 0;
+        int currTank = 0;
+        int statingStation = 0;
+        for (int i = 0; i < n; i++) {
+            int diff = gas[i] - cost[i];
+            totalTank += diff;
+            currTank += diff;
+            if (currTank < 0) {
+                currTank = 0;
+                statingStation = i + 1;
+            }
+        }
+        return totalTank >= 0 ? statingStation : -1;
     }
 
     @LeetCode(id = 371, title = "两整数之和", difficulty = Difficulty.EASY, selfResolved = false)
