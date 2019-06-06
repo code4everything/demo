@@ -11,6 +11,20 @@ import java.util.*;
  **/
 public class Solution {
 
+    @LeetCode(id = 24, title = "两两交换链表中的节点", difficulty = Difficulty.MEDIUM)
+    public ListNode swapPairs(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        if (head.next == null) {
+            return head;
+        }
+        ListNode root = head.next;
+        head.next = swapPairs(root.next);
+        root.next = head;
+        return root;
+    }
+
     @LeetCode(id = 148, title = "排序链表", difficulty = Difficulty.MEDIUM)
     public ListNode sortList(ListNode head) {
         if (head == null || head.next == null) {
