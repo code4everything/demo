@@ -1,6 +1,5 @@
 package com.zhazhapan.demo.algorithm.leetcode.math;
 
-import cn.hutool.core.math.MathUtil;
 import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
 import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
 
