@@ -27,6 +27,22 @@ public class Solution {
         romanMap.put('M', 1000);
     }
 
+    @LeetCode(title = "斐波那契数", id = 509, difficulty = Difficulty.EASY)
+    public int fib(int n) {
+        if (n < 2) {
+            return n;
+        }
+        int[] result = new int[n + 1];
+        result[0] = 0;
+        result[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            result[i] = result[i - 1] + result[i - 2];
+        }
+        return result[n];
+        // 递归方案，从LeetCode来看，递归会导致方法栈不停的弹栈和入栈，有一定的性能损耗
+        // n < 2 ? n : fib(n - 1) + fib(n - 2)
+    }
+
     @LeetCode(id = 134, title = "加油站", difficulty = Difficulty.MEDIUM, selfResolved = false)
     public int canCompleteCircuit(int[] gas, int[] cost) {
         int n = gas.length;
