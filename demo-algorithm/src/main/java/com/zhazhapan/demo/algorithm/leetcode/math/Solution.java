@@ -28,10 +28,7 @@ public class Solution {
 
     @LeetCode(title = "第K个语法符号", id = 779, difficulty = Difficulty.MEDIUM)
     public int kthGrammar(int n, int k) {
-        if (n == 1) {
-            return 0;
-        }
-        return kthGrammar(n - 1, (k + 1) >> 1) ^ (k + 1) & 1;
+        return n == 1 ? 0 : kthGrammar(n - 1, (k + 1) >> 1) ^ (k + 1) & 1;
     }
 
     @LeetCode(title = "斐波那契数", id = 509, difficulty = Difficulty.EASY)
