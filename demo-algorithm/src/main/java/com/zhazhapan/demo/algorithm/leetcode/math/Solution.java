@@ -26,6 +26,14 @@ public class Solution {
         romanMap.put('M', 1000);
     }
 
+    @LeetCode(title = "第K个语法符号", id = 779, difficulty = Difficulty.MEDIUM)
+    public int kthGrammar(int n, int k) {
+        if (n == 1) {
+            return 0;
+        }
+        return kthGrammar(n - 1, (k + 1) >> 1) ^ (k + 1) & 1;
+    }
+
     @LeetCode(title = "斐波那契数", id = 509, difficulty = Difficulty.EASY)
     public int fib(int n) {
         if (n < 2) {
@@ -38,8 +46,6 @@ public class Solution {
             result[i] = result[i - 1] + result[i - 2];
         }
         return result[n];
-        // 递归方案，从LeetCode来看，递归会导致方法栈不停的弹栈和入栈，有一定的性能损耗
-        // n < 2 ? n : fib(n - 1) + fib(n - 2)
     }
 
     @LeetCode(id = 134, title = "加油站", difficulty = Difficulty.MEDIUM, selfResolved = false)
