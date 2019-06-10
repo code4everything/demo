@@ -26,6 +26,22 @@ public class Solution {
         romanMap.put('M', 1000);
     }
 
+    @LeetCode(id = 9, title = "回文数", difficulty = Difficulty.EASY)
+    public boolean isPalindrome(int x) {
+        int reverse = 0;
+        int origin = x;
+        try {
+            while (x > 0) {
+                reverse *= 10;
+                reverse += x % 10;
+                x /= 10;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+        return reverse == origin;
+    }
+
     @LeetCode(title = "第K个语法符号", id = 779, difficulty = Difficulty.MEDIUM)
     public int kthGrammar(int n, int k) {
         return n == 1 ? 0 : kthGrammar(n - 1, (k + 1) >> 1) ^ (k + 1) & 1;
