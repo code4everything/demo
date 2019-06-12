@@ -19,6 +19,30 @@ public class Solution {
 
     private final char nine = '9';
 
+    @LeetCode(id = 451, title = "根据字符出现频率排序", difficulty = Difficulty.MEDIUM)
+    public String frequencySort(String s) {
+        int len = s.length();
+        char[] cs = s.toCharArray();
+        List<Character> unique = new ArrayList<>();
+        Map<Character, Integer> cnt = new HashMap<>(128);
+        for (int i = 0; i < len; i++) {
+            char c = cs[i];
+            int count = cnt.getOrDefault(c, 0);
+            if (count == 0) {
+                unique.add(c);
+            }
+            cnt.put(c, count + 1);
+        }
+        unique.sort((c1, c2) -> cnt.get(c2).compareTo(cnt.get(c1)));
+        for (int i = 0, j = 0; i < len; j++) {
+            char c = unique.get(j);
+            for (int size = cnt.get(c); size > 0; size--, i++) {
+                cs[i] = c;
+            }
+        }
+        return new String(cs);
+    }
+
     @LeetCode(id = 127, title = "单词接龙", difficulty = Difficulty.MEDIUM, selfResolved = false)
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         int ans = 0;
