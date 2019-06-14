@@ -23,6 +23,49 @@ public class Solution {
         romanMap.put('M', 1000);
     }
 
+    @LeetCode(id = 447, title = "回旋镖的数量", difficulty = Difficulty.EASY)
+    public int numberOfBoomerangs(int[][] points) {
+        int len = points.length;
+        int ans = 0;
+        Map<Integer, Integer> map = new HashMap<>(len, 1);
+        for (int i = 0; i < len; i++) {
+            int[] a = points[i];
+            for (int j = 0; j < len; j++) {
+                if (i == j) {
+                    continue;
+                }
+                int[] b = points[j];
+                int x = Math.abs(a[0] - b[0]);
+                int y = Math.abs(a[1] - b[1]);
+                int distance = x * x + y * y;
+                int n = map.getOrDefault(distance, 0);
+                if (n > 0) {
+                    ans += 2 * n;
+                }
+                map.put(distance, n + 1);
+            }
+            map.clear();
+        }
+        return ans;
+    }
+
+    private Integer distanceHelper(Map<Integer, Integer> map, int[] a, int[] b, int i, int j) {
+        if (i < j) {
+            i *= 1000;
+        } else {
+            j *= 1000;
+        }
+        Integer key = i + j;
+        Integer dis = map.get(key);
+        if (dis == null) {
+            int x = Math.abs(a[0] - b[0]);
+            int y = Math.abs(a[1] - b[1]);
+            dis = x * x + y * y;
+            map.put(key, dis);
+        }
+        return dis;
+    }
+
     @LeetCode(id = 15, title = "三数之和", difficulty = Difficulty.MEDIUM)
     public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
