@@ -13,7 +13,6 @@ public class Contest1089 {
             return;
         }
         int[] copier = Arrays.copyOf(arr, arr.length);
-        int idx = 0;
         for (int i = 0, j = 0; j < arr.length; i++) {
             int num = copier[i];
             arr[j++] = num;

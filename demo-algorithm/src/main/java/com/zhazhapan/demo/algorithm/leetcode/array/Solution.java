@@ -11,6 +11,19 @@ import java.util.*;
  */
 public class Solution {
 
+    @LeetCode(id = 75, title = "颜色分类", difficulty = Difficulty.MEDIUM)
+    public void sortColors(int[] nums) {
+        int[] cnts = new int[3];
+        for (int num : nums) {
+            cnts[num]++;
+        }
+        int start = 0;
+        for (int i = 0; i < cnts.length; i++) {
+            Arrays.fill(nums, start, start + cnts[i], i);
+            start += cnts[i];
+        }
+    }
+
     @LeetCode(id = 80, title = "删除排序数组中的重复项 II", difficulty = Difficulty.MEDIUM)
     public int removeDuplicates2(int[] nums) {
         if (nums.length < 3) {

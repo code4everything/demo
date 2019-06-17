@@ -208,4 +208,11 @@ public class SolutionTest {
         System.arraycopy(arr, 1, arr, 2, 3);
         Console.log(arr);
     }
+
+    @Test
+    public void sortColors() {
+        int[] test = new int[]{2, 0, 2, 1, 1, 0};
+        solution.sortColors(test);
+        Console.log(test);
+    }
 }
