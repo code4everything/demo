@@ -19,6 +19,30 @@ public class Solution {
 
     private final char nine = '9';
 
+    private Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'));
+
+    @LeetCode(id = 345, title = "反转字符串中的元音字母", difficulty = Difficulty.MEDIUM)
+    public String reverseVowels(String s) {
+        char[] origin = s.toCharArray();
+        int i = 0;
+        int j = origin.length - 1;
+        while (i < j) {
+            char c1 = origin[i];
+            if (vowels.contains(c1)) {
+                char c2 = origin[j];
+                while (!vowels.contains(c2)) {
+                    origin[j--] = c2;
+                    c2 = origin[j];
+                }
+                origin[i++] = c2;
+                origin[j--] = c1;
+            } else {
+                origin[i++] = c1;
+            }
+        }
+        return new String(origin);
+    }
+
     @LeetCode(id = 451, title = "根据字符出现频率排序", difficulty = Difficulty.MEDIUM)
     public String frequencySort(String s) {
         int len = s.length();
