@@ -11,6 +11,23 @@ import java.util.*;
  */
 public class Solution {
 
+    @LeetCode(id = 11, title = "盛最多水的容器", difficulty = Difficulty.MEDIUM)
+    public int maxArea(int[] height) {
+        int i = 0;
+        int j = height.length - 1;
+        int max = 0;
+        while (i < j) {
+            int heigh = height[i];
+            if (heigh < height[j]) {
+                i++;
+            } else {
+                heigh = height[j--];
+            }
+            max = Math.max(max, heigh * (j - i + 1));
+        }
+        return max;
+    }
+
     @LeetCode(id = 75, title = "颜色分类", difficulty = Difficulty.MEDIUM)
     public void sortColors(int[] nums) {
         int[] cnts = new int[3];
