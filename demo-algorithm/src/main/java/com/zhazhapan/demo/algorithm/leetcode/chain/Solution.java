@@ -14,6 +14,29 @@ public class Solution {
 
     private int tilt = 0;
 
+    @LeetCode(id = 23, title = "合并K个排序链表", difficulty = Difficulty.HARD)
+    public ListNode mergeKLists(ListNode[] lists) {
+        Queue<ListNode> nodes = new PriorityQueue<>(Comparator.comparingInt(n -> n.val));
+        for (ListNode node : lists) {
+            if (node != null) {
+                nodes.offer(node);
+            }
+        }
+        ListNode root = new ListNode(0);
+        ListNode next = root;
+        while (!nodes.isEmpty()) {
+            ListNode node = nodes.poll();
+            if (node != null) {
+                next.next = new ListNode(node.val);
+                next = next.next;
+                if (node.next != null) {
+                    nodes.offer(node.next);
+                }
+            }
+        }
+        return root.next;
+    }
+
     @LeetCode(id = 563, title = "二叉树的坡度", difficulty = Difficulty.EASY)
     public int findTilt(TreeNode root) {
         traverse(root);
