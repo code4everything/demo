@@ -21,6 +21,24 @@ public class Solution {
 
     private Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'));
 
+    @LeetCode(id = 165, title = "比较版本号", difficulty = Difficulty.MEDIUM)
+    public int compareVersion(String version1, String version2) {
+        String[] vers1 = version1.split("\\.");
+        String[] vers2 = version2.split("\\.");
+        int len = Math.max(vers1.length, vers2.length);
+        for (int i = 0; i < len; i++) {
+            int ver1 = i < vers1.length ? Integer.valueOf(vers1[i]) : 0;
+            int ver2 = i < vers2.length ? Integer.valueOf(vers2[i]) : 0;
+            if (ver1 > ver2) {
+                return 1;
+            }
+            if (ver1 < ver2) {
+                return -1;
+            }
+        }
+        return 0;
+    }
+
     @LeetCode(id = 97, title = "交错字符串", difficulty = Difficulty.HARD, selfResolved = false)
     public boolean isInterleave(String s1, String s2, String s3) {
         if (s3.length() != s1.length() + s2.length()) {

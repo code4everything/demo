@@ -49,4 +49,13 @@ public class SolutionTest {
                                                                                 "pineapple")));
         Console.log(solution.wordBreak2("catsandog", Lists.newArrayList("cats", "dog", "sand", "and", "cat")));
     }
+
+    @Test
+    public void compareVersion() {
+        solution.compareVersion("0.1", "1.1");
+    }
+
+    @Test
+    public void isAnagram() {
+    }
 }
