@@ -26,12 +26,10 @@ public class Solution {
         ListNode next = root;
         while (!nodes.isEmpty()) {
             ListNode node = nodes.poll();
-            if (node != null) {
-                next.next = new ListNode(node.val);
-                next = next.next;
-                if (node.next != null) {
-                    nodes.offer(node.next);
-                }
+            next.next = new ListNode(node.val);
+            next = next.next;
+            if (node.next != null) {
+                nodes.offer(node.next);
             }
         }
         return root.next;
