@@ -17,14 +17,11 @@ public class BinarySearchTree {
 
     private List<List<Boolean>> lists = new ArrayList<>();
 
+    private int max = 0;
+
     @LeetCode(id = 662, title = "二叉树最大宽度", difficulty = Difficulty.MEDIUM)
     public int widthOfBinaryTree(TreeNode root) {
         widthHelper(root, 0);
-        int max = 0;
-        for (int i = 0; i < lists.size(); i++) {
-            List<Boolean> list = lists.get(i);
-            max = Math.max(max, list.lastIndexOf(true) + 1);
-        }
         return max;
     }
 
@@ -44,11 +41,13 @@ public class BinarySearchTree {
                 widthHelper(null, nextLevel);
                 widthHelper(null, nextLevel);
             } else {
+                max = Math.max(max, list.size());
                 widthHelper(node.left, nextLevel);
                 widthHelper(node.right, nextLevel);
             }
         } else if (node != null) {
             list.add(true);
+            max = Math.max(max, 1);
             widthHelper(node.left, nextLevel);
             widthHelper(node.right, nextLevel);
         }
