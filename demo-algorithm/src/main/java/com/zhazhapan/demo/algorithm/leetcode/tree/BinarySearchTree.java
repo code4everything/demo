@@ -4,6 +4,8 @@ import com.zhazhapan.demo.algorithm.common.annotation.LeetCode;
 import com.zhazhapan.demo.algorithm.common.enums.Difficulty;
 import com.zhazhapan.demo.algorithm.leetcode.model.TreeNode;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -12,6 +14,45 @@ import java.util.TreeSet;
  * @since 2018-12-10
  */
 public class BinarySearchTree {
+
+    private List<List<Boolean>> lists = new ArrayList<>();
+
+    @LeetCode(id = 662, title = "二叉树最大宽度", difficulty = Difficulty.MEDIUM)
+    public int widthOfBinaryTree(TreeNode root) {
+        widthHelper(root, 0);
+        int max = 0;
+        for (int i = 0; i < lists.size(); i++) {
+            List<Boolean> list = lists.get(i);
+            max = Math.max(max, list.lastIndexOf(true) + 1);
+        }
+        return max;
+    }
+
+    private void widthHelper(TreeNode node, int level) {
+        List<Boolean> list;
+        if (level < lists.size()) {
+            list = lists.get(level);
+        } else {
+            list = new ArrayList<>();
+            lists.add(list);
+        }
+        int nextLevel = level + 1;
+        if (list.size() > 0) {
+            boolean isNull = node == null;
+            list.add(!isNull);
+            if (isNull) {
+                widthHelper(null, nextLevel);
+                widthHelper(null, nextLevel);
+            } else {
+                widthHelper(node.left, nextLevel);
+                widthHelper(node.right, nextLevel);
+            }
+        } else if (node != null) {
+            list.add(true);
+            widthHelper(node.left, nextLevel);
+            widthHelper(node.right, nextLevel);
+        }
+    }
 
     @LeetCode(id = 108, title = "将有序数组转换为二叉搜索树", difficulty = Difficulty.EASY)
     public TreeNode sortedArrayToBST(int[] nums) {
