@@ -13,20 +13,22 @@ public class Contest1103 {
         List<Integer> list = new LinkedList<>();
         int level = 32;
         int min = 1 << (level - 1);
-        while ((min & label) != min) {
-            level--;
-            min = 1 << (level - 1);
+        // 计算当前节点所在的层
+        for (; (min & label) != min; level--) {
+            min = 1 << (level - 2);
         }
-        while (level > 1) {
+        for (; level > 1; level--, min >>= 1) {
             list.add(0, label);
+            // 当前节点所在层的最大值
             int max = (min << 1) - 1;
+            // 计算当前节点的父节点的值
             if ((level & 1) == 0) {
-                label = (min >> 1) + ((max - label) / 2);
+                // 偶数层：父节点的值=父节点所在的层的最小值+父节点在所在层的索引位置
+                label = (min >> 1) + ((max - label) >> 1);
             } else {
-                label = (max >> 1) - ((label - min) / 2);
+                // 奇数层：父节点的值=父节点所在的层的最大值-父节点在所在层的索引位置
+                label = (max >> 1) - ((label - min) >> 1);
             }
-            min >>= 1;
-            level--;
         }
         list.add(0, 1);
         return list;
