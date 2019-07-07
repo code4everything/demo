@@ -8,12 +8,15 @@ public class Contest5118 {
 
     public int[] corpFlightBookings(int[][] bookings, int n) {
         int[] answer = new int[n];
+        int[] tag = new int[20001];
         for (int[] booking : bookings) {
-            int start = booking[0] - 1;
-            int end = booking[1];
-            for (; start < end; start++) {
-                answer[start] += booking[2];
-            }
+            tag[booking[0] - 1] += booking[2];
+            tag[booking[1]] -= booking[2];
+        }
+        int last = 0;
+        for (int i = 0; i < answer.length; i++) {
+            answer[i] = last + tag[i];
+            last = answer[i];
         }
         return answer;
     }
