@@ -21,6 +21,28 @@ public class Solution {
 
     private Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'));
 
+    @LeetCode(id = 482, title = "密钥格式化", difficulty = Difficulty.EASY)
+    public String licenseKeyFormatting(String s, int k) {
+        int high = s.length() - 1;
+        int tmp = k;
+        StringBuilder sb = new StringBuilder();
+        for (; high >= 0; high--) {
+            char c = s.charAt(high);
+            if (c != '-') {
+                if (tmp == 0) {
+                    sb.insert(0, "-");
+                    tmp = k;
+                }
+                if (Character.isLowerCase(c)) {
+                    c = Character.toUpperCase(c);
+                }
+                sb.insert(0, c);
+                tmp--;
+            }
+        }
+        return sb.toString();
+    }
+
     @LeetCode(id = 165, title = "比较版本号", difficulty = Difficulty.MEDIUM)
     public int compareVersion(String version1, String version2) {
         String[] vers1 = version1.split("\\.");
