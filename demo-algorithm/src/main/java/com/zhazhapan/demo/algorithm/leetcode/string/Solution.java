@@ -21,6 +21,11 @@ public class Solution {
 
     private Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'));
 
+    @LeetCode(id = 504, title = "七进制数", difficulty = Difficulty.EASY)
+    public String convertToBase7(int num) {
+        return Integer.toString(num, 7);
+    }
+
     @LeetCode(id = 482, title = "密钥格式化", difficulty = Difficulty.EASY)
     public String licenseKeyFormatting(String s, int k) {
         int high = s.length() - 1;
