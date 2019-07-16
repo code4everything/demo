@@ -33,6 +33,7 @@
         <module>demo-over8</module>
         <module>demo-springcloud</module>
         <module>demo-lombok</module>
+        <module>demo-dubbo</module>
     </modules>
 
     <dependencies>
