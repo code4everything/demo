@@ -12,7 +12,7 @@ public class Contest5130 {
         int[] arr = new int[dominoes.length + 1];
         arr[dominoes.length] = 100;
         for (int i = 0; i < dominoes.length; i++) {
-            int tmp[] = dominoes[i];
+            int[] tmp = dominoes[i];
             arr[i] = Math.min(tmp[0], tmp[1]) * 10 + Math.max(tmp[0], tmp[1]);
         }
         int cnt = 0;
