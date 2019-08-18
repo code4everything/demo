@@ -21,6 +21,30 @@ public class Solution {
 
     private Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'));
 
+    @LeetCode(id = 682, title = "棒球比赛", difficulty = Difficulty.EASY)
+    public int calPoints(String[] ops) {
+        Stack<Integer> stack = new Stack<>();
+        for (String op : ops) {
+            if (op.equals("+")) {
+                int top = stack.pop();
+                int newTop = top + stack.peek();
+                stack.push(top);
+                stack.push(newTop);
+            } else if (op.equals("C")) {
+                stack.pop();
+            } else if (op.equals("D")) {
+                stack.push(2 * stack.peek());
+            } else {
+                stack.push(Integer.valueOf(op));
+            }
+        }
+        int ans = 0;
+        for (Integer score : stack) {
+            ans += score;
+        }
+        return ans;
+    }
+
     @LeetCode(id = 504, title = "七进制数", difficulty = Difficulty.EASY)
     public String convertToBase7(int num) {
         return Integer.toString(num, 7);
