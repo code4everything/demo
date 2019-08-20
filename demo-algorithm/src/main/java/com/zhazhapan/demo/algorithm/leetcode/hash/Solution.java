@@ -12,6 +12,26 @@ import java.util.*;
  **/
 public class Solution {
 
+    @LeetCode(id = 690, title = "员工的重要性", difficulty = Difficulty.EASY)
+    public int getImportance(List<Employee> employees, int id) {
+        Employee[] ems = new Employee[2001];
+        for (Employee employee : employees) {
+            ems[employee.id] = employee;
+        }
+        int ans = 0;
+        int[] queue = new int[2000];
+        int start = 0, end = 1;
+        queue[start] = id;
+        while (start < end) {
+            Employee employee = ems[queue[start++]];
+            ans += employee.importance;
+            for (Integer subordinate : employee.subordinates) {
+                queue[end++] = subordinate;
+            }
+        }
+        return ans;
+    }
+
     @LeetCode(id = 171, title = "Excel表列序号", difficulty = Difficulty.EASY)
     public int titleToNumber(String s) {
         char[] cs = s.toCharArray();
@@ -274,5 +294,14 @@ public class Solution {
             }
         }
         return false;
+    }
+
+    class Employee {
+
+        public int id;
+
+        public int importance;
+
+        public List<Integer> subordinates;
     }
 }

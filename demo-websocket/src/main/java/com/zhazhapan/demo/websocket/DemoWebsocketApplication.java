@@ -16,7 +16,6 @@ import org.springframework.web.filter.CorsFilter;
 @EnableScheduling
 public class DemoWebsocketApplication {
 
-
     public static void main(String[] args) {
         SpringApplication.run(DemoWebsocketApplication.class, args);
     }
