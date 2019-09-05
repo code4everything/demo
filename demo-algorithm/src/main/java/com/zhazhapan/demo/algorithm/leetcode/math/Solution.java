@@ -23,6 +23,33 @@ public class Solution {
         romanMap.put('M', 1000);
     }
 
+    @LeetCode(id = 766, title = "托普利茨矩阵", difficulty = Difficulty.EASY)
+    public boolean isToeplitzMatrix(int[][] matrix) {
+        int x = matrix.length;
+        int y = matrix[0].length;
+        for (int i = 0; i < x - 1; i++) {
+            int j = 0;
+            int k = i;
+            int num = matrix[k++][j++];
+            for (; j < y && k < x; j++, k++) {
+                if (matrix[k][j] != num) {
+                    return false;
+                }
+            }
+        }
+        for (int i = 1; i < y - 1; i++) {
+            int k = i;
+            int j = 0;
+            int num = matrix[j++][k++];
+            for (; j < x && k < y; j++, k++) {
+                if (matrix[j][k] != num) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     @LeetCode(id = 447, title = "回旋镖的数量", difficulty = Difficulty.EASY)
     public int numberOfBoomerangs(int[][] points) {
         int len = points.length;

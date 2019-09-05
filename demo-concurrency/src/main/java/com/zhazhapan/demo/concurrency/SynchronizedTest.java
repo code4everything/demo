@@ -1,6 +1,6 @@
 package com.zhazhapan.demo.concurrency;
 
-import cn.hutool.core.thread.ThreadUtil;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author pantao
@@ -10,12 +10,12 @@ public class SynchronizedTest extends Thread {
 
     private int count = 0;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         SynchronizedTest test1 = new SynchronizedTest();
         SynchronizedTest test2 = new SynchronizedTest();
         test1.start();
         test2.start();
-        ThreadUtil.sleep(1);
+        TimeUnit.SECONDS.sleep(1);
         test1.interrupt();
         test2.interrupt();
     }
