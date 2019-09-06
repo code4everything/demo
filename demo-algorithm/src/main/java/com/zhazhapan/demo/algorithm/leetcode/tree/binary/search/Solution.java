@@ -13,9 +13,31 @@ import java.util.List;
  **/
 public class Solution {
 
+    TreeNode pre;
+
+    int min = Integer.MAX_VALUE;
+
     private int cnt = 0;
 
     private List<TreeNode> none = new ArrayList<>();
+
+    @LeetCode(id = 783, title = "二叉搜索树结点最小距离", difficulty = Difficulty.EASY)
+    public int minDiffInBST(TreeNode root) {
+        inorder(root);
+        return min;
+    }
+
+    public void inorder(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        inorder(node.left);
+        if (pre != null) {
+            min = Math.min(min, node.val - pre.val);
+        }
+        pre = node;
+        inorder(node.right);
+    }
 
     @LeetCode(id = 95, title = "不同的二叉搜索树 II", difficulty = Difficulty.MEDIUM)
     public List<TreeNode> generateTrees(int n) {
