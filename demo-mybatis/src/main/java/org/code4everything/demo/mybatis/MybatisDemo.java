@@ -34,6 +34,7 @@ public class MybatisDemo {
         Environment environment = new Environment("development", new JdbcTransactionFactory(), dataSource);
         Configuration configuration = new Configuration(environment);
         configuration.addMapper(DeptMapper.class);
+        configuration.addInterceptor(new PageInterceptor());
         return new SqlSessionFactoryBuilder().build(configuration);
     }
 }
