@@ -8,22 +8,25 @@ import cn.hutool.core.thread.ThreadUtil;
  */
 public class WaitAndNotifyTest {
 
-    private static final Object lock = new Object();
+    private static final Object LOCK = new Object();
+
+    private static final int THRESHOLD = 100;
 
     private static int count = 0;
 
     public static void main(String[] args) {
+        // 两个线程依次打印：1,2,3,4,5.....
         ThreadUtil.execute(WaitAndNotifyTest::print);
         ThreadUtil.execute(WaitAndNotifyTest::print);
     }
 
     private static void print() {
-        synchronized (lock) {
-            while (count < 100) {
+        synchronized (LOCK) {
+            while (count < THRESHOLD) {
                 System.out.println("Thread-" + Thread.currentThread().getId() + " >>> " + (++count));
-                lock.notify();
+                LOCK.notify();
                 try {
-                    lock.wait(100);
+                    LOCK.wait(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

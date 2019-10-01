@@ -29,7 +29,6 @@
         <module>demo-pattern</module>
         <module>demo-test</module>
         <module>demo-guava</module>
-        <module>demo-concurrency</module>
         <module>demo-over8</module>
         <module>demo-springcloud</module>
         <module>demo-lombok</module>
