@@ -8,7 +8,6 @@ public class CommandPatternDemo {
 
     public static void main(String[] args) {
         Command command = new ConcreteCommand(new Receiver());
-        command.execute();
         Invoker invoker = new Invoker();
         invoker.setCommand(command);
         invoker.action();

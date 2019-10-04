@@ -10,7 +10,7 @@ public class AdapterDemo {
 
     public static void main(String[] args) {
         IUsb usb = new Usb();
-        UsbAdapter adapter = new UsbAdapter(usb);
+        ItypeC adapter = new UsbAdapter(usb);
         Mi5 mi5 = new Mi5(adapter);
         mi5.charge();
     }

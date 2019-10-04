@@ -8,6 +8,7 @@ import org.code4everything.demo.pattern.factory.Shape;
  */
 public class Rectangle implements Shape {
 
+    @Override
     public void draw() {
         System.out.println("draw rectangle");
     }

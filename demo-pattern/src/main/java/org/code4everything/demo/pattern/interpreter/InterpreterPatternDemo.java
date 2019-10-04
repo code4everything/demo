@@ -4,7 +4,7 @@ package org.code4everything.demo.pattern.interpreter;
  * @author pantao
  * @since 2018-07-25
  */
-public class InterpreterPatterndemo {
+public class InterpreterPatternDemo {
 
     public static Expression getMaleExpression() {
         Expression robert = new TerminalExpression("Robert");

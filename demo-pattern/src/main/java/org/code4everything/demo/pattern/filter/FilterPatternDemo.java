@@ -15,6 +15,6 @@ public class FilterPatternDemo {
                 "Male", "Single"), new Person("Bobby", "Male", "Single")};
         List<Person> list = Arrays.asList(people);
         System.out.println(new CriterialMale().meetCriteria(list));
-        System.out.println(new CriterialFemale().meetCriteria(list));
+        System.out.println(new CriteriaFemale().meetCriteria(list));
     }
 }

@@ -7,7 +7,7 @@ import java.util.List;
  * @author pantao
  * @since 2018-07-24
  */
-public class CriterialFemale implements Criteria {
+public class CriteriaFemale implements Criteria {
 
     @Override
     public List<Person> meetCriteria(List<Person> personList) {
