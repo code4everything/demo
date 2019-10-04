@@ -4,42 +4,28 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.zhazhapan</groupId>
+    <groupId>org.code4everything</groupId>
     <artifactId>demo</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <util.version>1.1.2</util.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
-    <modules>
-        <module>demo-redis</module>
-        <module>demo-mongodb</module>
-        <module>demo-websocket</module>
-        <module>demo-ui</module>
-        <module>demo-netty</module>
-        <module>demo-springboot</module>
-        <module>demo-algorithm</module>
-        <module>demo-pattern</module>
-        <module>demo-test</module>
-        <module>demo-guava</module>
-        <module>demo-over8</module>
-        <module>demo-springcloud</module>
-        <module>demo-lombok</module>
-        <module>demo-dubbo</module>
-    </modules>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.zhazhapan</groupId>
-            <artifactId>util</artifactId>
-            <version>${util.version}</version>
-        </dependency>
-    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
