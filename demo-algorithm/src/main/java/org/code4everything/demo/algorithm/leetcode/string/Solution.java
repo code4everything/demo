@@ -21,6 +21,26 @@ public class Solution {
 
     private Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'));
 
+    @LeetCode(id = 806, title = "写字符串需要的行数", difficulty = Difficulty.EASY)
+    public int[] numberOfLines(int[] widths, String S) {
+        int row = 0, pos = 0;
+        int[] ans = new int[2];
+        char[] cs = S.toCharArray();
+        for (char c : cs) {
+            int idx = c - 97;
+            int width = pos + widths[idx];
+            if (width > 100) {
+                row++;
+                pos = widths[idx];
+            } else {
+                pos = width;
+            }
+        }
+        ans[0] = row + 1;
+        ans[1] = pos;
+        return ans;
+    }
+
     @LeetCode(id = 682, title = "棒球比赛", difficulty = Difficulty.EASY)
     public int calPoints(String[] ops) {
         Stack<Integer> stack = new Stack<>();
