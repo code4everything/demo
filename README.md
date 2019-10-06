@@ -8,8 +8,12 @@
 
 - [JDBC Demo](demo-jdbc)
 
+- [JUnit Demo](demo-junit)
+
 - [Lombok Demo](demo-lombok)
 
 - [Mybatis Demo](demo-mybatis)
+
+- [Nio Chat Room](demo-nio/demo-nio-chat)
 
 - [Design Pattern Demo](demo-pattern)
