@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
  * @author pantao
  * @since 2018/12/18
  **/
-@SuppressWarnings("AlibabaAvoidManuallyCreateThread")
+@SuppressWarnings("all")
 public class ThreadStoppingTest {
 
     private static volatile boolean running = true;

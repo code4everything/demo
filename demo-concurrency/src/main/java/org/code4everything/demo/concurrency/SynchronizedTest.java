@@ -14,6 +14,7 @@ import java.util.concurrent.atomic.LongAdder;
  * @author pantao
  * @since 2019/10/7
  */
+@SuppressWarnings("all")
 public class SynchronizedTest {
 
     // @formatter:off
