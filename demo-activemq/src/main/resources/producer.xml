@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 导入公共配置-->
+    <import resource="common.xml"/>
+
+    <!--创建JmsTemplate，用于发送消息-->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+    </bean>
+    <!--发送消息的服务-->
+    <bean id="producerService" class="org.code4everything.demo.activemq.jms.producer.ProducerServiceImpl"/>
+</beans>

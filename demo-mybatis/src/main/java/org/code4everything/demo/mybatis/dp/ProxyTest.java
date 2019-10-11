@@ -12,6 +12,9 @@ import java.util.Arrays;
 public class ProxyTest {
 
     public static void main(String[] args) {
+        // 输出生成的代理类
+        System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
+
         // 无实现类的代理
         ProxyMapper mapper = (ProxyMapper) Proxy.newProxyInstance(ProxyTest.class.getClassLoader(),
                 new Class[]{ProxyMapper.class}, (proxy, method, args1) -> {
