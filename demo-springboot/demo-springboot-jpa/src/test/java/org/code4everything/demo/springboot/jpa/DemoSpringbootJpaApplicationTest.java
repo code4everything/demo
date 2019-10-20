@@ -1,7 +1,9 @@
 package org.code4everything.demo.springboot.jpa;
 
+import cn.hutool.core.lang.Console;
 import org.code4everything.demo.springboot.jpa.entity.User;
 import org.code4everything.demo.springboot.jpa.repository.UserRepository;
+import org.code4everything.demo.springboot.jpa.service.UserService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,12 +11,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.sql.SQLException;
+
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class DemoSpringbootJpaApplicationTest {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserService userService;
+
+    @Test
+    public void testDynamicJpa() throws SQLException {
+        userRepository.save(new User("AAA", 10));
+        userRepository.save(new User("BBB", 20));
+        userRepository.save(new User("AAA", 10));
+        userRepository.save(new User("BBB", 20));
+        userRepository.save(new User("CCC", 30));
+        userRepository.save(new User("CCC", 30));
+        userRepository.save(new User("AAA", 10));
+        userRepository.save(new User("CCC", 30));
+        userRepository.save(new User("AAA", 10));
+        userRepository.save(new User("CCC", 30));
+
+        Console.log(userService.listUserByJdbc(null, null, null));
+
+        Console.log(userService.listUserByJdbc(2L, null, null));
+        Console.log(userService.listUserByJdbc(null, 5L, null));
+        Console.log(userService.listUserByJdbc(null, null, "name desc"));
+
+        Console.log(userService.listUserByJdbc(null, 5L, "name desc"));
+        Console.log(userService.listUserByJdbc(2L, null, "name desc"));
+        Console.log(userService.listUserByJdbc(2L, 5L, null));
+
+        Console.log(userService.listUserByJdbc(2L, 5L, "name desc"));
+    }
 
     @Test
     public void testJpa() {
