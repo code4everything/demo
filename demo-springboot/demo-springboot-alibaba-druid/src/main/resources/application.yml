@@ -1,0 +1,19 @@
+server:
+  port: 8082
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  datasource:
+    druid:
+      url: jdbc:mysql://localserver:3306/practice
+      username: practice
+      password: practice
+      max-active: 10
+      # 统计监控信息
+      filters: stat,wall
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 10
