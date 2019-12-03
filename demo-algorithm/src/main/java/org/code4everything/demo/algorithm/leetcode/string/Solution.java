@@ -21,6 +21,27 @@ public class Solution {
 
     private Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'));
 
+    @LeetCode(id = 791, title = "自定义字符串排序", difficulty = Difficulty.MEDIUM)
+    public String customSortString(String s, String t) {
+        int[] idxes = new int[26];
+        final char[] chars = s.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            char c = chars[i];
+            idxes[c - 'a'] = i;
+        }
+        Character[] sortChars = new Character[t.length()];
+        final char[] ts = t.toCharArray();
+        for (int i = 0; i < ts.length; i++) {
+            sortChars[i] = ts[i];
+        }
+        Arrays.sort(sortChars, Comparator.comparingInt(c -> idxes[c - 'a']));
+
+        for (int i = 0; i < sortChars.length; i++) {
+            ts[i] = sortChars[i];
+        }
+        return new String(ts);
+    }
+
     @LeetCode(id = 806, title = "写字符串需要的行数", difficulty = Difficulty.EASY)
     public int[] numberOfLines(int[] widths, String S) {
         int row = 0, pos = 0;
