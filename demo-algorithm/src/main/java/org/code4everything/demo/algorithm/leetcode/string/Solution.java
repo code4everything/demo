@@ -21,6 +21,28 @@ public class Solution {
 
     private Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'));
 
+    @LeetCode(id = 821, title = "字符的最短距离", difficulty = Difficulty.EASY)
+    public int[] shortestToChar(String s, char c) {
+        int[] distance = new int[s.length()];
+        char[] chars = s.toCharArray();
+
+        int previousIdx = -10000;
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] == c) {
+                for (int j = i - 1; j >= 0 && j > previousIdx; j--) {
+                    distance[j] = Math.min(distance[j], i - j);
+                }
+
+                distance[i] = 0;
+                previousIdx = i;
+            } else {
+                distance[i] = i - previousIdx;
+            }
+        }
+
+        return distance;
+    }
+
     @LeetCode(id = 791, title = "自定义字符串排序", difficulty = Difficulty.MEDIUM)
     public String customSortString(String s, String t) {
         int[] idxes = new int[26];
