@@ -45,23 +45,23 @@ public class Solution {
 
     @LeetCode(id = 791, title = "自定义字符串排序", difficulty = Difficulty.MEDIUM)
     public String customSortString(String s, String t) {
-        int[] idxes = new int[26];
-        final char[] chars = s.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            char c = chars[i];
-            idxes[c - 'a'] = i;
+        Map<Character, Integer> map = new LinkedHashMap<>();
+        for (char c : s.toCharArray()) {
+            map.put(c, 0);
         }
-        Character[] sortChars = new Character[t.length()];
-        final char[] ts = t.toCharArray();
-        for (int i = 0; i < ts.length; i++) {
-            sortChars[i] = ts[i];
+        final char[] chars = t.toCharArray();
+        for (char c : chars) {
+            map.put(c, map.getOrDefault(c, 0) + 1);
         }
-        Arrays.sort(sortChars, Comparator.comparingInt(c -> idxes[c - 'a']));
-
-        for (int i = 0; i < sortChars.length; i++) {
-            ts[i] = sortChars[i];
+        int fromIdx = 0;
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            if (entry.getValue() > 0) {
+                int endIdx = fromIdx + entry.getValue();
+                Arrays.fill(chars, fromIdx, endIdx, entry.getKey());
+                fromIdx = endIdx;
+            }
         }
-        return new String(ts);
+        return new String(chars);
     }
 
     @LeetCode(id = 806, title = "写字符串需要的行数", difficulty = Difficulty.EASY)
