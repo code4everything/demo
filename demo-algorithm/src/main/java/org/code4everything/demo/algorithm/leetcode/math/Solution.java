@@ -23,6 +23,23 @@ public class Solution {
         romanMap.put('M', 1000);
     }
 
+    @LeetCode(id = 832, title = "翻转图像", difficulty = Difficulty.EASY)
+    public int[][] flipAndInvertImage(int[][] a) {
+        for (int[] ints : a) {
+            for (int i = 0, j = ints.length - 1; i <= j; i++, j--) {
+                if (i == j) {
+                    ints[i] ^= 1;
+                } else {
+                    int temp = ints[i];
+                    ints[i] = ints[j] ^ 1;
+                    ints[j] = temp ^ 1;
+                }
+            }
+        }
+
+        return a;
+    }
+
     @LeetCode(id = 766, title = "托普利茨矩阵", difficulty = Difficulty.EASY)
     public boolean isToeplitzMatrix(int[][] matrix) {
         int x = matrix.length;
