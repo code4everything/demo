@@ -23,6 +23,21 @@ public class Solution {
         romanMap.put('M', 1000);
     }
 
+    @LeetCode(id = 0, title = "面试题 16.11. 跳水板", difficulty = Difficulty.EASY)
+    public int[] divingBoard(int shorter, int longer, int k) {
+        if (shorter == longer && k > 0) {
+            return new int[]{shorter * k};
+        }
+        if (k == 0) {
+            return new int[0];
+        }
+        int[] ans = new int[k + 1];
+        for (int i = 0; i < ans.length; i++) {
+            ans[i] = shorter * (k - i) + longer * i;
+        }
+        return ans;
+    }
+
     @LeetCode(id = 832, title = "翻转图像", difficulty = Difficulty.EASY)
     public int[][] flipAndInvertImage(int[][] a) {
         for (int[] ints : a) {
