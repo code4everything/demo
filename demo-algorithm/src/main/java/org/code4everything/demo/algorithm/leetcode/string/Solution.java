@@ -21,6 +21,45 @@ public class Solution {
 
     private Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'));
 
+    public int respace(String[] dictionary, String sentence) {
+        if (dictionary.length == 0 || sentence.length() == 0) {
+            return sentence.length();
+        }
+        // 1 前缀，2 单词，3 即是前缀也是单词
+        Map<String, Integer> map = new HashMap<>(150000 * 10);
+        for (String s : dictionary) {
+            for (int i = 1; i <= s.length(); i++) {
+                String key = s.substring(0, i);
+                Integer value = map.getOrDefault(key, 0);
+                if (value == 3) {
+                    continue;
+                }
+                if (i < s.length()) {
+                    // 前缀
+                    map.put(key, value == 1 ? 1 : value + 1);
+                } else {
+                    // 单词
+                    map.put(key, value + 2);
+                }
+            }
+        }
+        int unrecognize = 0;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < sentence.length(); i++) {
+            sb.append(sentence.charAt(i));
+            Integer value = map.get(sb.toString());
+            if (Objects.isNull(value)) {
+                unrecognize += sb.length();
+                sb = new StringBuilder();
+                continue;
+            } else if (value == 1) {
+                // 前缀
+
+            }
+        }
+        return unrecognize;
+    }
+
     @LeetCode(id = 821, title = "字符的最短距离", difficulty = Difficulty.EASY)
     public int[] shortestToChar(String s, char c) {
         int[] distance = new int[s.length()];
