@@ -11,6 +11,10 @@ import java.util.*;
  **/
 public class Solution {
 
+    static final long P = Integer.MAX_VALUE;
+
+    static final long BASE = 41;
+
     private final char a = 'a';
 
     private final char z = 'z';
@@ -22,42 +26,36 @@ public class Solution {
     private Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'));
 
     public int respace(String[] dictionary, String sentence) {
-        if (dictionary.length == 0 || sentence.length() == 0) {
-            return sentence.length();
+        Set<Long> hashValues = new HashSet<Long>();
+        for (String word : dictionary) {
+            hashValues.add(getHash(word));
         }
-        // 1 前缀，2 单词，3 即是前缀也是单词
-        Map<String, Integer> map = new HashMap<>(150000 * 10);
-        for (String s : dictionary) {
-            for (int i = 1; i <= s.length(); i++) {
-                String key = s.substring(0, i);
-                Integer value = map.getOrDefault(key, 0);
-                if (value == 3) {
-                    continue;
-                }
-                if (i < s.length()) {
-                    // 前缀
-                    map.put(key, value == 1 ? 1 : value + 1);
-                } else {
-                    // 单词
-                    map.put(key, value + 2);
-                }
-            }
-        }
-        int unrecognize = 0;
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < sentence.length(); i++) {
-            sb.append(sentence.charAt(i));
-            Integer value = map.get(sb.toString());
-            if (Objects.isNull(value)) {
-                unrecognize += sb.length();
-                sb = new StringBuilder();
-                continue;
-            } else if (value == 1) {
-                // 前缀
 
+        int[] f = new int[sentence.length() + 1];
+        Arrays.fill(f, sentence.length());
+
+        f[0] = 0;
+        for (int i = 1; i <= sentence.length(); ++i) {
+            f[i] = f[i - 1] + 1;
+            long hashValue = 0;
+            for (int j = i; j >= 1; --j) {
+                int t = sentence.charAt(j - 1) - 'a' + 1;
+                hashValue = (hashValue * BASE + t) % P;
+                if (hashValues.contains(hashValue)) {
+                    f[i] = Math.min(f[i], f[j - 1]);
+                }
             }
         }
-        return unrecognize;
+
+        return f[sentence.length()];
+    }
+
+    public long getHash(String s) {
+        long hashValue = 0;
+        for (int i = s.length() - 1; i >= 0; --i) {
+            hashValue = (hashValue * BASE + s.charAt(i) - 'a' + 1) % P;
+        }
+        return hashValue;
     }
 
     @LeetCode(id = 821, title = "字符的最短距离", difficulty = Difficulty.EASY)

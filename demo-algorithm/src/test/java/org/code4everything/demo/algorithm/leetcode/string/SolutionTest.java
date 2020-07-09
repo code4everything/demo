@@ -9,6 +9,21 @@ public class SolutionTest {
     private Solution solution = new Solution();
 
     @Test
+    public void respace() {
+        assert 0 == solution.respace(new String[]{"s"}, "");
+        assert 1 == solution.respace(new String[]{}, "b");
+        assert 7 == solution.respace(new String[]{"looked", "just", "like", "her", "brother"},
+                "jesslookedjustliketimherbrother");
+        assert 3 == solution.respace(new String[]{"name", "cat"}, "catcatnnamena");
+        assert 7 == solution.respace(new String[]{"with", "without"}, "awithbwithawithoucwithoutw");
+        assert 0 == solution.respace(new String[]{"w", "with"}, "withwwithw");
+        assert 7 == solution.respace(new String[]{"sssjjs", "hschjf", "hhh", "fhjchfcfshhfjhs", "sfh", "jsf",
+                "cjschjfscscscsfjcjfcfcfh", "hccccjjfchcffjjshccsjscsc", "chcfjcsshjj", "jh", "h", "f", "s", "jcshs",
+                "jfjssjhsscfc"}, "sssjjssfshscfjjshsjjsjchffffs");
+        assert 0 == solution.respace(new String[]{"qqqqqqqqq", "qqqqq", "qq", "qqq", "qqqqqq", "qqqqqq", "q"}, "qqqq");
+    }
+
+    @Test
     public void isPalindrome() {
         assert solution.isPalindrome("A man, a plan, a canal: Panama");
         assert !solution.isPalindrome("0p");
@@ -46,7 +61,7 @@ public class SolutionTest {
     public void wordBreak2() {
         Console.log(solution.wordBreak2("catsanddog", Lists.newArrayList("cat", "cats", "and", "sand", "dog")));
         Console.log(solution.wordBreak2("pineapplepenapple", Lists.newArrayList("apple", "pen", "applepen", "pine",
-                                                                                "pineapple")));
+                "pineapple")));
         Console.log(solution.wordBreak2("catsandog", Lists.newArrayList("cats", "dog", "sand", "and", "cat")));
     }
 
