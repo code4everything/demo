@@ -42,8 +42,9 @@ public class Solution {
         return Math.max(f2, f3);
     }
 
+    @LeetCode(id = 0, title = "面试题 17.13. 恢复空格", difficulty = Difficulty.MEDIUM)
     public int respace(String[] dictionary, String sentence) {
-        Set<Long> hashValues = new HashSet<Long>();
+        Set<Long> hashValues = new HashSet<>();
         for (String word : dictionary) {
             hashValues.add(getHash(word));
         }
