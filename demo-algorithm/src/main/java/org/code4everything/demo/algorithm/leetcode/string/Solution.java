@@ -25,6 +25,23 @@ public class Solution {
 
     private Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'));
 
+    @LeetCode(id = 309, title = "最佳买卖股票时机含冷冻期", difficulty = Difficulty.MEDIUM)
+    public int maxProfit(int[] prices) {
+        if (prices.length == 0) {
+            return 0;
+        }
+        int f1 = -prices[0];
+        int f2 = 0;
+        int f3 = 0;
+        for (int i = 1; i < prices.length; i++) {
+            int newf3 = Math.max(f2, f3);
+            f2 = f1 + prices[i];
+            f1 = Math.max(f1, f3 - prices[i]);
+            f3 = newf3;
+        }
+        return Math.max(f2, f3);
+    }
+
     public int respace(String[] dictionary, String sentence) {
         Set<Long> hashValues = new HashSet<Long>();
         for (String word : dictionary) {
