@@ -25,7 +25,7 @@ public class Solution {
 
     private Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'));
 
-    @LeetCode(id = 309, title = "最佳买卖股票时机含冷冻期", difficulty = Difficulty.MEDIUM)
+    @LeetCode(id = 309, title = "最佳买卖股票时机含冷冻期", difficulty = Difficulty.MEDIUM, selfResolved = false)
     public int maxProfit(int[] prices) {
         if (prices.length == 0) {
             return 0;
@@ -42,7 +42,7 @@ public class Solution {
         return Math.max(f2, f3);
     }
 
-    @LeetCode(id = 0, title = "面试题 17.13. 恢复空格", difficulty = Difficulty.MEDIUM)
+    @LeetCode(id = 0, title = "面试题 17.13. 恢复空格", difficulty = Difficulty.MEDIUM, selfResolved = false)
     public int respace(String[] dictionary, String sentence) {
         Set<Long> hashValues = new HashSet<>();
         for (String word : dictionary) {
