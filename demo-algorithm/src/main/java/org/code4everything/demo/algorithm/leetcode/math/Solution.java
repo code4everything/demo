@@ -13,6 +13,8 @@ public class Solution {
 
     private final Map<Character, Integer> romanMap = new HashMap<>(8);
 
+    private final Map<Integer, Integer> intIntMap = new HashMap<>(256);
+
     {
         romanMap.put('I', 1);
         romanMap.put('V', 5);
@@ -21,6 +23,32 @@ public class Solution {
         romanMap.put('C', 100);
         romanMap.put('D', 500);
         romanMap.put('M', 1000);
+    }
+
+    @LeetCode(id = 174, title = "地下城游戏", difficulty = Difficulty.HARD, refer = "https://leetcode-cn" + ".com/problems"
+            + "/dungeon-game/solution/di-xia-cheng-you-xi-by-leetcode-solution/")
+    public int calculateMinimumHP(int[][] dungeon) {
+        if (dungeon.length == 0 || dungeon[0].length == 0) {
+            return 0;
+        }
+        return calculateMinimumHP(dungeon, 1, dungeon.length - 1, dungeon[0].length - 1);
+    }
+
+    public int calculateMinimumHP(int[][] dungeon, int minimum, int i, int j) {
+        if (i < 0 || j < 0) {
+            return Integer.MAX_VALUE;
+        }
+        minimum = Math.max(1, minimum - dungeon[i][j]);
+        int idx = j * dungeon.length + i;
+        int existedMinimum = intIntMap.getOrDefault(idx, Integer.MAX_VALUE);
+        if (existedMinimum <= minimum) {
+            return Integer.MAX_VALUE;
+        }
+        intIntMap.put(idx, minimum);
+        if (i == 0 && j == 0) {
+            return minimum;
+        }
+        return Math.min(calculateMinimumHP(dungeon, minimum, i - 1, j), calculateMinimumHP(dungeon, minimum, i, j - 1));
     }
 
     @LeetCode(id = 0, title = "面试题 16.11. 跳水板", difficulty = Difficulty.EASY)
