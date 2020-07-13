@@ -25,6 +25,27 @@ public class Solution {
         romanMap.put('M', 1000);
     }
 
+    /**
+     * 双指针 {@link org.code4everything.demo.algorithm.leetcode.binary.search.Searcher#intersect(int[], int[])}
+     */
+    @LeetCode(id = 350, difficulty = Difficulty.EASY, title = "两个数组的交集 II")
+    public int[] intersect(int[] nums1, int[] nums2) {
+        Map<Integer, Integer> map = new HashMap<>(nums2.length, 1);
+        for (int i : nums2) {
+            map.put(i, map.getOrDefault(i, 0) + 1);
+        }
+        int[] res = new int[Math.min(nums1.length, nums2.length)];
+        int size = 0;
+        for (int i : nums1) {
+            int count = map.getOrDefault(i, 0);
+            if (count > 0) {
+                res[size++] = i;
+                map.put(i, count - 1);
+            }
+        }
+        return Arrays.copyOf(res, size);
+    }
+
     @LeetCode(id = 174, title = "地下城游戏", difficulty = Difficulty.HARD, refer = "https://leetcode-cn" + ".com/problems"
             + "/dungeon-game/solution/di-xia-cheng-you-xi-by-leetcode-solution/")
     public int calculateMinimumHP(int[][] dungeon) {
