@@ -25,6 +25,29 @@ public class Solution {
         romanMap.put('M', 1000);
     }
 
+    @LeetCode(id = 120, title = " 三角形最小路径和", difficulty = Difficulty.MEDIUM)
+    public int minimumTotal(List<List<Integer>> triangle) {
+        if (triangle == null) {
+            return 0;
+        }
+        return minimumTotal(triangle, 0, 0);
+    }
+
+    private int minimumTotal(List<List<Integer>> triangle, int i, int j) {
+        if (i == triangle.size()) {
+            return 0;
+        }
+        int idx = i * triangle.size() + j;
+        Integer min = intIntMap.get(idx);
+        if (min != null) {
+            return min;
+        }
+        List<Integer> list = triangle.get(i);
+        min = list.get(j) + Math.min(minimumTotal(triangle, i + 1, j), minimumTotal(triangle, i + 1, j + 1));
+        intIntMap.put(idx, min);
+        return min;
+    }
+
     /**
      * 双指针 {@link org.code4everything.demo.algorithm.leetcode.binary.search.Searcher#intersect(int[], int[])}
      */
