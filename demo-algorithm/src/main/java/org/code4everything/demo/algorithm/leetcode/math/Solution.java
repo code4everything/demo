@@ -25,6 +25,16 @@ public class Solution {
         romanMap.put('M', 1000);
     }
 
+    @LeetCode(id = 96, title = "不同的二叉搜索树", difficulty = Difficulty.MEDIUM, refer = "https://leetcode-cn" + ".com" +
+            "/problems/unique-binary-search-trees/solution/")
+    public int numTrees(int n) {
+        long c = 1;
+        for (int i = 0; i < n; ++i) {
+            c = c * 2 * (2 * i + 1) / (i + 2);
+        }
+        return (int) c;
+    }
+
     @LeetCode(id = 120, title = " 三角形最小路径和", difficulty = Difficulty.MEDIUM)
     public int minimumTotal(List<List<Integer>> triangle) {
         if (triangle == null) {
