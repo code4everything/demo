@@ -11,6 +11,41 @@ import java.util.*;
  */
 public class Solution {
 
+    @LeetCode(id = 977, title = "有序数组的平方", difficulty = Difficulty.EASY)
+    public int[] sortedSquares(int[] a) {
+        int middleIdx = a.length - 1;
+        int[] sq = new int[a.length];
+        for (int i = a.length - 1; i >= 0; i--) {
+            sq[i] = a[i] * a[i];
+
+            if (a[i] < 0) {
+                continue;
+            }
+            if (i > 0) {
+                if (a[i] < Math.abs(a[i - 1])) {
+                    continue;
+                }
+                middleIdx--;
+            }
+        }
+
+        int[] ans = new int[a.length];
+        ans[0] = sq[middleIdx];
+        for (int i = 1, left = middleIdx - 1, right = middleIdx + 1; i < ans.length; i++) {
+            if (left < 0) {
+                ans[i] = sq[right++];
+            } else if (right >= a.length) {
+                ans[i] = sq[left--];
+            } else if (sq[left] <= sq[right]) {
+                ans[i] = sq[left--];
+            } else {
+                ans[i] = sq[right++];
+            }
+        }
+
+        return ans;
+    }
+
     @LeetCode(id = 11, title = "盛最多水的容器", difficulty = Difficulty.MEDIUM)
     public int maxArea(int[] height) {
         int i = 0;
