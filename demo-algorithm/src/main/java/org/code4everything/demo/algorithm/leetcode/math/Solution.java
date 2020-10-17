@@ -25,6 +25,55 @@ public class Solution {
         romanMap.put('M', 1000);
     }
 
+    @LeetCode(id = 52, title = "N皇后 II", difficulty = Difficulty.HARD)
+    public int totalNQueens(int n) {
+        List<Set<Integer>> list = new ArrayList<>(n);
+        List<Integer> tempList = new ArrayList<>(n);
+
+        for (int i = 0; i < n; i++) {
+            tempList.add(i);
+        }
+        for (int i = 0; i < n; i++) {
+            list.add(new HashSet<>(tempList));
+        }
+
+        return queenHelper(list);
+    }
+
+    private int queenHelper(List<Set<Integer>> list) {
+        Set<Integer> loc = list.get(0);
+
+        if (list.size() == 1) {
+            return loc.size();
+        }
+
+        int ans = 0;
+        for (Integer integer : loc) {
+            List<Set<Integer>> nextList = new ArrayList<>(list.size() - 1);
+            for (int i = 1; i < list.size(); i++) {
+                Set<Integer> tempList = new HashSet<>(list.get(i));
+
+                tempList.remove(integer);
+                tempList.remove(integer - i);
+                tempList.remove(integer + i);
+
+                if (tempList.isEmpty()) {
+                    nextList.clear();
+                    break;
+                }
+
+                nextList.add(tempList);
+            }
+
+            if (nextList.isEmpty()) {
+                continue;
+            }
+            ans += queenHelper(nextList);
+        }
+
+        return ans;
+    }
+
     @LeetCode(id = 96, title = "不同的二叉搜索树", difficulty = Difficulty.MEDIUM, refer = "https://leetcode-cn" + ".com" +
             "/problems/unique-binary-search-trees/solution/")
     public int numTrees(int n) {
