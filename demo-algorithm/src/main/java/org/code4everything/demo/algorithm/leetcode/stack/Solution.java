@@ -4,6 +4,7 @@ import org.code4everything.demo.algorithm.common.annotation.LeetCode;
 import org.code4everything.demo.algorithm.common.enums.Difficulty;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -14,6 +15,23 @@ import java.util.Stack;
 public class Solution {
 
     private int count = 0;
+
+    @LeetCode(id = 844, title = "比较含退格的字符串", difficulty = Difficulty.EASY)
+    public boolean backspaceCompare(String s, String t) {
+        return backSpaceCompareHelper(new LinkedList<>(), s).equals(backSpaceCompareHelper(new LinkedList<>(), t));
+    }
+
+    private LinkedList<Character> backSpaceCompareHelper(LinkedList<Character> list, String str) {
+        char[] chars = str.toCharArray();
+        for (char aChar : chars) {
+            if (aChar == '#') {
+                list.pollLast();
+            } else {
+                list.add(aChar);
+            }
+        }
+        return list;
+    }
 
     @LeetCode(id = 841, difficulty = Difficulty.MEDIUM, title = "钥匙和房间")
     public boolean canVisitAllRooms(List<List<Integer>> rooms) {
