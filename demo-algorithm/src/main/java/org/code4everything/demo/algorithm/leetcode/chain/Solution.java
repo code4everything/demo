@@ -14,6 +14,28 @@ public class Solution {
 
     private int tilt = 0;
 
+    @LeetCode(id = 143, title = "重排链表", difficulty = Difficulty.MEDIUM)
+    public void reorderList(ListNode head) {
+        if (Objects.isNull(head)) {
+            return;
+        }
+        List<Integer> list = new ArrayList<>();
+        ListNode node = head;
+        while (node != null) {
+            list.add(node.val);
+            node = node.next;
+        }
+        node = head;
+        for (int i = 0, x = 0, y = list.size() - 1; i < list.size(); i++) {
+            if ((i & 1) == 1) {
+                node.val = list.get(y--);
+            } else {
+                node.val = list.get(x++);
+            }
+            node = node.next;
+        }
+    }
+
     @LeetCode(id = 23, title = "合并K个排序链表", difficulty = Difficulty.HARD)
     public ListNode mergeKLists(ListNode[] lists) {
         Queue<ListNode> nodes = new PriorityQueue<>(Comparator.comparingInt(n -> n.val));
