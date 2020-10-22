@@ -2,6 +2,7 @@ package org.code4everything.demo.algorithm.leetcode.string;
 
 import cn.hutool.core.lang.Console;
 import com.google.common.collect.Lists;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class SolutionTest {
@@ -72,5 +73,15 @@ public class SolutionTest {
 
     @Test
     public void isAnagram() {
+    }
+
+    @Test
+    public void isLongPressedName() {
+        Assert.assertTrue(solution.isLongPressedName("alex", "aaleex"));
+        Assert.assertFalse(solution.isLongPressedName("saeed", "ssaaedd"));
+        Assert.assertTrue(solution.isLongPressedName("leelee", "lleeelee"));
+        Assert.assertTrue(solution.isLongPressedName("laiden", "laiden"));
+        Assert.assertTrue(solution.isLongPressedName("aaa", "aaaaaaaaaaaaaaaaaaa"));
+        Assert.assertTrue(solution.isLongPressedName("abcd", "aaabbbcccddd"));
     }
 }

@@ -25,6 +25,33 @@ public class Solution {
 
     private Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'));
 
+    @LeetCode(id = 925, title = "长按键入", difficulty = Difficulty.EASY)
+    public boolean isLongPressedName(String name, String typed) {
+        char[] chars = typed.toCharArray();
+        char previousChar = '0';
+        int i = 0;
+        char[] nameChars = name.toCharArray();
+        for (int j = 0; j < nameChars.length; ) {
+            if (i >= chars.length) {
+                return false;
+            }
+            char c = nameChars[j];
+            char typedChar = chars[i++];
+            if (c == typedChar) {
+                j++;
+                previousChar = c;
+            } else if (typedChar != previousChar) {
+                return false;
+            }
+        }
+        for (; i < chars.length; i++) {
+            if (previousChar != chars[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     @LeetCode(id = 309, title = "最佳买卖股票时机含冷冻期", difficulty = Difficulty.MEDIUM, selfResolved = false)
     public int maxProfit(int[] prices) {
         if (prices.length == 0) {
