@@ -25,6 +25,25 @@ public class Solution {
 
     private Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'));
 
+    @LeetCode(id = 763, title = "划分字母区间", difficulty = Difficulty.MEDIUM)
+    public List<Integer> partitionLabels(String s) {
+        int[] last = new int[26];
+        char[] chars = s.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            last[chars[i] - 'a'] = i;
+        }
+        List<Integer> list = new ArrayList<>();
+        int start = 0, end = 0;
+        for (int i = 0; i < chars.length; i++) {
+            end = Math.max(end, last[chars[i] - 'a']);
+            if (i == end) {
+                list.add(end - start + 1);
+                start = end + 1;
+            }
+        }
+        return list;
+    }
+
     @LeetCode(id = 925, title = "长按键入", difficulty = Difficulty.EASY)
     public boolean isLongPressedName(String name, String typed) {
         char[] chars = typed.toCharArray();
