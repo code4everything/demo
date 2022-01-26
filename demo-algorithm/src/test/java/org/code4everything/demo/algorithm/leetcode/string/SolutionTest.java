@@ -5,22 +5,28 @@ import com.google.common.collect.Lists;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 public class SolutionTest {
 
     private Solution solution = new Solution();
 
     @Test
+    public void findSubstring() {
+        Assert.assertEquals(Arrays.asList(0, 9), solution.findSubstring("barfoothefoobarman", new String[]{"foo", "bar"}));
+        Assert.assertEquals(Arrays.asList(), solution.findSubstring("wordgoodgoodgoodbestword", new String[]{"word", "good", "best", "word"}));
+        Assert.assertEquals(Arrays.asList(6, 9, 12), solution.findSubstring("barfoofoobarthefoobarman", new String[]{"bar", "foo", "the"}));
+    }
+
+    @Test
     public void respace() {
         assert 0 == solution.respace(new String[]{"s"}, "");
         assert 1 == solution.respace(new String[]{}, "b");
-        assert 7 == solution.respace(new String[]{"looked", "just", "like", "her", "brother"},
-                "jesslookedjustliketimherbrother");
+        assert 7 == solution.respace(new String[]{"looked", "just", "like", "her", "brother"}, "jesslookedjustliketimherbrother");
         assert 3 == solution.respace(new String[]{"name", "cat"}, "catcatnnamena");
         assert 7 == solution.respace(new String[]{"with", "without"}, "awithbwithawithoucwithoutw");
         assert 0 == solution.respace(new String[]{"w", "with"}, "withwwithw");
-        assert 7 == solution.respace(new String[]{"sssjjs", "hschjf", "hhh", "fhjchfcfshhfjhs", "sfh", "jsf",
-                "cjschjfscscscsfjcjfcfcfh", "hccccjjfchcffjjshccsjscsc", "chcfjcsshjj", "jh", "h", "f", "s", "jcshs",
-                "jfjssjhsscfc"}, "sssjjssfshscfjjshsjjsjchffffs");
+        assert 7 == solution.respace(new String[]{"sssjjs", "hschjf", "hhh", "fhjchfcfshhfjhs", "sfh", "jsf", "cjschjfscscscsfjcjfcfcfh", "hccccjjfchcffjjshccsjscsc", "chcfjcsshjj", "jh", "h", "f", "s", "jcshs", "jfjssjhsscfc"}, "sssjjssfshscfjjshsjjsjchffffs");
         assert 0 == solution.respace(new String[]{"qqqqqqqqq", "qqqqq", "qq", "qqq", "qqqqqq", "qqqqqq", "q"}, "qqqq");
     }
 
@@ -61,8 +67,7 @@ public class SolutionTest {
     @Test
     public void wordBreak2() {
         Console.log(solution.wordBreak2("catsanddog", Lists.newArrayList("cat", "cats", "and", "sand", "dog")));
-        Console.log(solution.wordBreak2("pineapplepenapple", Lists.newArrayList("apple", "pen", "applepen", "pine",
-                "pineapple")));
+        Console.log(solution.wordBreak2("pineapplepenapple", Lists.newArrayList("apple", "pen", "applepen", "pine", "pineapple")));
         Console.log(solution.wordBreak2("catsandog", Lists.newArrayList("cats", "dog", "sand", "and", "cat")));
     }
 

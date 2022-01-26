@@ -3,7 +3,17 @@ package org.code4everything.demo.algorithm.leetcode.string;
 import org.code4everything.demo.algorithm.common.annotation.LeetCode;
 import org.code4everything.demo.algorithm.common.enums.Difficulty;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Stack;
 
 /**
  * @author pantao
@@ -24,6 +34,43 @@ public class Solution {
     private final char nine = '9';
 
     private Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'));
+
+    @LeetCode(id = 30, title = "串联所有单词的子串", difficulty = Difficulty.HARD)
+    public List<Integer> findSubstring(String s, String[] words) {
+        Map<String, Integer> wordMap = new HashMap<>();
+        for (int i = 0; i < words.length; i++) {
+            wordMap.merge(words[i], 1, Integer::sum);
+        }
+
+        int wordLen = words[0].length();
+        int sentenceLen = wordLen * words.length;
+        List<String> idxWord = new ArrayList<>(s.length());
+        char[] chars = s.toCharArray();
+        int offset = wordLen - 1;
+        StringBuilder sb = new StringBuilder().append("0").append(s, 0, offset);
+        for (int i = 0; i <= chars.length - wordLen; i++) {
+            sb.deleteCharAt(0).append(chars[i + offset]);
+            String word = sb.toString();
+            idxWord.add(wordMap.containsKey(word) ? word : "");
+        }
+
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i <= chars.length - sentenceLen; i++) {
+            Map<String, Integer> test = new HashMap<>();
+            for (int x = 0; x < words.length; x++) {
+                String word = idxWord.get(i + x * wordLen);
+                if (word.isEmpty()) {
+                    break;
+                }
+                test.merge(word, 1, Integer::sum);
+            }
+            if (test.equals(wordMap)) {
+                result.add(i);
+            }
+        }
+
+        return result;
+    }
 
     @LeetCode(id = 763, title = "划分字母区间", difficulty = Difficulty.MEDIUM)
     public List<Integer> partitionLabels(String s) {
@@ -474,8 +521,7 @@ public class Solution {
         return result;
     }
 
-    private void wordBreakHelper(String s, List<String> dict, List<String> result, List<Integer> splits, int start,
-                                 int end, String w, String sep) {
+    private void wordBreakHelper(String s, List<String> dict, List<String> result, List<Integer> splits, int start, int end, String w, String sep) {
         int j = start + 1;
         for (; j <= end; j++) {
             String tmp = s.substring(splits.get(start), splits.get(j));
