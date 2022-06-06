@@ -17,3 +17,5 @@
 - [Nio Chat Room](demo-nio/demo-nio-chat)
 
 - [Design Pattern Demo](demo-pattern)
+
+- [Interesting Codes](demo-magic)
