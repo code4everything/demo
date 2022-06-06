@@ -35,11 +35,11 @@ public class RandomMagic {
         return sb.toString();
     }
 
-    public static long generateSeed(String goal, long start, long finish) {
-        char[] input = goal.toCharArray();
+    public static long generateSeed(String word) {
+        char[] input = word.toCharArray();
         char[] pool = new char[input.length];
         label:
-        for (long seed = start; seed < finish; seed++) {
+        for (long seed = Long.MIN_VALUE; seed < Long.MAX_VALUE; seed++) {
             Random random = new Random(seed);
 
             for (int i = 0; i < input.length; i++)
