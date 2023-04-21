@@ -25,6 +25,11 @@ public class Solution {
         romanMap.put('M', 1000);
     }
 
+    @LeetCode(id = 2413, title = "最小偶倍数", difficulty = Difficulty.EASY)
+    public int smallestEvenMultiple(int n) {
+        return (n & 1) == 1 ? n << 1 : n;
+    }
+
     @LeetCode(id = 52, title = "N皇后 II", difficulty = Difficulty.HARD)
     public int totalNQueens(int n) {
         List<Set<Integer>> list = new ArrayList<>(n);
