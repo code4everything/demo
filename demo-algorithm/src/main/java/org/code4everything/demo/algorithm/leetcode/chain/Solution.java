@@ -4,7 +4,15 @@ import org.code4everything.demo.algorithm.common.annotation.LeetCode;
 import org.code4everything.demo.algorithm.common.enums.Difficulty;
 import org.code4everything.demo.algorithm.leetcode.model.TreeNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
 
 /**
  * @author pantao
@@ -400,18 +408,5 @@ public class Solution {
             next = _next;
             child = _child;
         }
-    }
-
-}
-
-class ListNode {
-
-    int val;
-
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
-        next = null;
     }
 }
