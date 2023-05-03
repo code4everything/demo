@@ -5,6 +5,21 @@ import org.code4everything.demo.algorithm.common.enums.Difficulty
 
 class SolutionKt {
 
+    @LeetCode(id = 1003, difficulty = Difficulty.MEDIUM, title = "检查替换后的词是否有效")
+    fun isValid(s: String): Boolean {
+        val stack = s.toCharArray()
+        var i = 0
+        s.forEach {
+            if (it > 'a' && (i == 0 || it - stack[--i] != 1)) {
+                return false
+            }
+            if (it < 'c') {
+                stack[i++] = it
+            }
+        }
+        return i == 0
+    }
+
     data class CompiledRegExp(val char: Char, var count: Int)
 
     @LeetCode(id = 10, title = " 正则表达式匹配", difficulty = Difficulty.HARD)
